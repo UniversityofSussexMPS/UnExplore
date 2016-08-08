@@ -9,6 +9,12 @@ These places have data from many different sources and have converted the format
 
 The main source I have been using is from Stephen Wilkins website [here][SWwebsite], which I do have permission to use.
 
+A few places which I found it is easiest to get the data, where whole datasets can be downloaded are as follows:
+ - http://hedam.oamp.fr/HerMES/
+ - http://swire.ipac.caltech.edu//swire/astronomers/data_access.html
+ 
+Though the data may have strange formats and require some coding to extract 
+
 I think the best option will be to use the indervidual website to access the data. But to often get large amounts of data you need to run a SQL query which means that knowledge of SQL is needed to access theses databases.
 
    [NEDhelp]:   <https://ned.ipac.caltech.edu/help/object_help.html>
