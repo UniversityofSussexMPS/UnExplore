@@ -76,12 +76,12 @@ function init() {
 
 	// Create the Camera
 	camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 1e13 );
-	camera.position.set(0,0,1)
+	camera.position.set(0,0,0.2)
 
 
 	// Set the control
 	controls = new THREE.TrackballControls( camera, renderer.domElement );
-	controls.minDistance = 1;
+	controls.minDistance = 0.2;
 
 
 	//Create light
@@ -104,7 +104,7 @@ function init() {
 	
 
 }
-function textSprite(text,sup,pos,scale, params) {
+function textSprite(text,sup,pos,scale, z) {
     var font = "Helvetica",
         size = 200,
         color = "#ffffff",
@@ -157,16 +157,18 @@ function textSprite(text,sup,pos,scale, params) {
         side: THREE.DoubleSide
     }));
     supMesh.scale.set(scale/2,scale/2,scale/2)
-    supMesh.position.set(pos*1.2,pos/10,0)
+    supMesh.position.set(pos*1.0,pos/10,z)
     textMesh.scale.set(scale,scale,scale)
-    textMesh.position.x = pos
+    textMesh.position.x = pos;
+    textMesh.position.z = z;
     scene.add( textMesh,supMesh);
 }
- function box(scale){
+ function box(scale,z){
  	var geometry = new THREE.BoxGeometry( scale, scale, 0 );
 	var material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
 	var cube = new THREE.Mesh( geometry, material );
-	boxMesh = new THREE.BoxHelper( cube, 0xFFFFFF );
+	boxMesh = new THREE.BoxHelper( cube, 0xFFFFFF );	
+	boxMesh.position.z = z;
 	scene.add( boxMesh );
  }
 
@@ -190,8 +192,8 @@ function loadScript(url, callback)
 
 
 function tweenCamera(){
-	textSprite("10","-16",0.08,0.0001)
-	box(0.1);
+	textSprite("10  m","-16",0.04,0.00005,0)
+	box(0.05,0);
 	loadScript("data/GAMA_data.js",addGamaData)
 	document.getElementById("startButton").style.visibility = "hidden";
 
@@ -219,15 +221,15 @@ function tweenCamera(){
 	    		
 	tween0 = cameraZoomTween0.to({x:0,y:0,z:1000},5000)
 		  .easing(TWEEN.Easing.Exponential.In)
-		  .delay(5000)
+		  .delay(10000)
 		  .onStart(function(){
 		  	scene.remove(textMesh,supMesh,boxMesh);
 		  	controls.enabled = false;  
 		  	message.innerHTML="Zooming out shows that this atom is one part of a molecule";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
-		  	textSprite("10","-15",0.7,0.001)
-		  	box(1.0)
+		  	textSprite("10  m","-15",0.7,0.0007,0)
+		  	box(1.0,0)
 
 
 		  })
@@ -243,11 +245,11 @@ function tweenCamera(){
 			root.position.set(32,25,0);
 			scene.add( root );
 			scene.add(light)
-		  	textSprite("10","-10", 500,0.3)
-		  	box(800.0)
+		  	textSprite("10  m","-10", 500,0.5,0)
+		  	box(700.0,0)
 			$("#slider").slider('value',500);
 		});
-	tween1 = cameraZoomTween1.to({x:0,y:0,z:500},3000)
+	tween1 = cameraZoomTween1.to({x:0,y:0,z:1000},3000)
 	      .easing(TWEEN.Easing.Quartic.Out)
 	      .onComplete(function(){
 	      	message.innerHTML="This is a molecule";
@@ -273,6 +275,8 @@ function tweenCamera(){
 			camera.position.x=0.0;
 			
 			scene.add(model)
+			textSprite("10  m","0", 1.5,0.0015,0)
+		  	box(2.0,0)
 		});
 	tween3 = cameraZoomTween3.to({x:0,y:0,z:5},5000)
 		.easing(TWEEN.Easing.Exponential.Out)
@@ -295,8 +299,11 @@ function tweenCamera(){
 		.easing(TWEEN.Easing.Exponential.In)
 		.onComplete(function(){
 			scene.remove(model)
+			scene.remove(textMesh,supMesh,boxMesh);
 
     		scene.add(planets.earth.mesh);
+			textSprite("10  m","7", 6.5,0.008,0)
+		  	box(8.2,0)
 
     		camera.position.z=1;
 		});
@@ -323,27 +330,33 @@ function tweenCamera(){
 		.onComplete(function(){
 			scene.remove(planets.earth.mesh);
 			scene.remove(light);
+			scene.remove(textMesh,supMesh,boxMesh);
 			planets.earth.radius = 350;
 			planets.sun.radius = 0;
-			    var a;
-			    for (a in planets) {
-			    	scene.add(planets[a].mesh)
-			    }
-			    scene.add(saturnrings);
-			    add_3Dstars();
-			    $("#slider").slider('value',2000);
-			    solarsystem = true;
-			
+		    var a;
+		    for (a in planets) {
+		    	scene.add(planets[a].mesh)
+		    }
+		    scene.add(saturnrings);
+		    add_3Dstars();
+		    $("#slider").slider('value',2000);
+		    solarsystem = true;
+		    textSprite("10  m","9", 500,0.6,0)
+		  	box(620.0,0)
+		
 
     		camera.position.set=(0,10,0);
 		});
-	tween7 = cameraZoomTween7.to({x:0,y:0,z:2000},20000)
+	tween7 = cameraZoomTween7.to({x:0,y:0,z:3000},20000)
 		.onComplete(function(){
 			$("#slider").slider('value',2500);
 			controls.enabled = true; 
 			message.innerHTML="This is the solar system which has a diameter of roughly 10,000 times that of our sun";
-
+			scene.remove(textMesh,supMesh,boxMesh);
+			textSprite("10  m","12", 1800,1.5,0)
+		  	box(2600.0,0)
 		});	
+
 
 
 	// Stars
@@ -355,6 +368,9 @@ function tweenCamera(){
 		  	message.innerHTML="Our sun is just one of many stars";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
+		  	scene.remove(textMesh,supMesh,boxMesh);
+		  	textSprite("10  m","16", 600000,550,0)
+		  	box(800000.0,0)
 		  })
 		.onComplete(function(){
 			controls.enabled = true; 
@@ -378,8 +394,11 @@ function tweenCamera(){
 		    }
 		    solarsystem = false;
 		    scene.remove(saturnrings);
+		    scene.remove(textMesh,supMesh,boxMesh);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
+			textSprite("10  m","20", 500000,400,0)
+		  	box(700000.0,0)
 			galaxy=true
 			camera.position.z=50000;
 			$("#slider").slider('value',3000);
@@ -388,7 +407,7 @@ function tweenCamera(){
 		})
 
 					
-	tween10 = cameraZoomTween10.to({z:291000},10000)
+	tween10 = cameraZoomTween10.to({z:800000},10000)
 		.onComplete(function(){
 			controls.enabled = true; 
 			message.innerHTML="This is our Galaxy the milky way";
@@ -406,6 +425,7 @@ function tweenCamera(){
 
 	tween11 = cameraZoomTween11.to({z:29100000},3000)
 		.delay(10000)
+		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
 		  	controls.enabled = false; 
 		  	message.innerHTML="You are now moving through the location of over 100,000 galaxies from the GAMA survey";
@@ -416,12 +436,15 @@ function tweenCamera(){
 			camera.position.x=0;
 			camera.position.y=0;
 			camera.position.z=3;
+			scene.remove(textMesh,supMesh,boxMesh);
 			scene.remove(pGalacticSystem);
 			scene.remove(plane);
 			galaxy=false
 			
 			$("#slider").slider('value',3500);
 			scene.add( GAMA_Z );
+		    textSprite("10  m","24", 80,0.1,1000)
+		  	box(100.0,1000)
 			
 	});
 
@@ -431,6 +454,7 @@ function tweenCamera(){
 	tween12 = cameraZoomTween12.to({z:3000},30000)
 
 		.onComplete(function(){
+			scene.remove(textMesh,supMesh,boxMesh);
 			controls.enabled = true; 
 			message.innerHTML="Now go forth and explore";
 			function removeMessage(){message.innerHTML=""};

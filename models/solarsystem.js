@@ -87,7 +87,7 @@ planets.jupiter = {
     z: HEIGHT * 0.5,
     radius: 1000,
     speed: 0.06,
-    degree: 241,
+    degree: 252,
     radian: 0,
     planetSize: 20,
     planetColor: 14724719,
