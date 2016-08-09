@@ -157,7 +157,7 @@ function textSprite(text,sup,pos,scale, params) {
         side: THREE.DoubleSide
     }));
     supMesh.scale.set(scale/2,scale/2,scale/2)
-    supMesh.position.set(pos*1.3,pos/10,0)
+    supMesh.position.set(pos*1.2,pos/10,0)
     textMesh.scale.set(scale,scale,scale)
     textMesh.position.x = pos
     scene.add( textMesh,supMesh);
@@ -243,6 +243,8 @@ function tweenCamera(){
 			root.position.set(32,25,0);
 			scene.add( root );
 			scene.add(light)
+		  	textSprite("10","-10", 500,0.3)
+		  	box(800.0)
 			$("#slider").slider('value',500);
 		});
 	tween1 = cameraZoomTween1.to({x:0,y:0,z:500},3000)
@@ -265,6 +267,7 @@ function tweenCamera(){
 		  })
 		.onComplete(function(){
 			scene.remove(root);
+			scene.remove(textMesh,supMesh,boxMesh);
 			camera.position.z=0.01;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
