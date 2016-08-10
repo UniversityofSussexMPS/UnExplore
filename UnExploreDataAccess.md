@@ -15,7 +15,14 @@ A few places which I found it is easiest to get the data, where whole datasets c
  
 Though the data may have strange formats and require some coding to extract 
 
-I think the best option will be to use the indervidual website to access the data. But to often get large amounts of data you need to run a SQL query which means that knowledge of SQL is needed to access theses databases.
+I have found where its possible to get the data from the local supercuster, [here][locsuper].
+
+I think the best option will be to use the indervidual website to access the data. But to often get large amounts of data you need to run a SQL query which means that knowledge of SQL is needed to access theses databases. Particulary from these sources:
+ - http://leda.univ-lyon1.fr/
+ - http://www.gama-survey.org/dr2/
+ - 
+ 
 
    [NEDhelp]:   <https://ned.ipac.caltech.edu/help/object_help.html>
    [SWwebsite]: <http://users.sussex.ac.uk/~sw376/KnownUniverse/universe.html>
+   [locsuper]: <http://edd.ifa.hawaii.edu/>
