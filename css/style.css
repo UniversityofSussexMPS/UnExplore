@@ -1,0 +1,98 @@
+#slider{
+    margin:10px;
+    position: absolute;
+    bottom: 7%;
+    width: 97.5%;
+} 
+#slider-vertical{
+    margin:10px;
+    position: absolute;
+    bottom: 20%;
+    right: 2%;
+    height: 70%;
+} 
+#steps{
+    margin:8px;
+    position: absolute;
+    bottom: 3%;
+    width: 100%;
+    color:#fff;
+}
+
+body {
+    color: #000;
+    font-family:Monospace;
+    font-size:13px;
+    text-align:center;
+    font-weight: bold;
+    width: 100%;
+
+    background-color: #000;
+    margin: 0px;
+    overflow: hidden;
+}
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+.w3-btn{
+    width:10%;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    visibility: hidden;
+}
+#button-div{
+  text-align: center;
+}
+#loading {
+   height: 800px;
+   top: 0;
+   left: 0;
+   position: relative;
+   background-color: #000;
+   z-index: 99;
+   text-align: center;
+}
+
+#loading-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+#slider-hide{
+      display: block;
+      position: fixed;
+      z-index: 9998;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 20%;
+}
+
+#textbox {
+  position: absolute;
+  top: 75%;
+  left: 0;
+  right: 0;
+  text-align: center; 
+}
+  #text {
+    padding: 0 100px;
+    height: 40px;
+    font-size: 28px;
+    line-height: 40px;
+    margin-top: -30px;
+    color: #fff;
+    font-style: italic;
+    text-shadow: 0 0 3px #2c47dc, 0 0 10px #eeeeff; 
+  }
+    #textback {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.9); 
+    }
+}

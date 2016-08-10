@@ -7,7 +7,7 @@ var pGalacticSystem, Stars3D;
 
 var  molecule, spawnerOptions;
 
-var stats, root ,material, mesh, solarsystem, galaxy;
+var stats, root ,material, mesh, solarsystem, galaxy, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
@@ -32,7 +32,7 @@ var preVal =0;
 // Create the slider
 var slider = $("#slider").slider({
 	min: 0,
-	max: 3500,
+	max: 4000,
 	step: 500, 
 });
 
@@ -94,6 +94,7 @@ function init() {
 	generateGalaxy();
 	generateHuman();
 	create_meshes();
+	createCMB();
 	
 	// add the starts
 	stats = new Stats();
@@ -192,7 +193,7 @@ function loadScript(url, callback)
 
 
 function tweenCamera(){
-	textSprite("10  m","-16",0.04,0.00005,0)
+	textSprite("10  m","-16",0.04,0.00004,0)
 	box(0.05,0);
 	loadScript("data/GAMA_data.js",addGamaData)
 	document.getElementById("startButton").style.visibility = "hidden";
@@ -216,6 +217,8 @@ function tweenCamera(){
 	cameraZoomTween10 = new TWEEN.Tween(camera.position);
 	cameraZoomTween11 = new TWEEN.Tween(camera.position);
 	cameraZoomTween12 = new TWEEN.Tween(camera.position);
+	cameraZoomTween13 = new TWEEN.Tween(camera.position);
+	cameraZoomTween14 = new TWEEN.Tween(camera.position);
 
 	// Molecule
 	    		
@@ -413,10 +416,9 @@ function tweenCamera(){
 			message.innerHTML="This is our Galaxy the milky way";
 			if (typeof GAMA_pos == 'undefined') {
 				tween0.stop()
-				function endMessage(){
-					message.innerHTML="Now go forth and explore";
-				}
-				setTimeout(endMessage,5000)
+				tween13.to({z:29100000},3000)
+				tween13.chain(tween14);
+				tween13.start();
 			}
 
 		})
@@ -449,18 +451,47 @@ function tweenCamera(){
 	});
 
 
-
-
 	tween12 = cameraZoomTween12.to({z:3000},30000)
 
 		.onComplete(function(){
 			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
+			
+			})
+
+	//CMB
+
+	tween13 = cameraZoomTween13.to({z:30000},3000)
+		.delay(10000)
+		.easing(TWEEN.Easing.Exponential.In)
+		.onStart(function(){
+			controls.enabled = false;
+			message.innerHTML = "You are now moving to the very edge of the observable universe"
+			$("#slider-vertical").slider('value',0);
+		  	camera.fov =50;
+		})
+		.onComplete(function(){
+			camera.position.x=0;
+			camera.position.y=0;
+			camera.position.z=3;
+			scene.remove(textMesh,supMesh,boxMesh);
+			scene.remove(GAMA_Z);
+			
+			$("#slider").slider('value',4000);
+			scene.add( CMBsphere );
+		    textSprite("10  m","26", 45,0.04,0)
+		  	box(60,0)
+			
+	});
+	tween14 = cameraZoomTween14.to({z:100},3000)
+		.onComplete(function(){
 			controls.enabled = true; 
 			message.innerHTML="Now go forth and explore";
 			function removeMessage(){message.innerHTML=""};
 			setTimeout(removeMessage,3000)
 			
 			})
+
 
 	
 
@@ -477,6 +508,8 @@ function tweenCamera(){
 	tween9.chain(tween10)
 	tween10.chain(tween11)
 	tween11.chain(tween12)
+	tween12.chain(tween13)
+	tween13.chain(tween14)
 	
 	tween0.start();
 
