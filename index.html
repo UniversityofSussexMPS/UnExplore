@@ -5,7 +5,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
-		<link rel="stylesheet" href="css/w3.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 
@@ -26,15 +25,18 @@
             </div>
 
          	<!-- add start button and loading gif -->
-         	<div id="button-div">
-            	<button id="startButton" class="w3-btn w3-white w3-hover-purple w3-round-xxlarge" onclick="tweenCamera();">Start</button>
-            </div>
             <div id="loading">
 			  <img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
 			</div>
 			<div id="slider-hide" > </div>
 			<div id="textbox"><p id="text"> <span id="textback"> </span></p></div>
 			<div id="slider-vertical" class=""></div>
+			<div id="btn-div">
+				<button id="right-btn" class="btn right-btn" onclick="tweenForward();">></button>
+			</div>
+			<div id="btn-div">
+				<button id="left-btn"  class="btn left-btn" onclick="tweenBackward();"><</button>
+			</div>
 
 
 		<script src= "build/three.min.js"></script>
@@ -51,6 +53,7 @@
 		<script src= "models/CMB.js"></script>
 		<!--<script src= "data/GAMA_data.js"></script>-->
 		<script src= "tween/tween.js"></script>
+		<script src= "tween/tweenFunctions.js"></script>
 		<script src= "loaders/ColladaLoader.js"></script>
 		<script src= "loaders/PDBLoader.js"></script>
 		<script src= "Jquery/jquery.min.js" type="text/javascript"></script> 

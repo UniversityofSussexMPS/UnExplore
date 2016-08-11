@@ -7,7 +7,7 @@ var pGalacticSystem, Stars3D;
 
 var  molecule, spawnerOptions;
 
-var stats, root ,material, mesh, solarsystem, galaxy, GAMA_Z, CMBsphere;
+var stats, root ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
@@ -25,7 +25,6 @@ var message = document.getElementById('text')
 
 window.onload = function(){
 	document.getElementById("loading").style.visibility = "hidden"
-	document.getElementById("startButton").style.visibility = "visible"
 }
 var preVal =0;
 
@@ -102,6 +101,16 @@ function init() {
 
 
 	window.addEventListener( 'resize', onWindowResize, false );
+
+	textSprite("10  m","-16",0.04,0.00004,0)
+	box(0.05,0);
+	loadScript("data/GAMA_data.js",addGamaData)
+
+	addElectron();
+	simElectron = true;
+	message.innerHTML="This is a atomic nucleus surrounded by an electron cloud";
+
+	initTweens();
 	
 
 }
@@ -190,331 +199,6 @@ function loadScript(url, callback)
     // Fire the loading
     head.appendChild(script);
 }
-
-
-function tweenCamera(){
-	textSprite("10  m","-16",0.04,0.00004,0)
-	box(0.05,0);
-	loadScript("data/GAMA_data.js",addGamaData)
-	document.getElementById("startButton").style.visibility = "hidden";
-
-	addElectron();
-	simElectron = true;
-	message.innerHTML="This is a atomic nucleus surrounded by an electron cloud";
-
-	//Setup all the tweens
-
-	cameraZoomTween0 = new TWEEN.Tween(camera.position);
-	cameraZoomTween1 = new TWEEN.Tween(camera.position);
-	cameraZoomTween2 = new TWEEN.Tween(camera.position);
-	cameraZoomTween3 = new TWEEN.Tween(camera.position);
-	cameraZoomTween4 = new TWEEN.Tween(camera.position);
-	cameraZoomTween5 = new TWEEN.Tween(camera.position);
-	cameraZoomTween6 = new TWEEN.Tween(camera.position);
-	cameraZoomTween7 = new TWEEN.Tween(camera.position);
-	cameraZoomTween8 = new TWEEN.Tween(camera.position);
-	cameraZoomTween9 = new TWEEN.Tween(camera.position);
-	cameraZoomTween10 = new TWEEN.Tween(camera.position);
-	cameraZoomTween11 = new TWEEN.Tween(camera.position);
-	cameraZoomTween12 = new TWEEN.Tween(camera.position);
-	cameraZoomTween13 = new TWEEN.Tween(camera.position);
-	cameraZoomTween14 = new TWEEN.Tween(camera.position);
-
-	// Molecule
-	    		
-	tween0 = cameraZoomTween0.to({x:0,y:0,z:1000},5000)
-		  .easing(TWEEN.Easing.Exponential.In)
-		  .delay(10000)
-		  .onStart(function(){
-		  	scene.remove(textMesh,supMesh,boxMesh);
-		  	controls.enabled = false;  
-		  	message.innerHTML="Zooming out shows that this atom is one part of a molecule";
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  	textSprite("10  m","-15",0.7,0.0007,0)
-		  	box(1.0,0)
-
-
-		  })
-   		  .onComplete(function(){
-	      	simElectron = false;
-			scene.remove(particleSystem);
-			scene.remove(proton1,proton2,neutron1,neutron2);
-			scene.remove(textMesh,supMesh,boxMesh);
-			camera.position.z=8;
-			root = new THREE.Group();
-			
-			loadMolecule( "models/caffeine.pdb" );
-			root.position.set(32,25,0);
-			scene.add( root );
-			scene.add(light)
-		  	textSprite("10  m","-10", 500,0.5,0)
-		  	box(700.0,0)
-			$("#slider").slider('value',500);
-		});
-	tween1 = cameraZoomTween1.to({x:0,y:0,z:1000},3000)
-	      .easing(TWEEN.Easing.Quartic.Out)
-	      .onComplete(function(){
-	      	message.innerHTML="This is a molecule";
-	      	controls.enabled = true; 
-	      })
-
-	// Human
-	
-	tween2 = cameraZoomTween2.to({z:100000},5000)
-		.easing(TWEEN.Easing.Exponential.In)
-		.delay(5000)
-	    .onStart(function(){
-		  	controls.enabled = false; 
-		  	message.innerHTML="There are an estimated 10<sup>27</sup> molecules in the human body";
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  })
-		.onComplete(function(){
-			scene.remove(root);
-			scene.remove(textMesh,supMesh,boxMesh);
-			camera.position.z=0.01;
-			camera.position.y=0.0;
-			camera.position.x=0.0;
-			
-			scene.add(model)
-			textSprite("10  m","0", 1.5,0.0015,0)
-		  	box(2.0,0)
-		});
-	tween3 = cameraZoomTween3.to({x:0,y:0,z:5},5000)
-		.easing(TWEEN.Easing.Exponential.Out)
-		.onComplete(function(){
-			message.innerHTML="This is a typical size of a human";
-			$("#slider").slider('value',1000);
-		    controls.enabled = true; 
-		})
-
-	// Earth
-
-	tween4 = cameraZoomTween4.to({z:100},5000)
-    	.onStart(function(){
-    		message.innerHTML="It would take about roughly 7,000,000 human lined up toe to toe to cover the diameter of the earth";
-		  	controls.enabled = false; 
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  })
-		.delay(5000)
-		.easing(TWEEN.Easing.Exponential.In)
-		.onComplete(function(){
-			scene.remove(model)
-			scene.remove(textMesh,supMesh,boxMesh);
-
-    		scene.add(planets.earth.mesh);
-			textSprite("10  m","7", 6.5,0.008,0)
-		  	box(8.2,0)
-
-    		camera.position.z=1;
-		});
-	tween5 = cameraZoomTween5.to({x:0,y:0,z:20},5000)
-		.easing(TWEEN.Easing.Exponential.Out)
-		.onComplete(function(){
-			$("#slider").slider('value',1500);
-			controls.enabled = true; 
-			message.innerHTML="The earth has mass of roughly 6 x 10<sup>24</sup> kg";
-		})
-
-
-	// Solar system
-
-    tween6 = cameraZoomTween6.to({z:400},10000)
-    	.onStart(function(){
-		  	controls.enabled = false; 
-		  	message.innerHTML="The diameter of the sun is roughly 109 times the earth";
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  })
-    	.delay(5000)
-		.easing(TWEEN.Easing.Exponential.In)
-		.onComplete(function(){
-			scene.remove(planets.earth.mesh);
-			scene.remove(light);
-			scene.remove(textMesh,supMesh,boxMesh);
-			planets.earth.radius = 350;
-			planets.sun.radius = 0;
-		    var a;
-		    for (a in planets) {
-		    	scene.add(planets[a].mesh)
-		    }
-		    scene.add(saturnrings);
-		    add_3Dstars();
-		    $("#slider").slider('value',2000);
-		    solarsystem = true;
-		    textSprite("10  m","9", 500,0.6,0)
-		  	box(620.0,0)
-		
-
-    		camera.position.set=(0,10,0);
-		});
-	tween7 = cameraZoomTween7.to({x:0,y:0,z:3000},20000)
-		.onComplete(function(){
-			$("#slider").slider('value',2500);
-			controls.enabled = true; 
-			message.innerHTML="This is the solar system which has a diameter of roughly 10,000 times that of our sun";
-			scene.remove(textMesh,supMesh,boxMesh);
-			textSprite("10  m","12", 1800,1.5,0)
-		  	box(2600.0,0)
-		});	
-
-
-
-	// Stars
-	
-	tween8 = cameraZoomTween8.to({z:1000000},5000)
-		.delay(5000)	
-		.onStart(function(){
-		  	controls.enabled = false; 
-		  	message.innerHTML="Our sun is just one of many stars";
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  	scene.remove(textMesh,supMesh,boxMesh);
-		  	textSprite("10  m","16", 600000,550,0)
-		  	box(800000.0,0)
-		  })
-		.onComplete(function(){
-			controls.enabled = true; 
-			message.innerHTML="This is our nearby stars";
-		})
-
-	// Galaxy
-
-	tween9 = cameraZoomTween9.to({z:2000000},5000)
-		.delay(5000)	
-		.onStart(function(){
-		  	controls.enabled = false; 
-		  	message.innerHTML="Which are all part of a galaxy called the Milky Way";
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  })
-		.onComplete(function(){
-			scene.remove(Stars3D);
-			for (a in planets) {
-		        	scene.remove(planets[a].mesh)
-		    }
-		    solarsystem = false;
-		    scene.remove(saturnrings);
-		    scene.remove(textMesh,supMesh,boxMesh);
-			scene.add(pGalacticSystem);
-			scene.add(plane);
-			textSprite("10  m","20", 500000,400,0)
-		  	box(700000.0,0)
-			galaxy=true
-			camera.position.z=50000;
-			$("#slider").slider('value',3000);
-			
-
-		})
-
-					
-	tween10 = cameraZoomTween10.to({z:800000},10000)
-		.onComplete(function(){
-			controls.enabled = true; 
-			message.innerHTML="This is our Galaxy the milky way";
-			if (typeof GAMA_pos == 'undefined') {
-				tween0.stop()
-				tween13.to({z:29100000},3000)
-				tween13.chain(tween14);
-				tween13.start();
-			}
-
-		})
-
-	// GAMA data
-
-	tween11 = cameraZoomTween11.to({z:29100000},3000)
-		.delay(10000)
-		.easing(TWEEN.Easing.Exponential.In)
-		.onStart(function(){
-		  	controls.enabled = false; 
-		  	message.innerHTML="You are now moving through the location of over 100,000 galaxies from the GAMA survey";
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  })
-		.onComplete(function(){
-			camera.position.x=0;
-			camera.position.y=0;
-			camera.position.z=3;
-			scene.remove(textMesh,supMesh,boxMesh);
-			scene.remove(pGalacticSystem);
-			scene.remove(plane);
-			galaxy=false
-			
-			$("#slider").slider('value',3500);
-			scene.add( GAMA_Z );
-		    textSprite("10  m","24", 80,0.1,1000)
-		  	box(100.0,1000)
-			
-	});
-
-
-	tween12 = cameraZoomTween12.to({z:3000},30000)
-
-		.onComplete(function(){
-			scene.remove(textMesh,supMesh,boxMesh);
-			controls.enabled = true; 
-			
-			})
-
-	//CMB
-
-	tween13 = cameraZoomTween13.to({z:30000},3000)
-		.delay(10000)
-		.easing(TWEEN.Easing.Exponential.In)
-		.onStart(function(){
-			controls.enabled = false;
-			message.innerHTML = "You are now moving to the very edge of the observable universe"
-			$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		})
-		.onComplete(function(){
-			camera.position.x=0;
-			camera.position.y=0;
-			camera.position.z=3;
-			scene.remove(textMesh,supMesh,boxMesh);
-			scene.remove(GAMA_Z);
-			
-			$("#slider").slider('value',4000);
-			scene.add( CMBsphere );
-		    textSprite("10  m","26", 45,0.04,0)
-		  	box(60,0)
-			
-	});
-	tween14 = cameraZoomTween14.to({z:100},3000)
-		.onComplete(function(){
-			controls.enabled = true; 
-			message.innerHTML="Now go forth and explore";
-			function removeMessage(){message.innerHTML=""};
-			setTimeout(removeMessage,3000)
-			
-			})
-
-
-	
-
-	// Chain the tweens so they work one after the other
-	tween0.chain(tween1)
-	tween1.chain(tween2)
-	tween2.chain(tween3)
-	tween3.chain(tween4)
-	tween4.chain(tween5)
-	tween5.chain(tween6)
-	tween6.chain(tween7)
-	tween7.chain(tween8)
-	tween8.chain(tween9)
-	tween9.chain(tween10)
-	tween10.chain(tween11)
-	tween11.chain(tween12)
-	tween12.chain(tween13)
-	tween13.chain(tween14)
-	
-	tween0.start();
-
-
-};
 
 function onWindowResize() {
 

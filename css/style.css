@@ -35,16 +35,6 @@ sup {
     vertical-align: super;
     font-size: smaller;
 }
-.w3-btn{
-    width:10%;
-    position: absolute;
-    top: 50%;
-    left: 45%;
-    visibility: hidden;
-}
-#button-div{
-  text-align: center;
-}
 #loading {
    height: 800px;
    top: 0;
@@ -95,4 +85,39 @@ sup {
       padding: 10px 20px;
       background: rgba(0, 0, 0, 0.9); 
     }
+}
+#btn-div{
+    text-align: center;
+}
+.right-btn {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    font-size: 100px;
+    color: #fff;
+    position: absolute;
+    right:5%;
+    bottom: 45%;
+}
+.left-btn {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    font-size: 100px;
+    color: #fff;
+    position: absolute;
+    left:5%;
+    bottom: 45%;
+    visibility: hidden;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:hover
+{
+    background-image:none !important;
+    text-shadow: 0 0 3px #2c47dc, 0 0 10px #eeeeff; 
+    font-size: 100px;
 }
