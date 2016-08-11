@@ -5,4 +5,4 @@ function createCMB(){
 	var material = new THREE.MeshBasicMaterial( {map:CMBmap} );
 	CMBsphere = new THREE.Mesh( geometry, material );
 	
-}
+};
