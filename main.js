@@ -7,7 +7,7 @@ var pGalacticSystem, Stars3D;
 
 var  molecule, spawnerOptions;
 
-var stats, root ,material, mesh, GAMA_Z, CMBsphere;
+var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
@@ -75,12 +75,15 @@ function init() {
 
 	// Create the Camera
 	camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 1e13 );
-	camera.position.set(0,0,0.2)
+	camera.position.set(0,0,0.02)
 
 
 	// Set the control
-	controls = new THREE.TrackballControls( camera, renderer.domElement );
-	controls.minDistance = 0.2;
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	controls.enableZoom = false;
+	controls.minPolarAngle = Math.PI/2;
+	controls.maxPolarAngle = Math.PI/2;
+	controls.enablePan = false;
 
 
 	//Create light
@@ -90,9 +93,12 @@ function init() {
 	light.castShadow = true;
 
 	// Create models
+	loadMolecule( "models/caffeine.pdb" );
+	addElectron();
 	generateGalaxy();
 	generateHuman();
 	create_meshes();
+	create_3Dstars();
 	createCMB();
 	
 	// add the starts
@@ -102,13 +108,12 @@ function init() {
 
 	window.addEventListener( 'resize', onWindowResize, false );
 
-	textSprite("10  m","-16",0.04,0.00004,0)
-	box(0.05,0);
 	loadScript("data/GAMA_data.js",addGamaData)
 
-	addElectron();
+	scene.add(proton1,proton2,neutron1,neutron2);
+	scene.add(particleSystem)
 	simElectron = true;
-	message.innerHTML="This is a atomic nucleus surrounded by an electron cloud";
+	message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
 
 	initTweens();
 	

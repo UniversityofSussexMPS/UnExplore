@@ -268,7 +268,7 @@ function render_all() {
     scene.add(saturnrings);
 }
 
-function add_3Dstars(){
+function create_3Dstars(){
     /*
 
     var i, r = 1000,
@@ -324,6 +324,5 @@ function add_3Dstars(){
     Stars3D = new THREE.Points( geometry, material );
     Stars3D.scale.set(2e6, 2e6, 2e6);
     Stars3D.updateMatrix();
-    scene.add( Stars3D );
 };
 

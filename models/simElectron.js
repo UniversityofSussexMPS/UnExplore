@@ -1,4 +1,7 @@
 
+
+var particleSystem, proton1, proton2, neutron1, neutron2;
+
 function addElectron(){
 	// The GPU Particle system extends THREE.Object3D, and so you can use it
 	// as you would any other scene graph component.	Particle positions will be
@@ -7,7 +10,6 @@ function addElectron(){
 	particleSystem = new THREE.GPUParticleSystem({
 		maxParticles: 250000
 	});
-	scene.add( particleSystem);
 
 	// options passed during each spawned
 	options = {
@@ -29,7 +31,7 @@ function addElectron(){
 		verticalSpeed: 0,
 		timeScale: 0.1
 	}
-	nucleon = new THREE.SphereGeometry(0.011,20,20);
+	nucleon = new THREE.SphereGeometry(0.0011,20,20);
 	red = new THREE.MeshBasicMaterial({
                     color:0xFF0000
     });
@@ -37,14 +39,13 @@ function addElectron(){
                     color:0xFFFFFF
     }); 
     proton1 = new THREE.Mesh(nucleon,red);
-    proton1.position.set(0.01,0.01,0.01)
+    proton1.position.set(0.001,0.001,0.0008)
     proton2 = new THREE.Mesh(nucleon,red);
-    proton2.position.set(-0.01,-0.01,0.0)
+    proton2.position.set(-0.001,-0.001,-0.0008)
     neutron1 = new THREE.Mesh(nucleon,white);
-    neutron1.position.set(0.01,-0.01,0.0)
+    neutron1.position.set(0.001,-0.001,0.0)
     neutron2 = new THREE.Mesh(nucleon,white);
-    neutron2.position.set(-0.01,0.01,0.0)
-    scene.add(proton1,proton2,neutron1,neutron2);
+    neutron2.position.set(-0.001,0.001,0.0)
 	
 
 }

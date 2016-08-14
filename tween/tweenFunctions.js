@@ -35,6 +35,10 @@ function initTweens(){
 	cameraZoomTween27 = new TWEEN.Tween(camera.position);
 	cameraZoomTween28 = new TWEEN.Tween(camera.position);
 	cameraZoomTween29 = new TWEEN.Tween(camera.position);
+	cameraZoomTween30 = new TWEEN.Tween(camera.position);
+	cameraZoomTween31 = new TWEEN.Tween(camera.position);
+	cameraZoomTween32 = new TWEEN.Tween(camera.position);
+	cameraZoomTween33 = new TWEEN.Tween(camera.position);
 
 	/************************* Molecule ***************************/
 	    		
@@ -46,8 +50,9 @@ function initTweens(){
 		  	message.innerHTML="Zooming out shows that this atom is one part of a molecule";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
-		  	textSprite("10  m","-15",0.7,0.0007,0)
-		  	box(1.0,0)
+		  	textSprite("10  m","-15",0.004,0.000004,0);
+			box(0.005,0);
+			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("10  m","-10",0.7,0.0007,0); box(1.0,0);},3000)
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 
 
@@ -55,14 +60,10 @@ function initTweens(){
    		  .onComplete(function(){
    		  	$("#slider").slider('value',500);
 			camera.position.z=8;
-			root = new THREE.Group();
-			
-			loadMolecule( "models/caffeine.pdb" );
-			root.position.set(32,25,0);
 			scene.remove(textMesh,supMesh,boxMesh);
 			scene.add( root );
 			scene.add(light)
-		  	textSprite("10  m","-10", 500,0.5,0)
+		  	textSprite("10  m","-9", 500,0.5,0)
 		  	box(700.0,0)
 		});
 	tweenForward1 = cameraZoomTween1.to({x:0,y:0,z:1000},5000)
@@ -76,17 +77,19 @@ function initTweens(){
 			scene.remove(proton1,proton2,neutron1,neutron2);
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 
 	      })
 
 	tweenBackward0 =  cameraZoomTween15.to({x:0,y:0,z:2},5000)
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
-				addElectron();
+				controls.enabled = false; 
+				scene.add(proton1,proton2,neutron1,neutron2);
+				scene.add(particleSystem)
 				simElectron = true
 				molecule = false
-				scene.remove(textMesh,supMesh,boxMesh);
-			  	textSprite("10  m","-15",0.7,0.0007,0)
+			  	textSprite("10  m","-10",0.7,0.0007,0)
 			  	box(1.0,0)
 			  	message.innerHTML="Zooming in shows that each atom is made up of a atomic nucleus surrounded by a cloud of electrons";
 			  	document.getElementById("right-btn").style.visibility = "hidden"
@@ -97,15 +100,19 @@ function initTweens(){
 				scene.remove(root,light)
 
 			})
-	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.2},5000)
+	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
 			.onStart(function(){
 				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				scene.remove(textMesh,supMesh,boxMesh);
-				textSprite("10  m","-16",0.04,0.00004,0)
-				box(0.05,0);
+				textSprite("10  m","-15",0.004,0.000004,0)
+				box(0.005,0);
 				document.getElementById("right-btn").style.visibility = "visible"
 
+			})
+			.onComplete(function(){
+				controls.enabled = true; 
+				scene.remove(textMesh,supMesh,boxMesh);
 			})
 
 	/************************* Human ***************************/
@@ -125,7 +132,6 @@ function initTweens(){
 			molecule = false;
 			human = true;
 			scene.remove(root);
-			scene.remove(textMesh,supMesh,boxMesh);
 			camera.position.z=0.01;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
@@ -140,10 +146,12 @@ function initTweens(){
 		    controls.enabled = true; 
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 		})
 
 	tweenBackward2 = cameraZoomTween17.to({x:0,y:0,z:0.1},5000)
 		.onStart(function(){
+			controls.enabled = false; 
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"			
 		  	message.innerHTML="Zooming in we can see that this guy has a caffeine molecule in his tie";
@@ -154,8 +162,7 @@ function initTweens(){
 			molecule = true;
 			scene.remove(model)
 			scene.add(root,light)
-			scene.remove(textMesh,supMesh,boxMesh);
-		  	textSprite("10  m","-10", 500,0.5,0)
+		  	textSprite("10  m","-9", 500,0.5,0)
 		  	box(700.0,0)
 			camera.position.z=10000;
 			camera.position.y=0.0;
@@ -163,14 +170,16 @@ function initTweens(){
 		})
 	tweenBackward3 = cameraZoomTween18.to({x:0,y:0,z:1000},5000)
 		.onComplete(function(){
-			message.innerHTML="The caffine molecule is made up of many different types of atoms";
+			message.innerHTML="The caffeine molecule is made up of many different types of atoms";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
 		})
 
 	/************************* Earth ***************************/
 
-	tweenForward4 = cameraZoomTween4.to({z:100},5000)
+	tweenForward4 = cameraZoomTween4.to({x:0,y:0,z:100},5000)
     	.onStart(function(){
     		message.innerHTML="It would take about roughly 7,000,000 human lined up toe to toe to cover the diameter of the earth";
 		  	controls.enabled = false; 
@@ -185,8 +194,6 @@ function initTweens(){
 			human = false;
 			earth = true;
 			scene.remove(model)
-			scene.remove(textMesh,supMesh,boxMesh);
-
     		scene.add(planets.earth.mesh);
 			textSprite("10  m","7", 6.5,0.008,0)
 		  	box(8.2,0)
@@ -200,11 +207,13 @@ function initTweens(){
 			message.innerHTML="The earth has mass of roughly 6 x 10<sup>24</sup> kg";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 		})
 
 	tweenBackward4 = cameraZoomTween19.to({x:0,y:0,z:1},5000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
+			controls.enabled = false; 
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
 		  	message.innerHTML="Zooming into the earth we can see the typical size of a human";
@@ -215,7 +224,6 @@ function initTweens(){
 			human = true;
 			scene.add(model);
 			scene.remove(planets.earth.mesh);
-			scene.remove(textMesh,supMesh,boxMesh);
 			textSprite("10  m","0", 1.5,0.0015,0)
 		  	box(2.0,0)
 			camera.position.z=100;
@@ -228,11 +236,13 @@ function initTweens(){
 			message.innerHTML="The human is about 1/7,000,000 the size of the earth";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
 		})
 
 	/************************* Solar System ***************************/
 
-    tweenForward6 = cameraZoomTween6.to({z:400},10000)
+    tweenForward6 = cameraZoomTween6.to({x:0,y:0,z:400},10000)
     	.onStart(function(){
 		  	controls.enabled = false; 
 		  	message.innerHTML="The diameter of the sun is roughly 109 times the earth";
@@ -248,39 +258,35 @@ function initTweens(){
 			solarsystem = true;
 			scene.remove(planets.earth.mesh);
 			scene.remove(light);
-			scene.remove(textMesh,supMesh,boxMesh);
 			planets.earth.radius = 350;
 			planets.sun.radius = 0;
 		    for (a in planets) {
 		    	scene.add(planets[a].mesh)
 		    }
 		    scene.add(saturnrings);
-		    add_3Dstars();
+		    scene.add(Stars3D);
 		    solarsystem = true;
 		    textSprite("10  m","9", 500,0.6,0)
 		  	box(620.0,0)
-		
-
     		camera.position.set=(0,10,0);
+    		setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("10  m","12", 1800,1.5,0); box(2600.0,0);},10000)
 		});
 	tweenForward7 = cameraZoomTween7.to({x:0,y:0,z:3000},20000)
 		.onComplete(function(){
 			controls.enabled = true; 
-			message.innerHTML="This is the solar system which has a diameter of roughly 10,000 times that of our sun";
-			scene.remove(textMesh,supMesh,boxMesh);
-			textSprite("10  m","12", 1800,1.5,0)
-		  	box(2600.0,0)
+			message.innerHTML="This is the solar system which has a diameter of roughly 10,000 times that of our sun"
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 		});
 
-	tweenBackward6 = cameraZoomTween21.to({x:0,y:0,z:10},5000)
+	tweenBackward6 = cameraZoomTween21.to({x:0,y:0,z:0},5000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
+			controls.enabled = false; 
 			message.innerHTML="There are 8 planets in our solar system";
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
-		  	scene.remove(textMesh,supMesh,boxMesh);
 		    textSprite("10  m","9", 500,0.6,0)
 		  	box(620.0,0)
 		  	planets.earth.radius = 0;
@@ -309,6 +315,8 @@ function initTweens(){
 			message.innerHTML="The sun is so large 1,300,000 earths could fit inside it";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
 		})	
 
 
@@ -322,7 +330,6 @@ function initTweens(){
 		  	$("#slider-vertical").slider('value',0);
 		  	$("#slider").slider('value',2500);
 		  	camera.fov =50;
-		  	scene.remove(textMesh,supMesh,boxMesh);
 		  	textSprite("10  m","16", 600000,550,0)
 		  	box(800000.0,0)
 		  	document.getElementById("right-btn").style.visibility = "hidden"
@@ -335,25 +342,28 @@ function initTweens(){
 			message.innerHTML="This is our nearby stars";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 		})
 
 	tweenBackward8 = cameraZoomTween23.to({x:0,y:0,z:3000},10000)
 		.easing(TWEEN.Easing.Exponential.InOut)
 		.onStart(function(){
+			controls.enabled = false; 
 			$("#slider").slider('value',2000);
 			message.innerHTML="The closest star to the sun is 4 x 10<sup>16</sup> m away";
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
-			scene.remove(textMesh,supMesh,boxMesh);
 			textSprite("10  m","12", 1800,1.5,0)
 		  	box(2600.0,0)
 			solarsystem = true;
 			stars = false;
 		})
 		.onComplete(function(){
-			message.innerHTML="Our solarsystem is just one of many in the Milky Way";
+			message.innerHTML="Our solar system is just one of many in the Milky Way";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
 		})
 
 	/************************* Galaxy ***************************/
@@ -377,7 +387,6 @@ function initTweens(){
 		    }
 		    solarsystem = false;
 		    scene.remove(saturnrings);
-		    scene.remove(textMesh,supMesh,boxMesh);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
 			textSprite("10  m","20", 500000,400,0)
@@ -386,23 +395,19 @@ function initTweens(){
 		})
 
 					
-	tweenForward10 = cameraZoomTween10.to({z:800000},10000)
+	tweenForward10 = cameraZoomTween10.to({x:0,y:0,z:800000},10000)
 		.onComplete(function(){
 			controls.enabled = true; 
 			message.innerHTML="This is our Galaxy the milky way";
-			if (typeof GAMA_pos == 'undefined') {
-				tween0.stop()
-				tween13.to({z:29100000},3000)
-				tween13.chain(tween14);
-				tween13.start();
-			}
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 		})
 
-	tweenBackward9 = cameraZoomTween24.to({x:0,y:0,z:10},5000)
+	tweenBackward9 = cameraZoomTween24.to({x:0,y:0,z:0},5000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
+			controls.enabled = false; 
 			message.innerHTML="There are an estimated 400 billion stars in it";
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
@@ -423,7 +428,6 @@ function initTweens(){
 			camera.position.z=2000000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
-		  	scene.remove(textMesh,supMesh,boxMesh);
 		  	textSprite("10  m","16", 600000,550,0)
 		  	box(800000.0,0)
 		})
@@ -433,11 +437,13 @@ function initTweens(){
 			message.innerHTML="These are stars within the local neighbourhood";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
 		})	
 
 	/************************* GAMA data ***************************/
 
-	tweenForward11 = cameraZoomTween11.to({z:29100000},3000)
+	tweenForward11 = cameraZoomTween11.to({x:0,y:0,z:29100000},3000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
 		  	controls.enabled = false; 
@@ -454,7 +460,6 @@ function initTweens(){
 			camera.position.x=0;
 			camera.position.y=0;
 			camera.position.z=3;
-			scene.remove(textMesh,supMesh,boxMesh);
 			scene.remove(pGalacticSystem);
 			scene.remove(plane);
 			galaxy=false
@@ -464,18 +469,20 @@ function initTweens(){
 			
 	});
 
-	tweenForward12 = cameraZoomTween12.to({z:3000},30000)
+	tweenForward12 = cameraZoomTween12.to({x:0,y:0,z:3000},30000)
 		.onComplete(function(){
 			scene.remove(textMesh,supMesh,boxMesh);
 			controls.enabled = true; 
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 			})
 
-	tweenBackward11 = cameraZoomTween26.to({x:0,y:0,z:10},15000)
+	tweenBackward11 = cameraZoomTween26.to({x:0,y:0,z:0},15000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
-			message.innerHTML="The nearest galaxy called Andromeda is about 10<sup>22</sup>m away from earth";
+			controls.enabled = false; 
+			message.innerHTML="The nearest galaxy called Andromeda is about 10<sup>22</sup> m away from earth";
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
 		    textSprite("10  m","24", 80,0.1,1000)
@@ -491,7 +498,7 @@ function initTweens(){
 			camera.position.z=8000000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
-		  	scene.remove(textMesh,supMesh,boxMesh);
+			scene.remove(textMesh,supMesh,boxMesh);
 			textSprite("10  m","20", 500000,400,0)
 		  	box(700000.0,0)
 		})
@@ -501,11 +508,13 @@ function initTweens(){
 			message.innerHTML="The Milky Way has a estimated mass  of 6 x 10<sup>42</sup> kg";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
 		})	
 
 	/************************* CMB ***************************/
 
-	tweenForward13 = cameraZoomTween13.to({z:30000},3000)
+	tweenForward13 = cameraZoomTween13.to({x:0,y:0,z:30000},3000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
 			controls.enabled = false;
@@ -521,7 +530,6 @@ function initTweens(){
 			camera.position.x=0;
 			camera.position.y=0;
 			camera.position.z=3;
-			scene.remove(textMesh,supMesh,boxMesh);
 			scene.remove(GAMA_Z);
 			
 			$("#slider").slider('value',4000);
@@ -529,19 +537,19 @@ function initTweens(){
 		    textSprite("10  m","26", 45,0.04,0)
 		  	box(60,0)	
 	});
-	tweenForward14 = cameraZoomTween14.to({z:100},3000)
+	tweenForward14 = cameraZoomTween14.to({x:0,y:0,z:100},3000)
 		.onComplete(function(){
 			controls.enabled = true; 
 			message.innerHTML="You are looking at the map of the Cosmic Microwave Background (CMB)";
-			function removeMessage(){message.innerHTML=""};
-			setTimeout(removeMessage,3000)		
 			document.getElementById("left-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
 		})
 
-	tweenBackward13 = cameraZoomTween28.to({x:0,y:0,z:1},5000)
+	tweenBackward13 = cameraZoomTween28.to({x:0,y:0,z:0},5000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
-			message.innerHTML="The CMB can tell us about the distrinbution of matter";
+			controls.enabled = false; 
+			message.innerHTML="The CMB can tell us about the distribution of matter";
 		  	document.getElementById("left-btn").style.visibility = "hidden"
 		})
 		.onComplete(function(){
@@ -553,7 +561,6 @@ function initTweens(){
 			camera.position.z=10000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
-		  	scene.remove(textMesh,supMesh,boxMesh);
 		})
 	tweenBackward14 = cameraZoomTween29.to({x:0,y:0,z:3000},5000)
 		.easing(TWEEN.Easing.Exponential.Out)
@@ -561,7 +568,76 @@ function initTweens(){
 			message.innerHTML="Although the GAMA survey is large it is tiny in terms of the observable universe";
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
 		})	
+
+ /********************** Tween functions when GAMA is not loaded **********************/
+
+
+ 	tweenForwardNoGAMA1 = cameraZoomTween30.to({x:0,y:0,z:29100000},3000)
+		.easing(TWEEN.Easing.Exponential.In)
+		.onStart(function(){
+			controls.enabled = false;
+			message.innerHTML = "You are now moving to the very edge of the observable universe"
+			$("#slider-vertical").slider('value',0);
+		  	camera.fov =50;
+		  	document.getElementById("right-btn").style.visibility = "hidden"
+		  	document.getElementById("left-btn").style.visibility = "hidden"
+		})
+		.onComplete(function(){
+			galaxy = false;
+			CMB = true;
+			camera.position.x=0;
+			camera.position.y=0;
+			camera.position.z=3;
+			scene.remove(pGalacticSystem);
+			scene.remove(plane)
+			
+			$("#slider").slider('value',4000);
+			scene.add( CMBsphere );
+		    textSprite("10  m","26", 45,0.04,0)
+		  	box(60,0)	
+	});
+	tweenForwardNoGAMA2 = cameraZoomTween31.to({x:0,y:0,z:100},3000)
+		.onComplete(function(){
+			controls.enabled = true; 
+			message.innerHTML="You are looking at the map of the Cosmic Microwave Background (CMB)";
+			document.getElementById("left-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+		})
+
+ 	tweenBackwardNoGAMA1 = cameraZoomTween32.to({x:0,y:0,z:0},15000)
+		.easing(TWEEN.Easing.Exponential.In)
+		.onStart(function(){
+			controls.enabled = false; 
+			message.innerHTML="The nearest galaxy called Andromeda is about 10<sup>22</sup> m away from earth";
+		  	document.getElementById("right-btn").style.visibility = "hidden"
+		  	document.getElementById("left-btn").style.visibility = "hidden"
+		})
+		.onComplete(function(){
+			$("#slider").slider('value',3000);
+			CMB = false;
+			galaxy = true;
+			scene.remove(CMBsphere);
+			scene.add(pGalacticSystem);
+			scene.add(plane);
+			camera.position.z=8000000;
+			camera.position.y=0.0;
+			camera.position.x=0.0;
+			textSprite("10  m","20", 500000,400,0)
+		  	box(700000.0,0)
+		})
+	tweenBackwardNoGAMA2 = cameraZoomTween33.to({x:0,y:0,z:800000},10000)
+		.easing(TWEEN.Easing.Exponential.Out)
+		.onComplete(function(){
+			message.innerHTML="The Milky Way has a estimated mass  of 6 x 10<sup>42</sup> kg";
+			document.getElementById("left-btn").style.visibility = "visible"
+			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+			controls.enabled = true; 
+		})	
+
 
 }
 
@@ -593,8 +669,14 @@ function tweenForward(){
 		tweenForward9.start()
 	}
 	else if(galaxy){
-		tweenForward11.chain(tweenForward12);
-		tweenForward11.start()
+		if (typeof GAMA_pos == 'undefined'){
+			tweenForwardNoGAMA1.chain(tweenForwardNoGAMA2);
+			tweenForwardNoGAMA1.start()
+		}
+		else{
+			tweenForward11.chain(tweenForward12);
+			tweenForward11.start()
+		}
 	}
 	else if(GAMA){
 		tweenForward13.chain(tweenForward14);
@@ -632,7 +714,13 @@ function tweenBackward(){
 		tweenBackward11.start()
 	}
 	else if(CMB){
-		tweenBackward13.chain(tweenBackward14);
-		tweenBackward13.start()
+		if (typeof GAMA_pos == 'undefined'){
+			tweenBackwardNoGAMA1.chain(tweenBackwardNoGAMA2);
+			tweenBackwardNoGAMA1.start()
+		}
+		else{
+			tweenBackward13.chain(tweenBackward14);
+			tweenBackward13.start()
+		}
 	}
 };

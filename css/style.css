@@ -78,8 +78,7 @@ sup {
     line-height: 40px;
     margin-top: -30px;
     color: #fff;
-    font-style: italic;
-    text-shadow: 0 0 3px #2c47dc, 0 0 10px #eeeeff; 
+    /*text-shadow: 0 0 3px #2c47dc, 0 0 10px #eeeeff; */
   }
     #textback {
       padding: 10px 20px;

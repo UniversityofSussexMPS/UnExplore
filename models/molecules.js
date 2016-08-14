@@ -1,6 +1,11 @@
+var root;
+
 function loadMolecule( url ) {
 
 			var loader = new THREE.PDBLoader();
+
+			root = new THREE.Group();
+			root.position.set(32,25,0);
 
 			while ( root.children.length > 0 ) {
 
