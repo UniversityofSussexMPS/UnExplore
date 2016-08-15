@@ -391,6 +391,8 @@ function initTweens(){
 			scene.add(plane);
 			textSprite("10  m","20", 500000,400,0)
 		  	box(700000.0,0)
+		  	camera.position.x=0
+		  	camera.position.y=0
 			camera.position.z=50000;
 		})
 
