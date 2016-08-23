@@ -5,6 +5,11 @@ var tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, t
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
 
 function initTweens(){
+	/*
+		function to initilize all the tweens which is called at the start of setting up the scene
+	*/
+
+	//Setup all the tweens in position
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
 	cameraZoomTween2  = new TWEEN.Tween(camera.position);
@@ -45,14 +50,14 @@ function initTweens(){
 	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},5000)
 		  .easing(TWEEN.Easing.Exponential.In)
 		  .onStart(function(){
-		  	scene.remove(textMesh,supMesh,boxMesh);
-		  	controls.enabled = false;  
+		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
+		  	controls.enabled = false;  // This disables the controls
 		  	message.innerHTML="Zooming out shows that this atom is one part of a molecule";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
-		  	textSprite("10  m","-15",0.004,0.000004,0);
-			box(0.005,0);
-			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("10  m","-10",0.7,0.0007,0); box(1.0,0);},3000)
+		  	textSprite("-15",0.000004);
+			box(0.005);
+			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0007); box(1.0)},3000)
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 
 
@@ -63,7 +68,7 @@ function initTweens(){
 			scene.remove(textMesh,supMesh,boxMesh);
 			scene.add( root );
 			scene.add(light)
-		  	textSprite("10  m","-9", 500,0.5,0)
+		  	textSprite("-9",0.5);
 		  	box(700.0,0)
 		});
 	tweenForward1 = cameraZoomTween1.to({x:0,y:0,z:1000},5000)
@@ -78,7 +83,6 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
-
 	      })
 
 	tweenBackward0 =  cameraZoomTween15.to({x:0,y:0,z:2},5000)
@@ -89,24 +93,23 @@ function initTweens(){
 				scene.add(particleSystem)
 				simElectron = true
 				molecule = false
-			  	textSprite("10  m","-10",0.7,0.0007,0)
-			  	box(1.0,0)
+			  	textSprite("-10",0.0007);
+			  	box(1.0);
 			  	message.innerHTML="Zooming in shows that each atom is made up of a atomic nucleus surrounded by a cloud of electrons";
 			  	document.getElementById("right-btn").style.visibility = "hidden"
 			  	document.getElementById("left-btn").style.visibility = "hidden"
 			})
 			.onComplete(function(){
-				$("#slider").slider('value',0);
+				$("#slider").slider('value');;
 				scene.remove(root,light)
-
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
 			.onStart(function(){
 				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				scene.remove(textMesh,supMesh,boxMesh);
-				textSprite("10  m","-15",0.004,0.000004,0)
-				box(0.005,0);
+				textSprite("-15",0.000004,0)
+				box(0.005)
 				document.getElementById("right-btn").style.visibility = "visible"
 
 			})
@@ -132,11 +135,11 @@ function initTweens(){
 			molecule = false;
 			human = true;
 			scene.remove(root);
-			camera.position.z=0.01;
+			camera.position.z=0.01; // reset the position of the camera
 			camera.position.y=0.0;
 			camera.position.x=0.0;
 			scene.add(model)
-			textSprite("10  m","0", 1.5,0.0015,0)
+			textSprite("0",0.0015);
 		  	box(2.0,0)
 		});
 	tweenForward3 = cameraZoomTween3.to({x:0,y:0,z:5},5000)
@@ -162,8 +165,8 @@ function initTweens(){
 			molecule = true;
 			scene.remove(model)
 			scene.add(root,light)
-		  	textSprite("10  m","-9", 500,0.5,0)
-		  	box(700.0,0)
+		  	textSprite("-9",0.5);
+		  	box(700.0);
 			camera.position.z=10000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
@@ -195,8 +198,8 @@ function initTweens(){
 			earth = true;
 			scene.remove(model)
     		scene.add(planets.earth.mesh);
-			textSprite("10  m","7", 6.5,0.008,0)
-		  	box(8.2,0)
+			textSprite("7",0.008);
+		  	box(8.2);
 
     		camera.position.z=1;
 		});
@@ -224,8 +227,8 @@ function initTweens(){
 			human = true;
 			scene.add(model);
 			scene.remove(planets.earth.mesh);
-			textSprite("10  m","0", 1.5,0.0015,0)
-		  	box(2.0,0)
+			textSprite("0",0.0015);
+		  	box(2.0);
 			camera.position.z=100;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
@@ -266,10 +269,10 @@ function initTweens(){
 		    scene.add(saturnrings);
 		    scene.add(Stars3D);
 		    solarsystem = true;
-		    textSprite("10  m","9", 500,0.6,0)
-		  	box(620.0,0)
+		    textSprite("9",0.6);
+		  	box(620.0);
     		camera.position.set=(0,10,0);
-    		setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("10  m","12", 1800,1.5,0); box(2600.0,0);},10000)
+    		setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("12",1.5); box(2600.0);},10000)
 		});
 	tweenForward7 = cameraZoomTween7.to({x:0,y:0,z:3000},20000)
 		.onComplete(function(){
@@ -287,8 +290,8 @@ function initTweens(){
 			message.innerHTML="There are 8 planets in our solar system";
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
-		    textSprite("10  m","9", 500,0.6,0)
-		  	box(620.0,0)
+		    textSprite("9", 0.6);
+		  	box(620.0);
 		  	planets.earth.radius = 0;
 		})
 		.onComplete(function(){
@@ -303,8 +306,8 @@ function initTweens(){
 			scene.add(planets.earth.mesh);
 			scene.remove(Stars3D)
 			scene.remove(textMesh,supMesh,boxMesh);
-			textSprite("10  m","7", 6.5,0.008,0)
-		  	box(8.2,0)
+			textSprite("7",0.008);
+		  	box(8.2);
 			camera.position.z=100;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
@@ -330,8 +333,8 @@ function initTweens(){
 		  	$("#slider-vertical").slider('value',0);
 		  	$("#slider").slider('value',2500);
 		  	camera.fov =50;
-		  	textSprite("10  m","16", 600000,550,0)
-		  	box(800000.0,0)
+		  	textSprite("16", 550);
+		  	box(800000.0);
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
 		  })
@@ -353,8 +356,8 @@ function initTweens(){
 			message.innerHTML="The closest star to the sun is 4 x 10<sup>16</sup> m away";
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
-			textSprite("10  m","12", 1800,1.5,0)
-		  	box(2600.0,0)
+			textSprite("12", 1.5);
+		  	box(2600.0);
 			solarsystem = true;
 			stars = false;
 		})
@@ -389,8 +392,8 @@ function initTweens(){
 		    scene.remove(saturnrings);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
-			textSprite("10  m","20", 500000,400,0)
-		  	box(700000.0,0)
+			textSprite("20", 400);
+		  	box(700000.0);
 		  	camera.position.x=0
 		  	camera.position.y=0
 			camera.position.z=50000;
@@ -430,8 +433,8 @@ function initTweens(){
 			camera.position.z=2000000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
-		  	textSprite("10  m","16", 600000,550,0)
-		  	box(800000.0,0)
+		  	textSprite("16",550);
+		  	box(800000.0);
 		})
 	tweenBackward10 = cameraZoomTween25.to({x:0,y:0,z:1000000},5000)
 		.easing(TWEEN.Easing.Exponential.Out)
@@ -466,7 +469,7 @@ function initTweens(){
 			scene.remove(plane);
 			galaxy=false
 			scene.add( GAMA_Z );
-		    textSprite("10  m","24", 80,0.1,1000)
+		    textSprite("24", 0.1,1000)
 		  	box(100.0,1000)
 			
 	});
@@ -487,7 +490,7 @@ function initTweens(){
 			message.innerHTML="The nearest galaxy called Andromeda is about 10<sup>22</sup> m away from earth";
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 		  	document.getElementById("left-btn").style.visibility = "hidden"
-		    textSprite("10  m","24", 80,0.1,1000)
+		    textSprite("24",0.1,1000)
 		  	box(100.0,1000)
 		})
 		.onComplete(function(){
@@ -501,8 +504,8 @@ function initTweens(){
 			camera.position.y=0.0;
 			camera.position.x=0.0;
 			scene.remove(textMesh,supMesh,boxMesh);
-			textSprite("10  m","20", 500000,400,0)
-		  	box(700000.0,0)
+			textSprite("20", 400);
+		  	box(700000.0);
 		})
 	tweenBackward12 = cameraZoomTween27.to({x:0,y:0,z:800000},10000)
 		.easing(TWEEN.Easing.Exponential.Out)
@@ -536,8 +539,8 @@ function initTweens(){
 			
 			$("#slider").slider('value',4000);
 			scene.add( CMBsphere );
-		    textSprite("10  m","26", 45,0.04,0)
-		  	box(60,0)	
+		    textSprite("26",0.04);
+		  	box(60);	
 	});
 	tweenForward14 = cameraZoomTween14.to({x:0,y:0,z:100},3000)
 		.onComplete(function(){
@@ -598,8 +601,8 @@ function initTweens(){
 			
 			$("#slider").slider('value',4000);
 			scene.add( CMBsphere );
-		    textSprite("10  m","26", 45,0.04,0)
-		  	box(60,0)	
+		    textSprite("26", 0.04);
+		  	box(60);	
 	});
 	tweenForwardNoGAMA2 = cameraZoomTween31.to({x:0,y:0,z:100},3000)
 		.onComplete(function(){
@@ -627,8 +630,8 @@ function initTweens(){
 			camera.position.z=8000000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
-			textSprite("10  m","20", 500000,400,0)
-		  	box(700000.0,0)
+			textSprite("20",400);
+		  	box(700000.0);
 		})
 	tweenBackwardNoGAMA2 = cameraZoomTween33.to({x:0,y:0,z:800000},10000)
 		.easing(TWEEN.Easing.Exponential.Out)
@@ -645,7 +648,10 @@ function initTweens(){
 
 
 function tweenForward(){
-	//Setup all the tweens
+	/*
+		This is the function which is called when the back button is pressed
+		starting a zooming out tween depending on what scale we are currently at.
+	*/
 
 	if(simElectron){
 		tweenForward0.chain(tweenForward1);
@@ -686,7 +692,10 @@ function tweenForward(){
 	}
 };
 function tweenBackward(){
-	//Setup all the tweens
+	/*
+		This is the function which is called when the back button is pressed
+		starting a zooming in tween depending on what scale we are currently at.
+	*/
 
 	if(molecule){
 		tweenBackward0.chain(tweenBackward1);

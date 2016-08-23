@@ -1,4 +1,5 @@
 
+// Write message if not webgl is found
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 var simElectron = false;
@@ -28,13 +29,15 @@ window.onload = function(){
 }
 var preVal =0;
 
-// Create the slider
+// Create the slider to show the current scale 
 var slider = $("#slider").slider({
 	min: 0,
 	max: 4000,
 	step: 500, 
 });
 
+
+// Create the slider to enable zoom by updating the field of view (fov)
 $( "#slider-vertical" ).slider({
 	orientation: "vertical",
 	min: 0,
@@ -61,15 +64,21 @@ init();
 animate();
 
 function init() {
+	/*
+		function to initilize the three js scene
+	*/
 
+	// Initialize the scene
 	scene = new THREE.Scene();
 	scene.fog = new THREE.FogExp2( 0x000000, 0.0000000025 );
 
+	// Setup renderer
 	renderer = new THREE.WebGLRenderer();
 	renderer.setClearColor( scene.fog.color );
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
+	// Creates containeer to show the framerate
 	var container = document.getElementById( 'container' );
 	container.appendChild( renderer.domElement );
 
@@ -106,23 +115,38 @@ function init() {
 
 	window.addEventListener( 'resize', onWindowResize, false );
 
+	// load in the gama data in the background so the website takes less time to load
 	loadScript("data/GAMA_data.js",addGamaData)
 
+	//Add the first model to the scene
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem)
 	simElectron = true;
 	message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
 
+	//Initalize all the tweens
 	initTweens();
 	
 
 }
-function textSprite(text,sup,pos,scale, z) {
+function textSprite(sup,scale, z=0) {
+	/*
+	 function to create text to show size of the current model
+
+	 inputs:
+
+	 sup: power of 10 of that level
+
+	 scale: size of the text needed at that level
+
+	 z: offset of the text along the z axis
+	*/
+
     var font = "Helvetica",
         size = 200,
         color = "#ffffff",
-
-    font = "bold " + size + "px " + font;
+        text = "10  m"
+		font = "bold " + size + "px " + font;
 
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
@@ -170,13 +194,20 @@ function textSprite(text,sup,pos,scale, z) {
         side: THREE.DoubleSide
     }));
     supMesh.scale.set(scale/2,scale/2,scale/2)
-    supMesh.position.set(pos*1.0,pos/10,z)
+    supMesh.position.set(scale*1e3,scale*1e2,z)
     textMesh.scale.set(scale,scale,scale)
-    textMesh.position.x = pos;
+    textMesh.position.x = scale*1e3;
     textMesh.position.z = z;
     scene.add( textMesh,supMesh);
 }
- function box(scale,z){
+ function box(scale,z=0){
+ 	/*
+		function to create a box around the model to show the scale
+
+		scale: size of the box
+
+		z: offset of the box along the z axis
+ 	*/
  	var geometry = new THREE.BoxGeometry( scale, scale, 0 );
 	var material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
 	var cube = new THREE.Mesh( geometry, material );
@@ -187,6 +218,9 @@ function textSprite(text,sup,pos,scale, z) {
 
 
 function loadScript(url, callback)
+/*
+	function to load scripts 
+*/
 {
     // Adding the script tag to the head as suggested before
     var head = document.getElementsByTagName('body')[0];
@@ -213,6 +247,7 @@ function onWindowResize() {
 }
 
 function animate() {
+
 	// Make sure the document doesn't scroll
 	document.body.scrollTop = document.body.scrollLeft = 0;
 
@@ -227,6 +262,8 @@ function animate() {
 		GalaxyRotate();
 	}
 	stats.update();
+
+
 	if(simElectron){
 		var delta = clock.getDelta() * spawnerOptions.timeScale;
 		tick += delta;
@@ -247,8 +284,7 @@ function animate() {
 }
 
 function render() {
-	
-	var delta = clock.getDelta();
+
 	renderer.render( scene, camera );
 	TWEEN.update();
 }
