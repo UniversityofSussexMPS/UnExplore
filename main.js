@@ -23,6 +23,8 @@ var clock = new THREE.Clock();
 
 var message = document.getElementById('text')
 
+$('body').one('click', function() { document.getElementById("rotate-image").style.visibility = "hidden";})
+
 
 window.onload = function(){
 	document.getElementById("loading").style.visibility = "hidden"
@@ -129,7 +131,7 @@ function init() {
 	
 
 }
-function textSprite(sup,scale, z=0) {
+function textSprite(sup,scale, z=0,larger=false) {
 	/*
 	 function to create text to show size of the current model
 
@@ -199,6 +201,10 @@ function textSprite(sup,scale, z=0) {
     textMesh.position.x = scale*1e3;
     textMesh.position.z = z;
     scene.add( textMesh,supMesh);
+    if(larger)
+   		box(scale*1.5e3,z)
+   	else
+   		box(scale*1e3,z)
 }
  function box(scale,z=0){
  	/*
