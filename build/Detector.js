@@ -14,7 +14,7 @@ var Detector = {
 
 		var element = document.createElement( 'div' );
 		element.id = 'webgl-error-message';
-		element.style.fontFamily = 'monospace';
+		element.style.fontFamily = 'sans-serif';
 		element.style.fontSize = '13px';
 		element.style.fontWeight = 'normal';
 		element.style.textAlign = 'center';
