@@ -104,6 +104,7 @@ function init() {
 	scene.add(ambientLight);
 
 	// Create models
+	createText(text);
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
@@ -121,8 +122,11 @@ function init() {
 
 	// load in the gama data in the background so the website takes less time to load
 	loadScript("data/GAMA_data.js",addGamaData)
+	
+	//add title sequence
+	scene.add(text.mesh);
 
-	//Add the first model to the scene
+	//Add the second model to the scene
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem)
 	simElectron = true;
