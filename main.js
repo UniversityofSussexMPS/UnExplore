@@ -12,7 +12,7 @@ var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
-var camera, controls, scene, renderer, model,light;
+var camera, controls, scene, renderer, model, pointLight, ambientLight;
 
 var textMesh,supMesh,boxMesh;
 
