@@ -323,7 +323,7 @@ function create_3Dstars(){
     //geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3 ) );
     geometry.computeBoundingSphere();
     //
-    var material = new THREE.PointsMaterial( { size: 5000, sizeAttenuation: true, map: sprite, alphaTest: 0.5, transparent: true } );
+    var material = new THREE.PointsMaterial( { color: starColors[Math.floor(Math.random()*starColors.length)] ,size: 5000, sizeAttenuation: true, map: sprite, alphaTest: 0.5, transparent: true } );
     Stars3D = new THREE.Points( geometry, material );
     Stars3D.scale.set(2e6, 2e6, 2e6);
     Stars3D.updateMatrix();
