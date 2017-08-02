@@ -170,7 +170,10 @@ function add_stars(){
     //geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3 ) );
     geometry.computeBoundingSphere();
     //
-    var material = new THREE.PointsMaterial( { size: 10, sizeAttenuation: true, map: sprite, alphaTest: 0.5, transparent: true } );
+    //set up colors for stars
+    var  starColors = ['#9db4ff', '#a2b9ff','#a7bcff','#aabfff','#afc3ff','#baccff','#c0d1ff','#cad8ff','#e4e8ff','#edeeff','#fbf8ff','#fff9f9','#fff5ec','#fff4e8','#fff1df','#ffebd1','#ffd7ae','#ffc690','#ffbe7f','#ffbb7b'];
+    //
+    var material = new THREE.PointsMaterial( { color: starColors[Math.floor(Math.random()*starColors.length)], size: 10, sizeAttenuation: true, map: sprite, alphaTest: 0.5, transparent: true } );
     Stars2D = new THREE.Points( geometry, material );
     scene.add( Stars2D );
 
