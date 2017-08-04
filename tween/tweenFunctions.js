@@ -10,6 +10,10 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
+	cameraZoomTweenStart0 = new TWEEN.Tween(camera.position);
+	cameraZoomTweenStart1 = new TWEEN.Tween(camera.position);
+	cameraZoomTweenEnd0 = new TWEEN.Tween(camera.position);
+	cameraZoomTweenEnd1 = new TWEEN.Tween(camera.position);
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
 	cameraZoomTween2  = new TWEEN.Tween(camera.position);
@@ -44,6 +48,32 @@ function initTweens(){
 	cameraZoomTween31 = new TWEEN.Tween(camera.position);
 	cameraZoomTween32 = new TWEEN.Tween(camera.position);
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
+	
+	/*************************** Atom *****************************/
+	
+	tweenForwardStart0 = cameraZoomTweenStart0.to({x:0, y:0, z: 2}, 10000)
+		.easing(TWEEN.Easing.Exponential.In)
+		.onStart(function() {
+			scene.remove(); //make this remove title page
+			controls.enabled = false;
+			message.innerHTML = "This is an atomic nucleus surrounded by an electron cloud";
+			$("#slider-verticle").slider('value', 0);
+			camera.fov = 50;
+			textSprite("-15", 0.000004);
+			setTimeout(function() {scene.remove();textSprite("-10", 0.0004, true)}, 3000); //removing title page only
+			document.getElementById("right-btn").style.visiblity = "hidden"
+		
+		})
+		.onComplete(function(){
+			$("#slider").slider("value", 500);
+			camera.position.z=8;
+			scene.remove(textMesh, supMesh, boxMesh);
+			scene.add(root);
+			scene.add(pointLight);
+			scene.add(ambientLight)
+			textSprite("-9",0.5,true);
+		});
+	
 
 	/************************* Molecule ***************************/
 	    		
@@ -67,7 +97,8 @@ function initTweens(){
 			camera.position.z=8;
 			scene.remove(textMesh,supMesh,boxMesh);
 			scene.add( root );
-			scene.add(light)
+			scene.add(pointLight);
+			scene.add(ambientLight)
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0)
 		});
@@ -101,7 +132,7 @@ function initTweens(){
 			})
 			.onComplete(function(){
 				$("#slider").slider('value');;
-				scene.remove(root,light)
+				scene.remove(root,pointLight, ambientLight)
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
@@ -164,7 +195,9 @@ function initTweens(){
 			human = false;
 			molecule = true;
 			scene.remove(model)
-			scene.add(root,light)
+			scene.add(root)
+			scene.add(pointLight);
+			scene.add(ambientLight)
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0);
 			camera.position.z=10000;
@@ -260,7 +293,8 @@ function initTweens(){
 			earth = false;
 			solarsystem = true;
 			scene.remove(planets.earth.mesh);
-			scene.remove(light);
+			scene.add(pointLight);
+			scene.add(ambientLight);
 			planets.earth.radius = 350;
 			planets.sun.radius = 0;
 		    for (a in planets) {
@@ -302,7 +336,8 @@ function initTweens(){
 		        	scene.remove(planets[a].mesh)
 		    }
 		    
-			scene.add(light);
+			scene.add(pointLight);
+			scene.add(ambientLight);
 			scene.add(planets.earth.mesh);
 			scene.remove(Stars3D)
 			scene.remove(textMesh,supMesh,boxMesh);
