@@ -1,34 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset"utf-8">
-		<style>
-			body {
-				margin: 0;
-				overflow: hidden;
-				background-color: black;
-			}
-			#webGL-container {
-				display: block;
-				position: absolute;
-			}
-		</style>
-	</head>
-	<body>
-		
-		<div id="webGL-container"></div>
-	
-		<script src="http://www.jquery.min.js"></script>
-		<script src="http://www.TweenMax.min.js"></script>
-		<script src="http://www.TimelineMax.min.js"></script>
-		<script src="http://www.EaseRack.min.js"></script>
-		<script src="http://www.three.min.js"></script>
-		<script src="http://www.GeometryUtils.js"></script>
-		<script src="http://www.OrbitControls.js"></script>
-		
-		<script>
-			//global variables
-			var camera, cameraTarget, renderer, pointLight, controls, reCenterTimeout, typeface="http://cdn.rawgit.com/ECallanan/hello-world/c2eb3129/Abscissa_Bold.js";
+
+			var controls, reCenterTimeout, typeface="http://cdn.rawgit.com/ECallanan/hello-world/c2eb3129/Abscissa_Bold.js";
 			
 			var winWidth = window.innerWidth;
 			var WinHeight = window.innerHeight;
@@ -69,47 +40,6 @@
 			//array with all text
 			var texts = [title];
 			
-			//initilising function
-			function init() {
-			
-				//all setup
-				scene.scene = new THREE.Scene();
-				camera = new THREE.PerspectiveCamera(40, winWidth/winHeight, 1, 1000);
-				renderer = new THREE.WebGLRenderer({antialias: true});
-				//renderer
-				renderer.setClearColor(scene.backgroundColor);
-				renderer.setSize(winWidth, winHeight);
-				renderer.shadowMap.enabled = true;
-				renderer.shadowMapSoft = true;
-				//camera
-				camera.position.set(scene.cameraX, (scene.cameraY-100), scene.cameraZ);
-				//lights
-				pointLight = new THREE.PointLight(0xffffff, scene.pointLightIntensity);
-				pointLight.position.set(0, 80, 200);
-				scene.scene.add(pointLight);
-				ambientLight = new THREE.AmbientLight(0xffffff);
-				scene.scene.add(ambientLight);
-				//controls
-				controls = new THREE.OrbitControls(camera, renderer.domElement);
-				controls.addEventListener("change", function() {
-				
-					clearTimeout(reCenterTimeout);
-				
-					reCenterTimeout = setTimeout(function() {
-						reCenterText();
-					}, 5000);
-					render();
-				});
-			
-				//load each text from texts array
-				loadAllText(texts);
-			
-				//add rendered element
-				$("#webGL-container").append(renderer.domElement);
-			
-				//tween text into position
-				bringInText();
-			}
 			
 			function loadAllText(texts) {
 				for(t = 0; t < texts.length; t++) {
@@ -204,18 +134,4 @@
 					
 				.play();
 			}
-			
-			//intialise
-			init();
-			//animate
-			animate();
-			
-			//update camera-aspect and render size on resizing
-			$(window).resize(function() {
-				camera.aspect = winWidth/winHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize(winWidth, winHeight);
-			});
-		</script>
-	</body>
-</html>
+		
