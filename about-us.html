@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/js" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+    <link rel="stylesheet" type="text/scss" href="css/style-about-us.scss" />
+  </head>
+  
+  <body>
+    <div class="main">
+      <h3><a class="title-header" href="#">unExplore</a></h3>
+      <h3 class="sub-title">About Us</h3>
+      <nav class="responsive-nav" id="js-responsive-nav">
+        <ul class="responsive-nav__list">
+          <li class="responsive-nav__item"><a class="responsive-nav__link" href="#">Home</a></li>
+          <li class="responsive-nav__item"><a class="responsive-nav__link" href="more-info.html">More Info</a></li>
+          <li class="responsive-nav__item"><a class="responsive-nav__link" href="contact-us.html">Contact Us</a></li>
+          <li class="responsive-nav__item"><a class="responsive-nav__link" href="kids.html">Kids</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="imagebar">
+      <img src="#" alt="" class="image">
+      <img src="#" alt="" class="image">
+      <img src="#" alt="" class="image">
+    </div>
+    <!--about us description-->
+    <section class="container" style="max-width:600px">
+      <h2 class="title">About Us</h2>
+      <p class="opaque">the creators of unExplore</p>
+      <p class="justify">...</p>
+    </section>
+    
+    </div>
+    
+    <!--footer-->
+    <footer class="push">
+      <a href="#"><img src="#" /></a>
+      <a href="#"><img src="#" /></a>
+      <a href="#"><img src="#" /></a>
+      <p class="ref">Developed with <a href="#" class="footer">...</a></p>
+    </footer>
+    
+    <script>
+    //navbar
+    var responsiveNav = document.getElementById('js-responsive-nav');
+    var responsiveNavBreakpoint =730;
+    
+    responsiveNav.addEventListener('click', function() {
+      if(window.innerWidth < responsiveNavBreakpoint) {
+        responsiveNav.classList.toggle("is-open");
+      }
+    });
+    
+    </script>
+    </body>
+    
+</html>
