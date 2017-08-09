@@ -53,7 +53,7 @@ $responsive-nav-borders: lighten($responsive-nav-background, 10%);
   color: $responsive-nav-color;
   background-color: $responsive-nav-background;
   overflow: hidden;
-  curser: pointer;
+  cursor: pointer;
   @media screen and (min-width: 730px) {
     position: static;
     width: auto;
@@ -176,7 +176,7 @@ $responsive-nav-borders: lighten($responsive-nav-background, 10%);
   top: -15px;
 }
 .justify {
-  test-align: justify;
+  text-align: justify;
   padding: 5px;
 }
 footer {
