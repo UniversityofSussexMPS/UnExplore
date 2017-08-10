@@ -12,7 +12,7 @@ var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
-var camera, controls, scene, renderer, model,light;
+var camera, controls, scene, renderer, model, pointLight, ambientLight;
 
 var textMesh,supMesh,boxMesh;
 
@@ -95,13 +95,16 @@ function init() {
 	controls.enablePan = false;
 
 
-	//Create light
-	light = new THREE.DirectionalLight( 0xffffff,4 );
-	light.position.set( 0, 0, 10 );
-	light.target.position.set(0,0,0);
-	light.castShadow = true;
+	//Create lights
+	pointLight = new THREE.PointLight( 0xffffff, 4 );
+	pointLight.position.set( 0, 10, 100 );
+	PointLight.target.position.set(0,0,0);
+	scene.add(pointLight);
+	ambientLight = new THREE.AmbientLight(0xffffff);
+	scene.add(ambientLight);
 
 	// Create models
+	createText(text);
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
@@ -110,7 +113,7 @@ function init() {
 	create_3Dstars();
 	createCMB();
 	
-	// add the starts
+	// add the stats
 	stats = new Stats();
 	container.appendChild( stats.dom );
 
@@ -119,8 +122,11 @@ function init() {
 
 	// load in the gama data in the background so the website takes less time to load
 	loadScript("data/GAMA_data.js",addGamaData)
+	
+	//add title sequence
+	scene.add(text.mesh);
 
-	//Add the first model to the scene
+	//Add the second model to the scene
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem)
 	simElectron = true;
