@@ -38,8 +38,8 @@ a {
 }
 $responsive-nav-hit-area: 44px;
 $responsive-nav-icon-size: 16px;
-$responsive-nav-color: #ffffff;
-$responsive-nav-background: #000000;
+$responsive-nav-color: "#fff";
+$responsive-nav-background: "#000";
 $responsive-nav-borders: lighten($responsive-nav-background, 10%);
 
 .responsive-nav {
