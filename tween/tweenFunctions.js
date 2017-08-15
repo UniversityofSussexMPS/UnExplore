@@ -50,7 +50,28 @@ function initTweens(){
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
 	
 	/*************************** Atom *****************************/
-	
+		tweenForwardStart0 = cameraZoomTweenStart0.to({x:0, y:0, z: 2}, 10000)
+		.easing(TWEEN.Easing.Exponential.In)
+		.onStart(function() {
+			scene.remove(); //make this remove title page
+			controls.enabled = false;
+			message.innerHTML = "This is an atomic nucleus surrounded by an electron cloud";
+			$("#slider-verticle").slider('value', 0);
+			camera.fov = 50;
+			textSprite("-15", 0.000004);
+			setTimeout(function() {scene.remove();textSprite("-10", 0.0004, true)}, 3000); //removing title page only
+			document.getElementById("right-btn").style.visiblity = "hidden"
+		
+		})
+		.onComplete(function(){
+			$("#slider").slider("value", 500);
+			camera.position.z=8;
+			scene.remove(textMesh, supMesh, boxMesh);
+			scene.add(root);
+			scene.add(pointLight);
+			scene.add(ambientLight)
+			textSprite("-9",0.5,true);
+		});
 
 	
 
