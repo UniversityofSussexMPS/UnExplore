@@ -41,6 +41,7 @@ html {
 }
 a {
   text-decoration: none;
+  }
   &:hover {
     color: white;
     text-decoration: underline;
@@ -88,6 +89,7 @@ $responsive-nav-borders: lighten($responsive-nav-background, 10%);
   }
   &.is-open {
     overflow: visible;
+    }
     &:after {
       content: "✕";
       @media screen and (min-width: 730px) {
