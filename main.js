@@ -104,7 +104,6 @@ function init() {
 	scene.add(ambientLight);
 
 	// Create models
-	createText(text);
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
