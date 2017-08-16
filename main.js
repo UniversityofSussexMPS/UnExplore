@@ -12,7 +12,7 @@ var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
-var camera, controls, scene, renderer, model, pointLight, ambientLight;
+var camera, controls, scene, renderer, model,light;
 
 var textMesh,supMesh,boxMesh;
 
@@ -95,15 +95,11 @@ function init() {
 	controls.enablePan = false;
 
 
-	//Create lights
-	light = new THREE.DirectionalLight(0xffffff, 4);
-	light.position.set(0,0,10);
+	//Create light
+	light = new THREE.DirectionalLight( 0xffffff,4 );
+	light.position.set( 0, 0, 10 );
 	light.target.position.set(0,0,0);
 	light.castShadow = true;
-	pointLight = new THREE.PointLight( 0xffffff, 4 );
-	pointLight.position.set( 0, 0, 10 );
-	pointLight.target.position.set(0,0,0);
-	ambientLight = new THREE.AmbientLight(0xffffff);
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
@@ -114,7 +110,7 @@ function init() {
 	create_3Dstars();
 	createCMB();
 	
-	// add the stats
+	// add the starts
 	stats = new Stats();
 	container.appendChild( stats.dom );
 
@@ -123,13 +119,12 @@ function init() {
 
 	// load in the gama data in the background so the website takes less time to load
 	loadScript("data/GAMA_data.js",addGamaData)
-	
 
-	//Add the second model to the scene
+	//Add the first model to the scene
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem)
 	simElectron = true;
-	message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
+	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
 
 	//Initalize all the tweens
 	initTweens();
@@ -139,13 +134,9 @@ function init() {
 function textSprite(sup,scale, z=0,larger=false) {
 	/*
 	 function to create text to show size of the current model
-
 	 inputs:
-
 	 sup: power of 10 of that level
-
 	 scale: size of the text needed at that level
-
 	 z: offset of the text along the z axis
 	*/
 
@@ -214,9 +205,7 @@ function textSprite(sup,scale, z=0,larger=false) {
  function box(scale,z=0){
  	/*
 		function to create a box around the model to show the scale
-
 		scale: size of the box
-
 		z: offset of the box along the z axis
  	*/
  	var geometry = new THREE.BoxGeometry( scale, scale, 0 );
