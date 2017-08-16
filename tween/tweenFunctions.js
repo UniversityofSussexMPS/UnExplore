@@ -1,7 +1,7 @@
 
 var a, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
-var tweenForwardStart0, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
+var tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
 
 function initTweens(){
@@ -10,10 +10,6 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
-	cameraZoomTweenStart0 = new TWEEN.Tween(camera.position);
-	cameraZoomTweenStart1 = new TWEEN.Tween(camera.position);
-	cameraZoomTweenEnd0 = new TWEEN.Tween(camera.position);
-	cameraZoomTweenEnd1 = new TWEEN.Tween(camera.position);
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
 	cameraZoomTween2  = new TWEEN.Tween(camera.position);
@@ -48,31 +44,6 @@ function initTweens(){
 	cameraZoomTween31 = new TWEEN.Tween(camera.position);
 	cameraZoomTween32 = new TWEEN.Tween(camera.position);
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
-	
-	/*************************** Atom *****************************/
-		tweenForwardStart0 = cameraZoomTweenStart0.to({x:0, y:0, z: 2}, 10000)
-		.easing(TWEEN.Easing.Exponential.In)
-		.onStart(function() {
-			scene.remove(); //make this remove title page
-			controls.enabled = false;
-			message.innerHTML = "This is an atomic nucleus surrounded by an electron cloud";
-			$("#slider-verticle").slider('value', 0);
-			camera.fov = 50;
-			textSprite("-15", 0.000004);
-			setTimeout(function() {scene.remove();textSprite("-10", 0.0004, true)}, 3000); //removing title page only
-			document.getElementById("right-btn").style.visiblity = "hidden"
-		
-		})
-		.onComplete(function(){
-			$("#slider").slider("value", 500);
-			camera.position.z=8;
-			scene.remove(textMesh, supMesh, boxMesh);
-			scene.add(root);
-			scene.add(pointLight);
-			scene.add(ambientLight)
-			textSprite("-9",0.5,true);
-		});
-
 	
 
 	/************************* Molecule ***************************/
