@@ -96,12 +96,14 @@ function init() {
 
 
 	//Create lights
+	light = new THREE.DirectionalLight(0xffffff, 4);
+	light.position.set(0,0,10);
+	light.target.position.set(0,0,0);
+	light.castShadow = true;
 	pointLight = new THREE.PointLight( 0xffffff, 4 );
 	pointLight.position.set( 0, 0, 10 );
 	pointLight.target.position.set(0,0,0);
-	scene.add(pointLight);
 	ambientLight = new THREE.AmbientLight(0xffffff);
-	scene.add(ambientLight);
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
