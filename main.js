@@ -97,8 +97,8 @@ function init() {
 
 	//Create lights
 	pointLight = new THREE.PointLight( 0xffffff, 4 );
-	pointLight.position.set( 0, 10, 100 );
-	PointLight.target.position.set(0,0,0);
+	pointLight.position.set( 0, 0, 10 );
+	pointLight.target.position.set(0,0,0);
 	scene.add(pointLight);
 	ambientLight = new THREE.AmbientLight(0xffffff);
 	scene.add(ambientLight);
