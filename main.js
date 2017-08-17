@@ -96,7 +96,7 @@ function init() {
 
 
 	//Create light
-	light = new THREE.DirectionalLight( 0xffffff,4 );
+	light = new THREE.DirectionalLight( 0xffffff,1 );
 	light.position.set( 0, 0, 10 );
 	light.target.position.set(0,0,0);
 	light.castShadow = true;
