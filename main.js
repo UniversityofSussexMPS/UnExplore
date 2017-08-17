@@ -101,6 +101,7 @@ function init() {
 	light.target.position.set(0,0,0);
 	light.castShadow = true;
 	ambientLight = new THREE.AmbientLight(0xffffff);
+	scene.add(light,ambientLight);
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
@@ -251,7 +252,7 @@ function onWindowResize() {
 
 function animate() {
 
-	scene.add(light, ambientLight);
+	
 	// Make sure the document doesn't scroll
 	document.body.scrollTop = document.body.scrollLeft = 0;
 
