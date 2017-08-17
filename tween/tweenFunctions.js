@@ -47,7 +47,7 @@ function initTweens(){
 
 	/************************* Molecule ***************************/
 	    		
-	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},5000)
+	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
 		  .easing(TWEEN.Easing.Exponential.In)
 		  .onStart(function(){
 		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
@@ -245,7 +245,7 @@ function initTweens(){
 
 	/************************* Solar System ***************************/
 
-    tweenForward6 = cameraZoomTween6.to({x:0,y:0,z:400},5000)
+    tweenForward6 = cameraZoomTween6.to({x:0,y:0,z:400},10000)
     	.onStart(function(){
 		  	controls.enabled = false; 
 		  	message.innerHTML="The Sun's diameter is roughly 109 times the Earth's";
@@ -274,7 +274,7 @@ function initTweens(){
     		camera.position.set=(0,10,0);
     		setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("12",1.5,true);},10000) //box(2600.0);},10000)
 		});
-	tweenForward7 = cameraZoomTween7.to({x:0,y:0,z:3000},10000)
+	tweenForward7 = cameraZoomTween7.to({x:0,y:0,z:3000},20000)
 		.onComplete(function(){
 			controls.enabled = true; 
 			message.innerHTML="This is the Solar System, which has a diameter of roughly 10,000 times that of our Sun"
@@ -312,7 +312,7 @@ function initTweens(){
 			camera.position.y=0.0;
 			camera.position.x=0.0;
 		})
-	tweenBackward7 = cameraZoomTween22.to({x:0,y:0,z:20},5000)
+	tweenBackward7 = cameraZoomTween22.to({x:0,y:0,z:20},10000)
 		.easing(TWEEN.Easing.Exponential.Out)
 		.onComplete(function(){
 			message.innerHTML="The Sun is so large 1,300,000 Earth's could fit inside it";
@@ -348,7 +348,7 @@ function initTweens(){
 			scene.remove(textMesh,supMesh,boxMesh);
 		})
 
-	tweenBackward8 = cameraZoomTween23.to({x:0,y:0,z:3000},5000)
+	tweenBackward8 = cameraZoomTween23.to({x:0,y:0,z:3000},10000)
 		.easing(TWEEN.Easing.Exponential.InOut)
 		.onStart(function(){
 			controls.enabled = false; 
@@ -400,7 +400,7 @@ function initTweens(){
 		})
 
 					
-	tweenForward10 = cameraZoomTween10.to({x:0,y:0,z:800000},5000)
+	tweenForward10 = cameraZoomTween10.to({x:0,y:0,z:800000},10000)
 		.onComplete(function(){
 			controls.enabled = true; 
 			message.innerHTML="This is our Galaxy the Milky Way";
@@ -474,7 +474,7 @@ function initTweens(){
 			
 	});
 
-	tweenForward12 = cameraZoomTween12.to({x:0,y:0,z:3000},20000)
+	tweenForward12 = cameraZoomTween12.to({x:0,y:0,z:3000},30000)
 		.onComplete(function(){
 			scene.remove(textMesh,supMesh,boxMesh);
 			controls.enabled = true; 
@@ -483,7 +483,7 @@ function initTweens(){
 			scene.remove(textMesh,supMesh,boxMesh);
 			})
 
-	tweenBackward11 = cameraZoomTween26.to({x:0,y:0,z:0},10000)
+	tweenBackward11 = cameraZoomTween26.to({x:0,y:0,z:0},15000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
 			controls.enabled = false; 
@@ -507,7 +507,7 @@ function initTweens(){
 			textSprite("20", 400);
 		  	//box(700000.0);
 		})
-	tweenBackward12 = cameraZoomTween27.to({x:0,y:0,z:800000},5000)
+	tweenBackward12 = cameraZoomTween27.to({x:0,y:0,z:800000},10000)
 		.easing(TWEEN.Easing.Exponential.Out)
 		.onComplete(function(){
 			message.innerHTML="Our galaxy, the Milky Way has a estimated mass of 6 x 10<sup>42</sup> kg";
@@ -612,7 +612,7 @@ function initTweens(){
 			scene.remove(textMesh,supMesh,boxMesh);
 		})
 
- 	tweenBackwardNoGAMA1 = cameraZoomTween32.to({x:0,y:0,z:0},10000)
+ 	tweenBackwardNoGAMA1 = cameraZoomTween32.to({x:0,y:0,z:0},15000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
 			controls.enabled = false; 
@@ -633,7 +633,7 @@ function initTweens(){
 			textSprite("20",400);
 		  	//box(700000.0);
 		})
-	tweenBackwardNoGAMA2 = cameraZoomTween33.to({x:0,y:0,z:800000},5000)
+	tweenBackwardNoGAMA2 = cameraZoomTween33.to({x:0,y:0,z:800000},10000)
 		.easing(TWEEN.Easing.Exponential.Out)
 		.onComplete(function(){
 			message.innerHTML="Our galaxy, the Milky Way has a estimated mass of 6 x 10<sup>42</sup> kg";
