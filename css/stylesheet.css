@@ -24,8 +24,6 @@
   float: left;
   margin-top: -10px;
   margin-left: 10px;
-  position: absolute;
-  top: 70px;
 }
 
 #kids, #kids:link, #kids:hover {
@@ -35,12 +33,12 @@
   font-weight: bold;
   font-size: 20px;
 }
-#unexplre-slideshow: hover {
+#unexplore-slideshow: hover {
   opacity: 0.4;
 }
 #unexplore-slideshow {
-  position: relative;
-  top: 60px;
+  position: absolute;
+  top: 70px;
   width: 100%;
   height: 60px;
 }
