@@ -294,3 +294,4 @@ function render() {
 	renderer.render( scene, camera );
 	TWEEN.update();
 }
+
