@@ -14,8 +14,10 @@ function addGamaData(){
 	var material = new THREE.PointsMaterial( { size: 1.5, sizeAttenuation: true,map: sprite, alphaTest: 0.1, transparent:false } );
 		
 	GAMA_Z = new THREE.Points( GAMA_geometry, material );
-	GAMA_Z.rotation.x=Math.PI/2
-	GAMA_Z.rotation.z=-Math.PI/2
+	GAMA_Z.rotation.x=Math.PI/2;
+	GAMA_Z.rotation.z=-Math.PI/2;
+	
+	scene.add(light, ambientLight);
 
 	
 }				
