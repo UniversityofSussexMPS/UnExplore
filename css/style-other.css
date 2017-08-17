@@ -26,15 +26,6 @@
   margin-top: -10px;
   margin-left: 10px;
 }
-.sub-title, .sub-title:hover {
-  color: white;
-  padding: 10px;
-  text-decoration: none;
-  float: left;
-  margin-top: -5px;
-  margin-left: 25px;
-  font-size: 18px;
-}
 
 #kids, #kids:link, #kids:hover {
   color: blue;
@@ -61,7 +52,8 @@
   min-height: 700px;
   height: auto;
   margin: 0 auto;
-  position: relative;
+  position: absolute;
+  top: 20%;
   padding: 20px;
   padding-bottom: 20px;
   word-wrap: break-word;
