@@ -46,10 +46,11 @@
 .imagebar {
   margin-left: 3%;
   margin-right: 3%;
+  position: absolute;
+  width: 100%;
 }
 .image {
   display: inline-block;
-  position: relative;
   width: 30%;
   height: 10%;
   margin-left: 0.5%;
