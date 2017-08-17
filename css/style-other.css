@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
+}
+.main {
+  width: 100%;
+  height: auto;
+  min-height: 800px;
+}
+.nav {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  z-index: 1;
+}
+.title-header .title-header:link .title-header:hover {
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-decoration: none;
+  float: left;
+  margin-top: -10px;
+  margin-left: 10px;
+}
+.sub-title {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  float: left;
+  margin-top: -5px;
+  margin-left: 25px;
+  font-size: 18px;
+}
+
+#kids, #kids:link, #kids:hover {
+  color: blue;
+  family-font: Courier;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px;
+}
+.imagebar {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.image {
+  display: inline-block;
+  position: relative;
+  top: 70px;
+  width: 30%;
+  height: 10%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+.container {
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  top: 80px;
+  padding: 20px;
+  padding-bottom: 20px;
+  word-wrap: break-word;
+  text-align: center;
+}
+.title {
+  letter-spacing: 2px;
+  padding: 0;
+}
+.opaque {
+  opacity: 0.5;
+  font-style: italic;
+  position: relative;
+  top: -15px;
+}
+.justify {
+  text-align: justify;
+  padding: 5px;
+}
+footer {
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  top: 500px;
+  height: 40px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+.footer:hover {
+  color:grey;
+}
+.logo {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10px;
+  height: auto;
+  opacity: 0.6;
+  }
+    
