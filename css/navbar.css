@@ -15,6 +15,7 @@
     font-size: 17px;
     margin-top: auto;
     margin-bottom: auto;
+    z-index: 1;
 }
 
 /* Change the color of links on hover */
@@ -48,6 +49,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    background-color: black;
   }
   .topnav.responsive a {
     float: none;
