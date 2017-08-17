@@ -132,6 +132,8 @@ function init() {
 	//Initalize all the tweens
 	initTweens();
 	
+	scene.add(light, ambientLight);
+	
 
 }
 function textSprite(sup,scale, z=0,larger=false) {
