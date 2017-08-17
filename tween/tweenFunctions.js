@@ -65,7 +65,7 @@ function initTweens(){
    		  	$("#slider").slider('value',500);
 			camera.position.z=8;
 			scene.remove(textMesh,supMesh,boxMesh);
-			scene.add( root );
+			scene.add( root, light , ambientLight );
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0)
 		});
@@ -99,7 +99,7 @@ function initTweens(){
 			});
 			.onComplete(function(){
 				$("#slider").slider('value');
-				scene.remove(root);
+				scene.remove(root, light , ambientLight );
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
@@ -132,7 +132,7 @@ function initTweens(){
 			$("#slider").slider('value',1000);
 			molecule = false;
 			human = true;
-			scene.remove(root);
+			scene.remove(root,  light , ambientLight );
 			camera.position.z=0.01; // reset the position of the camera
 			camera.position.y=0.0;
 			camera.position.x=0.0;
@@ -162,7 +162,7 @@ function initTweens(){
 			human = false;
 			molecule = true;
 			scene.remove(model)
-			scene.add(root)
+			scene.add(root, light , ambientLight )
 		  	textSprite("-9",0.5,true)
 		  	//box(700.0);
 			camera.position.z=10000;
