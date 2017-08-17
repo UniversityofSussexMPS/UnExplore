@@ -101,6 +101,7 @@ function init() {
 	light.target.position.set(0,0,0);
 	light.castShadow = true;
 	ambientLight = new THREE.AmbientLight(0xffffff);
+	scene.add(light, ambientLight);
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
