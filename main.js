@@ -125,7 +125,6 @@ function init() {
 	
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
-	scene.add(addElectron)
 	simElectron = true;
 	message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
 
