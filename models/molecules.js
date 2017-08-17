@@ -60,7 +60,6 @@ function loadMolecule( url ) {
 					object.lookAt( end );
 					root.add( object );
 					
-					scene.add(light, ambientLight);
 
 				}
 
@@ -77,5 +76,6 @@ function loadMolecule( url ) {
 			}, function ( xhr ) {
 
 			} );
+			scene.add(light, ambientLight);
 
 		}
