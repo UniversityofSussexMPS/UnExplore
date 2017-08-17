@@ -66,7 +66,6 @@ function initTweens(){
 			camera.position.z=8;
 			scene.remove(textMesh,supMesh,boxMesh);
 			scene.add( root );
-			scene.add(light, ambientLight);
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0)
 		});
@@ -100,7 +99,7 @@ function initTweens(){
 			})
 			.onComplete(function(){
 				$("#slider").slider('value');;
-				scene.remove(root, light, ambientLight);
+				scene.remove(root);
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
@@ -163,7 +162,7 @@ function initTweens(){
 			human = false;
 			molecule = true;
 			scene.remove(model);
-			scene.add(root,light, ambientLight);
+			scene.add(root);
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0);
 			camera.position.z=10000;
@@ -259,7 +258,6 @@ function initTweens(){
 			earth = false;
 			solarsystem = true;
 			scene.remove(planets.earth.mesh);
-			scene.remove(light, ambientLight);
 			planets.earth.radius = 350;
 			planets.sun.radius = 0;
 		    for (a in planets) {
@@ -301,7 +299,6 @@ function initTweens(){
 		        	scene.remove(planets[a].mesh)
 		    }
 		    
-			scene.add(light, ambientLight);
 			scene.add(planets.earth.mesh);
 			scene.remove(Stars3D)
 			scene.remove(textMesh,supMesh,boxMesh);
