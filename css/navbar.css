@@ -8,7 +8,7 @@
 .topnav a {
     float: left;
     display: block;
-    color: grey;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -22,6 +22,7 @@
 .topnav a:hover {
     background-color: black;
     color: grey;
+    text-decoration: underlined;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -55,5 +56,6 @@
     float: none;
     display: block;
     text-align: left;
+    background-color: black;
   }
 }
