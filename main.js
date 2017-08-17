@@ -123,7 +123,7 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	scene.add(light, ambientLight);
+	
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
 	scene.add(addElectron)
@@ -131,7 +131,6 @@ function init() {
 	message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
 
 	//Initalize all the tweens
-	scene.add(light, ambientLight);
 	initTweens();
 	
 
