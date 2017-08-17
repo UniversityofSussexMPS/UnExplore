@@ -65,8 +65,8 @@ function initTweens(){
    		  	$("#slider").slider('value',500);
 			camera.position.z=8;
 			scene.remove(textMesh,supMesh,boxMesh);
-			scene.add(light, ambientLight);
 			scene.add( root );
+			scene.add(light, ambientLight);
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0)
 		});
@@ -87,10 +87,9 @@ function initTweens(){
 	tweenBackward0 =  cameraZoomTween15.to({x:0,y:0,z:2},5000)
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
-				controls.enabled = false;
-				scene.add(light, ambientLight);
+				controls.enabled = false; 
 				scene.add(proton1,proton2,neutron1,neutron2);
-				scene.add(particleSystem);
+				scene.add(particleSystem)
 				simElectron = true
 				molecule = false
 			  	textSprite("-10",0.0004,true);
@@ -101,7 +100,7 @@ function initTweens(){
 			})
 			.onComplete(function(){
 				$("#slider").slider('value');;
-				scene.remove(root)
+				scene.remove(root, light, ambientLight);
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
@@ -138,7 +137,6 @@ function initTweens(){
 			camera.position.z=0.01; // reset the position of the camera
 			camera.position.y=0.0;
 			camera.position.x=0.0;
-			scene.add(light, ambientLight);
 			scene.add(model)
 			textSprite("0",0.0015,true);
 		  	//box(2.0,0)
@@ -151,7 +149,6 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
-			
 		})
 
 	tweenBackward2 = cameraZoomTween17.to({x:0,y:0,z:0.1},5000)
@@ -166,8 +163,7 @@ function initTweens(){
 			human = false;
 			molecule = true;
 			scene.remove(model);
-			scene.add(light, ambientLight);
-			scene.add(root);
+			scene.add(root,light, ambientLight);
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0);
 			camera.position.z=10000;
@@ -199,9 +195,8 @@ function initTweens(){
 			$("#slider").slider('value',1500);
 			human = false;
 			earth = true;
-			scene.remove(model);
-			scene.add(light, ambientLight);
-    			scene.add(planets.earth.mesh);
+			scene.remove(model)
+    		scene.add(planets.earth.mesh);
 			textSprite("7",0.008);
 		  	//box(8.2);
 
@@ -229,7 +224,6 @@ function initTweens(){
 			$("#slider").slider('value',1000);
 			earth = false;
 			human = true;
-			scene.add(light, ambientLight);
 			scene.add(model);
 			scene.remove(planets.earth.mesh);
 			textSprite("0",0.0015,true);
@@ -265,13 +259,12 @@ function initTweens(){
 			earth = false;
 			solarsystem = true;
 			scene.remove(planets.earth.mesh);
-			scene.add(light, ambientLight);
+			scene.remove(light, ambientLight);
 			planets.earth.radius = 350;
 			planets.sun.radius = 0;
 		    for (a in planets) {
-		    	scene.add(planets[a].mesh);
+		    	scene.add(planets[a].mesh)
 		    }
-	    	    scene.add(light, ambientLight);
 		    scene.add(saturnrings);
 		    scene.add(Stars3D);
 		    solarsystem = true;
@@ -396,7 +389,6 @@ function initTweens(){
 		    }
 		    solarsystem = false;
 		    scene.remove(saturnrings);
-			scene.add(light, ambientLight);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
 			textSprite("20", 400,true);
@@ -432,12 +424,10 @@ function initTweens(){
 			stars = true;
 			scene.remove(pGalacticSystem);
 			scene.remove(plane);
-			scene.add(light, ambientLight);
-			scene.add(Stars3D);
+			scene.add(Stars3D)
 			var a
 			for (a in planets) {
-				scene.add(light, ambientLight);
-		        	scene.add(planets[a].mesh);
+		        	scene.add(planets[a].mesh)
 		    }
 			camera.position.z=2000000;
 			camera.position.y=0.0;
@@ -477,7 +467,6 @@ function initTweens(){
 			scene.remove(pGalacticSystem);
 			scene.remove(plane);
 			galaxy=false
-			scene.add(light, ambientLight);
 			scene.add( GAMA_Z );
 		    textSprite("24", 0.1,1000,true)
 		  	//box(100.0,1000)
@@ -508,7 +497,6 @@ function initTweens(){
 			GAMA = false;
 			galaxy = true;
 			scene.remove(GAMA_Z);
-			scene.add(light, ambientLight);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
 			camera.position.z=8000000;
@@ -549,7 +537,6 @@ function initTweens(){
 			scene.remove(GAMA_Z);
 			
 			$("#slider").slider('value',4000);
-			scene.add(light, ambientLight);
 			scene.add( CMBsphere );
 		    textSprite("26",0.07,true);
 		  	//box(60);	
@@ -574,7 +561,6 @@ function initTweens(){
 			CMB = false;
 			GAMA = true;
 			scene.remove(CMBsphere);
-			scene.add(light, ambientLight);
 			scene.add(GAMA_Z);
 			camera.position.z=10000;
 			camera.position.y=0.0;
@@ -610,10 +596,9 @@ function initTweens(){
 			camera.position.y=0;
 			camera.position.z=3;
 			scene.remove(pGalacticSystem);
-			scene.remove(plane);
+			scene.remove(plane)
 			
 			$("#slider").slider('value',4000);
-			scene.add(light, ambientLight);
 			scene.add( CMBsphere );
 		    textSprite("26", 0.04,true);
 		  	//box(60);	
@@ -639,7 +624,6 @@ function initTweens(){
 			CMB = false;
 			galaxy = true;
 			scene.remove(CMBsphere);
-			scene.add(light, ambientLight);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
 			camera.position.z=8000000;
