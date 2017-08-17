@@ -28,7 +28,7 @@ function loadMolecule( url ) {
 					var color = geometry.colors[ i ];
 					var element = geometry.elements[ i ];
 
-					var material = new THREE.MeshPhongMaterial( { color: color } );
+					var material = new THREE.MeshBasicMaterial( { color: color } );
 
 					var object = new THREE.Mesh( sphereGeometry, material );
 					object.position.copy( position );
@@ -53,7 +53,7 @@ function loadMolecule( url ) {
 					start.multiplyScalar( 75 );
 					end.multiplyScalar( 75 );
 
-					var object = new THREE.Mesh( boxGeometry, new THREE.MeshPhongMaterial( 0xffffff ) );
+					var object = new THREE.Mesh( boxGeometry, new THREE.MeshBasicMaterial( 0xffffff ) );
 					object.position.copy( start );
 					object.position.lerp( end, 0.5 );
 					object.scale.set( 5, 5, start.distanceTo( end ) );
@@ -76,6 +76,5 @@ function loadMolecule( url ) {
 			}, function ( xhr ) {
 
 			} );
-			scene.add(light, ambientLight);
 
 		}
