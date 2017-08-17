@@ -50,7 +50,6 @@ function initTweens(){
 		  .easing(TWEEN.Easing.Exponential.In)
 		  .onStart(function(){
 		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
-			scene.add(light, ambientLight)
 		  	controls.enabled = false;  // This disables the controls
 		  	message.innerHTML="Zooming out shows that this atom is one part of a molecule";
 		  	$("#slider-vertical").slider('value',0);
@@ -74,6 +73,7 @@ function initTweens(){
 	tweenForward1 = cameraZoomTween1.to({x:0,y:0,z:1000},5000)
 	      .easing(TWEEN.Easing.Quartic.Out)
 	      .onComplete(function(){
+		scene.add(light, ambientLight);
 	      	message.innerHTML="This is a molecule";
 	      	controls.enabled = true;
 	      	simElectron = false;
@@ -83,16 +83,15 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
-			scene.add(light, ambientLight)
 	      })
 
 	tweenBackward0 =  cameraZoomTween15.to({x:0,y:0,z:2},5000)
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
-				controls.enabled = false; 
+				controls.enabled = false;
+				scene.add(light, ambientLight);
 				scene.add(proton1,proton2,neutron1,neutron2);
 				scene.add(particleSystem)
-				scene.add(light, ambientLight)
 				simElectron = true
 				molecule = false
 			  	textSprite("-10",0.0004,true);
@@ -104,14 +103,12 @@ function initTweens(){
 			.onComplete(function(){
 				$("#slider").slider('value');;
 				scene.remove(root)
-				scene.add(light, ambientLight)
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
 			.onStart(function(){
 				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				scene.remove(textMesh,supMesh,boxMesh);
-				scene.add(light, ambientLight)
 				textSprite("-15",0.000004,0)
 				//box(0.005)
 				document.getElementById("right-btn").style.visibility = "visible"
@@ -120,7 +117,6 @@ function initTweens(){
 			.onComplete(function(){
 				controls.enabled = true; 
 				scene.remove(textMesh,supMesh,boxMesh);
-				scene.add(light, ambientLight)
 			})
 
 	/************************* Human ***************************/
@@ -129,6 +125,7 @@ function initTweens(){
 		.easing(TWEEN.Easing.Exponential.In)
 	    .onStart(function(){
 		  	controls.enabled = false; 
+			scene.add(light, ambientLight)
 		  	message.innerHTML="There are an estimated 10<sup>27</sup> molecules in the human body";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
@@ -137,6 +134,7 @@ function initTweens(){
 		  })
 		.onComplete(function(){
 			$("#slider").slider('value',1000);
+			scene.add(light, ambientLight);
 			molecule = false;
 			human = true;
 			scene.remove(root);
@@ -144,7 +142,6 @@ function initTweens(){
 			camera.position.y=0.0;
 			camera.position.x=0.0;
 			scene.add(model)
-			scene.add(light, ambientLight)
 			textSprite("0",0.0015,true);
 		  	//box(2.0,0)
 		});
