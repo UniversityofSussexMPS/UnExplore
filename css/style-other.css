@@ -61,8 +61,7 @@
   min-height: 700px;
   height: auto;
   margin: 0 auto;
-  position: absolute;
-  top: 150px;
+  position: relative;
   padding: 20px;
   padding-bottom: 20px;
   word-wrap: break-word;
