@@ -40,12 +40,10 @@
   position: absolute;
   top: 70px;
   width: 100%;
-  height: auto;
+  height:400px;
 }
 #unexplore-slideshow > div {
   position: absolute;
-  top: 10px;
-  bottom: 10px;
 }
 #unexplore-slideshow img {
   width: 100%;
@@ -55,7 +53,7 @@
   height: auto;
   margin: 0 auto;
   position: relative;
-  top: 60px;
+  top: 70px;
   padding: 20px;
   padding-bottom: 20px;
   word-wrap: break-word;
