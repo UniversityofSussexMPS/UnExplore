@@ -50,6 +50,7 @@ function initTweens(){
 		  .easing(TWEEN.Easing.Exponential.In)
 		  .onStart(function(){
 		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
+			scene.add(light, ambientLight)
 		  	controls.enabled = false;  // This disables the controls
 		  	message.innerHTML="Zooming out shows that this atom is one part of a molecule";
 		  	$("#slider-vertical").slider('value',0);
@@ -82,6 +83,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 	      })
 
 	tweenBackward0 =  cameraZoomTween15.to({x:0,y:0,z:2},5000)
@@ -102,12 +104,14 @@ function initTweens(){
 			.onComplete(function(){
 				$("#slider").slider('value');;
 				scene.remove(root)
+				scene.add(light, ambientLight)
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
 			.onStart(function(){
 				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				scene.remove(textMesh,supMesh,boxMesh);
+				scene.add(light, ambientLight)
 				textSprite("-15",0.000004,0)
 				//box(0.005)
 				document.getElementById("right-btn").style.visibility = "visible"
@@ -116,6 +120,7 @@ function initTweens(){
 			.onComplete(function(){
 				controls.enabled = true; 
 				scene.remove(textMesh,supMesh,boxMesh);
+				scene.add(light, ambientLight)
 			})
 
 	/************************* Human ***************************/
@@ -139,6 +144,7 @@ function initTweens(){
 			camera.position.y=0.0;
 			camera.position.x=0.0;
 			scene.add(model)
+			scene.add(light, ambientLight)
 			textSprite("0",0.0015,true);
 		  	//box(2.0,0)
 		});
@@ -150,6 +156,8 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
+			
 		})
 
 	tweenBackward2 = cameraZoomTween17.to({x:0,y:0,z:0.1},5000)
@@ -164,7 +172,8 @@ function initTweens(){
 			human = false;
 			molecule = true;
 			scene.remove(model)
-			scene.add(root,light)
+			scene.add(root)
+			scene.add(light, ambientLight)
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0);
 			camera.position.z=10000;
@@ -177,6 +186,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 			controls.enabled = true; 
 		})
 
@@ -197,6 +207,7 @@ function initTweens(){
 			human = false;
 			earth = true;
 			scene.remove(model)
+			scene.add(light, ambientLight)
     		scene.add(planets.earth.mesh);
 			textSprite("7",0.008);
 		  	//box(8.2);
@@ -211,6 +222,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 		})
 
 	tweenBackward4 = cameraZoomTween19.to({x:0,y:0,z:1},5000)
@@ -227,6 +239,7 @@ function initTweens(){
 			human = true;
 			scene.add(model);
 			scene.remove(planets.earth.mesh);
+			scene.add(light, ambientLight)
 			textSprite("0",0.0015,true);
 		  	//box(2.0);
 			camera.position.z=100;
@@ -240,6 +253,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 			controls.enabled = true; 
 		})
 
@@ -260,7 +274,7 @@ function initTweens(){
 			earth = false;
 			solarsystem = true;
 			scene.remove(planets.earth.mesh);
-			scene.remove(light);
+			scene.add(light, ambientLight);
 			planets.earth.radius = 350;
 			planets.sun.radius = 0;
 		    for (a in planets) {
@@ -268,6 +282,7 @@ function initTweens(){
 		    }
 		    scene.add(saturnrings);
 		    scene.add(Stars3D);
+	    	    scene.add(light, ambientLight);
 		    solarsystem = true;
 		    textSprite("9",0.6);
 		  	//box(620.0);
@@ -281,6 +296,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 		});
 
 	tweenBackward6 = cameraZoomTween21.to({x:0,y:0,z:0},5000)
@@ -300,9 +316,10 @@ function initTweens(){
 			earth = true;
 			for (a in planets) {
 		        	scene.remove(planets[a].mesh)
+				scene.add(light, ambientLight)
 		    }
 		    
-			scene.add(light);
+			scene.add(light, ambientLight);
 			scene.add(planets.earth.mesh);
 			scene.remove(Stars3D)
 			scene.remove(textMesh,supMesh,boxMesh);
@@ -319,6 +336,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 			controls.enabled = true; 
 		})	
 
@@ -346,6 +364,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 		})
 
 	tweenBackward8 = cameraZoomTween23.to({x:0,y:0,z:3000},10000)
@@ -366,6 +385,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 			controls.enabled = true; 
 		})
 
@@ -387,11 +407,13 @@ function initTweens(){
 			scene.remove(Stars3D);
 			for (a in planets) {
 		        	scene.remove(planets[a].mesh)
+				scene.add(light, ambientLight)
 		    }
 		    solarsystem = false;
 		    scene.remove(saturnrings);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
+			scene.add(light, ambientLight)
 			textSprite("20", 400,true);
 		  	//box(700000.0);
 		  	camera.position.x=0
@@ -407,6 +429,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 		})
 
 	tweenBackward9 = cameraZoomTween24.to({x:0,y:0,z:0},5000)
@@ -426,9 +449,11 @@ function initTweens(){
 			scene.remove(pGalacticSystem);
 			scene.remove(plane);
 			scene.add(Stars3D)
+			scene.add(light, ambientLight)
 			var a
 			for (a in planets) {
 		        	scene.add(planets[a].mesh)
+				scene.add(light, ambientLight)
 		    }
 			camera.position.z=2000000;
 			camera.position.y=0.0;
@@ -443,6 +468,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 			controls.enabled = true; 
 		})	
 
@@ -469,6 +495,7 @@ function initTweens(){
 			scene.remove(plane);
 			galaxy=false
 			scene.add( GAMA_Z );
+			scene.add(light, ambientLight)
 		    textSprite("24", 0.1,1000,true)
 		  	//box(100.0,1000)
 			
@@ -481,6 +508,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 			})
 
 	tweenBackward11 = cameraZoomTween26.to({x:0,y:0,z:0},15000)
@@ -500,6 +528,7 @@ function initTweens(){
 			scene.remove(GAMA_Z);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
+			scene.add(light, ambientLight)
 			camera.position.z=8000000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
@@ -514,6 +543,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight);
 			controls.enabled = true; 
 		})	
 
@@ -536,9 +566,11 @@ function initTweens(){
 			camera.position.y=0;
 			camera.position.z=3;
 			scene.remove(GAMA_Z);
+			scene.add(light, ambientLight);
 			
 			$("#slider").slider('value',4000);
 			scene.add( CMBsphere );
+			scene.add(light, ambientLight)
 		    textSprite("26",0.07,true);
 		  	//box(60);	
 	});
@@ -548,6 +580,7 @@ function initTweens(){
 			message.innerHTML="You are looking at the map of the Cosmic Microwave Background (CMB)";
 			document.getElementById("left-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 		})
 
 	tweenBackward13 = cameraZoomTween28.to({x:0,y:0,z:0},5000)
@@ -563,6 +596,7 @@ function initTweens(){
 			GAMA = true;
 			scene.remove(CMBsphere);
 			scene.add(GAMA_Z);
+			scene.add(light, ambientLight)
 			camera.position.z=10000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
@@ -574,6 +608,7 @@ function initTweens(){
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 			controls.enabled = true; 
 		})	
 
@@ -598,9 +633,11 @@ function initTweens(){
 			camera.position.z=3;
 			scene.remove(pGalacticSystem);
 			scene.remove(plane)
+			scene.add(light, ambientLight)
 			
 			$("#slider").slider('value',4000);
 			scene.add( CMBsphere );
+			scene.add(light, ambientLight)
 		    textSprite("26", 0.04,true);
 		  	//box(60);	
 	});
@@ -610,6 +647,7 @@ function initTweens(){
 			message.innerHTML="You are looking at the map of the Cosmic Microwave Background (CMB)";
 			document.getElementById("left-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add(light, ambientLight)
 		})
 
  	tweenBackwardNoGAMA1 = cameraZoomTween32.to({x:0,y:0,z:0},15000)
@@ -627,6 +665,7 @@ function initTweens(){
 			scene.remove(CMBsphere);
 			scene.add(pGalacticSystem);
 			scene.add(plane);
+			scene.add(light, ambientLight)
 			camera.position.z=8000000;
 			camera.position.y=0.0;
 			camera.position.x=0.0;
