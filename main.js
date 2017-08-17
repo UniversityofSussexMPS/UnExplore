@@ -251,6 +251,7 @@ function onWindowResize() {
 
 function animate() {
 
+	scene.add(light, ambientLight);
 	// Make sure the document doesn't scroll
 	document.body.scrollTop = document.body.scrollLeft = 0;
 
