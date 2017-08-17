@@ -19,6 +19,7 @@
 .title-header .title-header:link .title-header:hover {
   color: white;
   font-weight: bold;
+  font-size: 20px;
   padding: 10px;
   text-decoration: none;
   float: left;
@@ -60,8 +61,8 @@
   min-height: 700px;
   height: auto;
   margin: 0 auto;
-  position: relative;
-  top: 80px;
+  position: absolute;
+  top: 150px;
   padding: 20px;
   padding-bottom: 20px;
   word-wrap: break-word;
