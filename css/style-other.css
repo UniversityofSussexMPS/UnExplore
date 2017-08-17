@@ -7,9 +7,8 @@
 .main {
   width: 100%;
   height: auto;
-  min-height: 800px;
 }
-.nav {
+.topnav {
   background-color: black;
   color: white;
   width: 100%;
