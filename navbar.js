@@ -1,8 +1,9 @@
-    var responsiveNav = document.getElementById('js-responsive-nav');
-    var responsiveNavBreakpoint =730;
-    
-    responsiveNav.addEventListener('click', function() {
-      if(window.innerWidth < responsiveNavBreakpoint) {
-        responsiveNav.classList.toggle("is-open");
-      }
-    });
+ /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
