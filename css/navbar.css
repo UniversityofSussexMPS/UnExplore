@@ -5,7 +5,7 @@
 }
 
 /* Style the links inside the navigation bar */
-.topnav .link .sub{
+.topnav a{
     float: left;
     display: block;
     color: white;
