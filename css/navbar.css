@@ -6,6 +6,7 @@
     width: 100%;
     height: 60px;
     position: fixed;
+    z-index: 1;
 }
 
 /* Style the links inside the navigation bar */
@@ -37,6 +38,8 @@
   .topnav a.icon {
     float: right;
     display: block;
+    position: fixed;
+    z-index: 1;
   }
 }
 
