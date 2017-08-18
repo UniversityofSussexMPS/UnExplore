@@ -50,6 +50,8 @@
     right: 0;
     top: 0;
     z-index: 1;
+    color: white;
+    background-color: black;
     overflow: visible;
   }
   .topnav.responsive a {
