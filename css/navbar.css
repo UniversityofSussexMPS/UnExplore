@@ -19,16 +19,12 @@
 }
 
 /* Change the color of links on hover */
-.topnav link:hover {
+.topnav a:hover {
     background-color: black;
     color: grey;
     text-decoration: underlined;
 }
-.topnav sub:hover {
-    background-color: black;
-    color: white;
-    text-decoration: none;
-}
+
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
