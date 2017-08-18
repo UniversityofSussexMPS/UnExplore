@@ -29,10 +29,8 @@
 .imagebar {
   margin-left: 3%;
   margin-right: 3%;
-  top: 100px;
   width: 100%;
   height: auto;
-  margin-top: 0;
 }
 .image {
   display: inline-block;
