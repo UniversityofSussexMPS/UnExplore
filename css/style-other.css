@@ -15,6 +15,7 @@
   height: 70px;
   position: fixed;
   z-index: 1;
+  padding-bottom: 10px;
 }
 .title-header .title-header:link .title-header:hover {
   color: white;
@@ -40,6 +41,7 @@
   position: absolute;
   top: 100px;
   width: 100%;
+  padding-bottom: 20px;
 }
 .image {
   display: inline-block;
