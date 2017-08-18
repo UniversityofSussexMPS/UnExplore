@@ -4,10 +4,6 @@
   text-decoration: none;
   color: black;
 }
-.main {
-  width: 100%;
-  height: auto;
-}
 .topnav {
   background-color: black;
   color: white;
@@ -26,7 +22,6 @@
   margin-top: -10px;
   margin-left: 10px;
 }
-
 #kids, #kids:link, #kids:hover {
   color: blue;
   family-font: Courier;
@@ -34,12 +29,17 @@
   font-weight: bold;
   font-size: 20px;
 }
+.main {
+  width: 100%;
+  height: auto;
+}
 .imagebar {
   margin-left: 3%;
   margin-right: 3%;
   position: absolute;
   top: 100px;
   width: 100%;
+  height: auto;
 }
 .image {
   display: inline-block;
@@ -55,8 +55,6 @@
   left: auto;
   right: auto;
   position: relative;
-  top: auto;
-  max-top: 400px;
   padding: 20px;
   padding-bottom: 20px;
   word-wrap: break-word;
