@@ -9,16 +9,6 @@
   height: 800px;
 }
 
-.title-header, .title-header:link, .title-header:hover {
-  color: white;
-  font-weight: bold;
-  padding: 10px;
-  text-decoration: none;
-  float: left;
-  margin-top: -10px;
-  margin-left: 10px;
-}
-
 #kids, #kids:link, #kids:hover {
   color: blue;
   font-family: Courier;
@@ -41,13 +31,12 @@
 }
 #unexplore-slideshow img {
   width: 100%;
-  height: 100%;
 }
 .container {
   height: auto;
   margin: 0 auto;
   position: relative;
-  top: 200px;
+  top: 300px;
   padding: 20px;
   padding-bottom: 20px;
   word-wrap: break-word;
