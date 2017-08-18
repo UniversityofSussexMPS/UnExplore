@@ -53,7 +53,8 @@
   height: auto;
   margin: 0 auto;
   position: absolute;
-  top: 20%;
+  min-top: 200px;
+  top: 30%;
   left: auto;
   right: auto;
   padding: 20px;
