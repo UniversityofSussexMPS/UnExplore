@@ -5,6 +5,7 @@
     overflow: hidden;
     width: 100%;
     height: 60px;
+    position: fixed;
 }
 
 /* Style the links inside the navigation bar */
