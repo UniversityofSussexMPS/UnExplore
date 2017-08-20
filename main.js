@@ -125,7 +125,6 @@ function init() {
 	
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
-	scene.add(light, ambientLight);
 	simElectron = true;
 	message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
 
@@ -143,7 +142,7 @@ function textSprite(sup,scale, z=0,larger=false) {
 	 z: offset of the text along the z axis
 	*/
 
-    var font = "sans serif",
+    var font = "sans-serif",
         size = 200,
         color = "#ffffff",
         text = "10  m"
