@@ -123,6 +123,7 @@ function init() {
 
 	//Add the first model to the scene
 	
+	scene.add(light, ambientLight);
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
 	simElectron = true;
@@ -142,7 +143,7 @@ function textSprite(sup,scale, z=0,larger=false) {
 	 z: offset of the text along the z axis
 	*/
 
-    var font = "Helvetica",
+    var font = "sans serif",
         size = 200,
         color = "#ffffff",
         text = "10  m"
