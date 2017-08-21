@@ -126,10 +126,7 @@ function init() {
 	scene.add(text);
 	
 	//add second model in
-	scene.add(proton1,proton2,neutron1,neutron2);
-	scene.add(particleSystem);
-	simElectron = true;
-	message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
+	
 
 	//Initalize all the tweens
 	initTweens();
