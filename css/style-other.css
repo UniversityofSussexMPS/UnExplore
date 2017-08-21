@@ -15,13 +15,6 @@
   margin-top: -10px;
   margin-left: 10px;
 }
-#kids, #kids:link, #kids:hover {
-  color: blue;
-  family-font: Courier;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 20px;
-}
 .main {
   width: 100%;
   height: auto;
@@ -31,6 +24,8 @@
   margin-right: 3%;
   width: 100%;
   height: auto;
+  position: relative;
+  top: 60px;
 }
 .image {
   display: inline-block;
