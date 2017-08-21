@@ -76,6 +76,9 @@ function initTweens(){
 	      .onComplete(function(){
 	      	controls.enabled = true;
 	      	simElectron = true;
+		scene.add(proton1,proton2,neutron1,neutron2);
+		scene.add(particleSystem);
+		message.innerHTML="This is an atomic nucleus surrounded by an electron cloud";
 			scene.remove(text);
 			document.getElementById("left-btn").style.visibility = "hidden"
 			document.getElementById("right-btn").style.visibility = "visible"
@@ -88,6 +91,8 @@ function initTweens(){
 				scene.add(light, ambientLight);
 				scene.add(text);
 				simElectron = false
+				scene.remove(proton1,proton2,neutron1,neutron2);
+				scene.remove(particleSystem);
 			  	textSprite("-10",0.0004,true);
 			  	////box(1.0);
 			  	message.innerHTML="Zooming in shows that each atom is made up of a atomic nucleus surrounded by a cloud of electrons";
