@@ -103,6 +103,7 @@ function init() {
 	ambientLight = new THREE.AmbientLight(0xffffff);
 	
 	// Create models
+	createText(text);
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
@@ -122,7 +123,9 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
+	scene.add(text);
 	
+	//add second model in
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
 	simElectron = true;
