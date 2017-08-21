@@ -56,7 +56,7 @@ function initTweens(){
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
 		  	textSprite("-15",0.000004);
-			box(0.005, z=0);
+			//box(0.005, z=0);
 			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 
@@ -69,7 +69,7 @@ function initTweens(){
 			scene.add( root );
 			scene.add(light, ambientLight)
 		  	textSprite("-9",0.5,true);
-		  	box(700.0, z=0)
+		  	//box(700.0, z=0)
 		});
 	tweenForward1 = cameraZoomTween1.to({x:0,y:0,z:1000},5000)
 	      .easing(TWEEN.Easing.Quartic.Out)
