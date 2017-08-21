@@ -1,7 +1,7 @@
 
 var a, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
-var tweenFowardStart, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
+var tweenFowardStart, tweenFowardStart1, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
 
 function initTweens(){
@@ -11,6 +11,9 @@ function initTweens(){
 
 	//Setup all the tweens in position
 	cameraZoomTweenStart = new TWEEN.Tween(camera.position);
+	cameraZoomTweenStart1 = new TWEEN.Tween(camera.position);
+	cameraZoomTweenStart2 = new TWEEN.Tween(camera.position);
+	cameraZoomTweenStart3 = new TWEEN.Tween(camera.position);
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
 	cameraZoomTween2  = new TWEEN.Tween(camera.position);
@@ -68,7 +71,7 @@ function initTweens(){
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0, z=0)
 		});
-	tweenForward1 = cameraZoomTween1.to({x:0,y:0,z:1000},5000)
+	tweenForwardStart1 = cameraZoomTweenStart1.to({x:0,y:0,z:1000},5000)
 	      .easing(TWEEN.Easing.Quartic.Out)
 	      .onComplete(function(){
 	      	controls.enabled = true;
@@ -78,7 +81,7 @@ function initTweens(){
 			document.getElementById("right-btn").style.visibility = "visible"
 	      })
 
-	tweenBackward0 =  cameraZoomTween15.to({x:0,y:0,z:2},5000)
+	tweenBackwardStart =  cameraZoomTweenStart2.to({x:0,y:0,z:2},5000)
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
 				controls.enabled = false; 
@@ -94,7 +97,7 @@ function initTweens(){
 			.onComplete(function(){
 				scene.remove(root,light, ambientLight)
 			})
-	tweenBackwardStart = cameraZoomTweenStart2.to({x:0,y:0,z:0.02},5000)
+	tweenBackwardStart1 = cameraZoomTweenStart3.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
 			.onStart(function(){
 				textSprite("-15",0.000004,0)
