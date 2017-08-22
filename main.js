@@ -99,7 +99,7 @@ function init() {
 	light = new THREE.PointLight( 0xffffff);
 	light.position.set( 0, 0, 10 );
 	light.castShadow = true;
-	ambientLight = new THREE.AmbientLight(0x404040);
+	ambientLight = new THREE.AmbientLight(0xffffff);
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
