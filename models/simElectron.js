@@ -47,6 +47,6 @@ function addElectron(){
     neutron2 = new THREE.Mesh(nucleon,white);
     neutron2.position.set(-0.001,0.001,0.0);
 
-	
+	scene.add(light, ambientLight);
 
 }
