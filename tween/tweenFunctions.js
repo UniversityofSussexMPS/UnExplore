@@ -45,7 +45,6 @@ function initTweens(){
 	cameraZoomTween32 = new TWEEN.Tween(camera.position);
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
 
-
 	/************************* Molecule ***************************/
 	    		
 	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
@@ -53,11 +52,11 @@ function initTweens(){
 		  .onStart(function(){
 		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
 		  	controls.enabled = false;  // This disables the controls
-		  	message.innerHTML="Zooming out, we can see this atom is part of a larger molecule";
+		  	message.innerHTML="Zooming out, we can see this is part of a larger molecule";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
 		  	textSprite("-15",0.000004);
-			//box(0.005, z=0);
+			//box(0.005);
 			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
 		  	document.getElementById("right-btn").style.visibility = "hidden"
 
@@ -70,7 +69,7 @@ function initTweens(){
 			scene.add( root );
 			scene.add(light, ambientLight)
 		  	textSprite("-9",0.5,true);
-		  	//box(700.0, z=0)
+		  	//box(700.0)
 		});
 	tweenForward1 = cameraZoomTween1.to({x:0,y:0,z:1000},5000)
 	      .easing(TWEEN.Easing.Quartic.Out)
@@ -90,7 +89,6 @@ function initTweens(){
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
 				controls.enabled = false; 
-				scene.add(light, ambientLight);
 				scene.add(proton1,proton2,neutron1,neutron2);
 				scene.add(particleSystem)
 				simElectron = true
@@ -737,4 +735,5 @@ function tweenBackward(){
 		}
 	}
 };
+
 
