@@ -12,7 +12,7 @@ var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
-var camera, controls, scene, renderer, model,light, ambientLight;
+var camera, controls, scene, renderer, model,light;
 
 var textMesh,supMesh,boxMesh;
 
@@ -96,12 +96,12 @@ function init() {
 
 
 	//Create light
-	light = new THREE.DirectionalLight( 0xffffff,1 );
+	light = new THREE.DirectionalLight( 0xffffff,4 );
 	light.position.set( 0, 0, 10 );
 	light.target.position.set(0,0,0);
 	light.castShadow = true;
 	ambientLight = new THREE.AmbientLight(0xffffff);
-	
+
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
@@ -122,11 +122,10 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	scene.add(proton1, proton2,neutron1,neutron2);
-	scene.add(particleSystem);
+	scene.add(proton1,proton2,neutron1,neutron2);
+	scene.add(particleSystem)
 	simElectron = true;
 	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
-	
 
 	//Initalize all the tweens
 	initTweens();
@@ -142,7 +141,7 @@ function textSprite(sup,scale, z=0,larger=false) {
 	 z: offset of the text along the z axis
 	*/
 
-    var font = "sans-serif",
+    var font = "Helvetica",
         size = 200,
         color = "#ffffff",
         text = "10  m"
@@ -250,7 +249,6 @@ function onWindowResize() {
 
 function animate() {
 
-	
 	// Make sure the document doesn't scroll
 	document.body.scrollTop = document.body.scrollLeft = 0;
 
