@@ -98,7 +98,7 @@ function initTweens(){
 			  	textSprite("-10",0.0004,true);
 			  	////box(1.0);
 			  	message.innerHTML="Zooming in shows that each atom is made up of a atomic nucleus surrounded by a cloud of electrons";
-			  	document.getElementById("right-btn").style.visibility = "hidden"
+			  	document.getElementById("right-btn").style.visibility = "visible"
 			  	document.getElementById("left-btn").style.visibility = "hidden"
 			})
 			.onComplete(function(){
