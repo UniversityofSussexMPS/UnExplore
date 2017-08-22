@@ -91,7 +91,6 @@ function initTweens(){
 				controls.enabled = false; 
 				scene.add(proton1,proton2,neutron1,neutron2);
 				scene.add(particleSystem);
-				scene.add(light, ambientLight)
 				simElectron = true
 				molecule = false
 			  	textSprite("-10",0.0004,true);
@@ -102,7 +101,7 @@ function initTweens(){
 			})
 			.onComplete(function(){
 				$("#slider").slider('value');;
-				scene.remove(root,light, ambientLight)
+				scene.remove(root)
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
@@ -116,6 +115,7 @@ function initTweens(){
 			})
 			.onComplete(function(){
 				controls.enabled = true; 
+				scene.add(light, ambientLight);
 				scene.remove(textMesh,supMesh,boxMesh);
 			})
 
