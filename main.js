@@ -61,7 +61,7 @@ $( "#slider-vertical" ).slider({
 
 });
 
-function animateTitle(time) {
+function animateTitle() {
 	requestAnimationFrame(animateTitle);
 	TWEEN.update(time);
 }
@@ -75,6 +75,41 @@ var tweenTitle = new TWEEN.Tween(coordsTitle)
 		scene.add(createText);
 	})
 	.start();
+
+function initTitle() {
+	scene = new THREE.Scene();
+	scene.fog = new THREE.FogExp2( 0x000000, 0.0000000025 );
+
+	// Setup renderer
+	renderer = new THREE.WebGLRenderer();
+	renderer.setClearColor( scene.fog.color );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+
+	// Creates containeer to show the framerate
+	var container = document.getElementById( 'container' );
+	container.appendChild( renderer.domElement );
+
+	// Create the Camera
+	camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 1e13 );
+	camera.position.set(0,0,0.02)
+
+
+	// Set the control
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	controls.enableZoom = false;
+	controls.enablePan = false;
+
+
+	//Create light
+	light = new THREE.DirectionalLight( 0xffffff,1 );
+	light.position.set( 0, 0, 10 );
+	light.target.position.set(0,0,0);
+	light.castShadow = true;
+	ambientLight = new THREE.AmbientLight(0xffffff);
+}
+initTitle();
+animateTitle();
 
 init();
 animate();
