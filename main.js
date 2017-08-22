@@ -122,7 +122,7 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	scene.add(light, ambientLight);
+	
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem)
 	simElectron = true;
