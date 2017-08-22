@@ -96,7 +96,7 @@ function init() {
 
 
 	//Create light
-	light = new THREE.PointLight( 0xffffff,1, 100 );
+	light = new THREE.PointLight( 0xffffff,4, 100 );
 	light.position.set( 0, 0, 10 );
 	light.castShadow = true;
 	ambientLight = new THREE.AmbientLight(0x404040);
