@@ -61,69 +61,6 @@ $( "#slider-vertical" ).slider({
 
 });
 
-init();
-animate();
-
-function initTitle() {
-	/*
-		function to initilize the three js scene
-	*/
-
-	// Initialize the scene
-	scene = new THREE.Scene();
-	scene.fog = new THREE.FogExp2( 0x000000, 0.0000000025 );
-
-	// Setup renderer
-	renderer = new THREE.WebGLRenderer();
-	renderer.setClearColor( scene.fog.color );
-	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( window.innerWidth, window.innerHeight );
-
-	// Creates containeer to show the framerate
-	var container = document.getElementById( 'container' );
-	container.appendChild( renderer.domElement );
-
-	// Create the Camera
-	camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 1e13 );
-	camera.position.set(0,0,0.02)
-
-
-	// Set the control
-	controls = new THREE.OrbitControls( camera, renderer.domElement );
-	controls.enableZoom = false;
-	controls.enablePan = false;
-
-
-	//Create light
-	light = new THREE.DirectionalLight( 0xffffff,1 );
-	light.position.set( 0, 0, 10 );
-	light.target.position.set(0,0,0);
-	light.castShadow = true;
-	ambientLight = new THREE.AmbientLight(0xffffff);
-	
-	// Create models
-	Creat
-	
-	// add the starts
-	stats = new Stats();
-	container.appendChild( stats.dom );
-
-
-	window.addEventListener( 'resize', onWindowResize, false );
-
-	// load in the gama data in the background so the website takes less time to load
-	loadScript("data/GAMA_data.js",addGamaData)
-
-	//Add the first model to the scene
-	scene.add(proton1, proton2,neutron1,neutron2);
-	scene.add(particleSystem);
-	simElectron = true;
-	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
-	
-
-	//Initalize all the tweens
-	initTweens();
-	
 
 init();
 animate();
