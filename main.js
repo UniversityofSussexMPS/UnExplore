@@ -61,6 +61,20 @@ $( "#slider-vertical" ).slider({
 
 });
 
+function animateTitle(time) {
+	requestAnimationFrame(animateTitle);
+	TWEEN.update(time);
+}
+requestAnimationFrame(animateTitle);
+
+var coordsTitle = {x:0, y: 0};
+var tweenTitle = new TWEEN.Tween(coordsTitle)
+	.to({x:100, y: 100}, 1000)
+	.easing(TWEEN.Easing.Quadratic.Out)
+	.onUpdate(function() {
+		scene.add(createText);
+	})
+	.start();
 
 init();
 animate();
@@ -103,7 +117,6 @@ function init() {
 	ambientLight = new THREE.AmbientLight(0xffffff);
 	
 	// Create models
-	createText(text);
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
