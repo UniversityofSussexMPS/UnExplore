@@ -61,14 +61,6 @@ $( "#slider-vertical" ).slider({
 
 });
 
-loadAllText(texts);
-loadFont(texts);
-createText(text);
-refreshText(text);
-render();
-bringInText();
-
-
 init();
 animate();
 
