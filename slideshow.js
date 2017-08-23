@@ -3,7 +3,7 @@ carousel();
 
 function carousel() {
     var i;
-    var x = document.getElementsByClassName("slides");
+    var x = document.getElementsByClassName("slide");
     for (i = 0; i < x.length; i++) {
       x[i].style.display = "none"; 
     }
