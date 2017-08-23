@@ -1,7 +1,7 @@
 
 var a, createText, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
-var tweenForwardTitle, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
+var tweenForwardTitle0,tweenForwardTitle, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
 
 function initTweens(){
@@ -10,6 +10,7 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
+	cameraZoomTweenTitle0 = new TWEEN.Tween(camera.position);
 	cameraZoomTweenTitle = new TWEEN.Tween(camera.position);
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
@@ -48,7 +49,7 @@ function initTweens(){
 
 	/***************************Atom*******************************/
 	
-	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
+	tweenForwardTitle0 = cameraZoomTweenTitle0.to({x:0,y:0,z:2},10000)
 		  .easing(TWEEN.Easing.Exponential.In)
 		  .onStart(function(){
 		  	controls.enabled = false;  // This disables the controls
