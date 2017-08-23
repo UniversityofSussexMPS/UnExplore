@@ -120,8 +120,15 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	animation.delay(5);
 	
+	$fucntion() {
+		setTimeout(createScene, 3000);
+	});
+	createScene();
+	
+
+}
+function createScene () {
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
 	scene.add(light, ambientLight)
@@ -130,12 +137,7 @@ function init() {
 
 	//Initalize all the tweens
 	initTweens();
-	
-
 }
-$(function() {
-	setTimeout(init, 3000);
-});
 
 function textSprite(sup,scale, z=0,larger=false) {
 	/*
