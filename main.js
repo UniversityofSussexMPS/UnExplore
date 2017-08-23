@@ -26,7 +26,7 @@ var message = document.getElementById('text')
 $('body').one('click', function() { document.getElementById("rotate-image").style.visibility = "hidden";})
 
 
-document.getElementById("loading").onload = function(){
+window.onload = function(){
 	document.getElementById("loading").style.visibility = "hidden"
 }
 var preVal =0;
