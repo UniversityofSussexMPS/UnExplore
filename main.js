@@ -25,10 +25,10 @@ var message = document.getElementById('text')
 
 $('body').one('click', function() { document.getElementById("rotate-image").style.visibility = "hidden";})
 
+window.setTimeout(init, 5000)
 
 window.onload = function(){
-	document.getElementById("loading").style.visibility = "hidden";
-	setTimeout(init, 3000)
+	document.getElementById("loading").style.visibility = "hidden"
 }
 var preVal =0;
 
