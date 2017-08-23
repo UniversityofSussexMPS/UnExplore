@@ -9,34 +9,6 @@
   height: 800px;
 }
 
-#kids, #kids:link, #kids:hover {
-  color: blue;
-  font-family: Courier;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 20px;
-}
-#unexplore-slideshow: hover {
-  opacity: 0.4;
-}
-#unexplore-slideshow {
-  position: absolute;
-  top: 60px;
-  width: 100%;
-  height: 200px;
-}
-#unexplore-slideshow {
-  position: absolute;
-  top: 60px;
-  width: 100%;
-  height: 200px;
-}
-#unexplore-slideshow > div {
-  position: absolute;
-}
-#unexplore-slideshow img {
-  width: 100%;
-}
 .container {
   height: auto;
   margin: 0 auto;
