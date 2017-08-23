@@ -27,7 +27,8 @@ $('body').one('click', function() { document.getElementById("rotate-image").styl
 
 
 window.onload = function(){
-	document.getElementById("loading").style.visibility = "hidden"
+	document.getElementById("loading").style.visibility = "hidden";
+	setTimeout(init, 3000)
 }
 var preVal =0;
 
@@ -120,15 +121,6 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	
-	$function() {
-		setTimeout(createScene, 3000);
-	});
-	createScene();
-	
-
-}
-function createScene () {
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
 	scene.add(light, ambientLight)
@@ -137,6 +129,8 @@ function createScene () {
 
 	//Initalize all the tweens
 	initTweens();
+	
+
 }
 
 function textSprite(sup,scale, z=0,larger=false) {
