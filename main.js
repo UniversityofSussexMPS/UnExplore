@@ -101,6 +101,7 @@ function init() {
 	ambientLight = new THREE.AmbientLight(0xffffff);
 
 	// Create models
+	createText(title);
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
@@ -120,11 +121,13 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 
-	window.setTimeout(initTweens(), 5000);
+	
 
 	//Initalize all the tweens
 	
+	createText(title);
 	
+	initTweens();
 
 }
 
