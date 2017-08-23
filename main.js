@@ -119,15 +119,11 @@ function init() {
 	// load in the gama data in the background so the website takes less time to load
 	loadScript("data/GAMA_data.js",addGamaData)
 
-	//Add the first model to the scene
-	scene.add(proton1,proton2,neutron1,neutron2);
-	scene.add(particleSystem);
-	scene.add(light, ambientLight)
-	simElectron = true;
-	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
+
+	window.setTimeout(initTweens(), 5000);
 
 	//Initalize all the tweens
-	initTweens();
+	
 	
 
 }
