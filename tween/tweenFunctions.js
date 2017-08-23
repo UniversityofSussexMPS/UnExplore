@@ -1,7 +1,7 @@
 
 var a, createText, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
-var tweenForwardTitle0,tweenForwardTitle, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
+var tweenForwardTitle0,tweenForwardTitle1, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
 
 function initTweens(){
@@ -10,42 +10,44 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
-	cameraZoomTweenTitle0 = new TWEEN.Tween(camera.position);
-	cameraZoomTweenTitle = new TWEEN.Tween(camera.position);
-	cameraZoomTween0  = new TWEEN.Tween(camera.position);
-	cameraZoomTween1  = new TWEEN.Tween(camera.position);
-	cameraZoomTween2  = new TWEEN.Tween(camera.position);
-	cameraZoomTween3  = new TWEEN.Tween(camera.position);
-	cameraZoomTween4  = new TWEEN.Tween(camera.position);
-	cameraZoomTween5  = new TWEEN.Tween(camera.position);
-	cameraZoomTween6  = new TWEEN.Tween(camera.position);
-	cameraZoomTween7  = new TWEEN.Tween(camera.position);
-	cameraZoomTween8  = new TWEEN.Tween(camera.position);
-	cameraZoomTween9  = new TWEEN.Tween(camera.position);
-	cameraZoomTween10 = new TWEEN.Tween(camera.position);
-	cameraZoomTween11 = new TWEEN.Tween(camera.position);
-	cameraZoomTween12 = new TWEEN.Tween(camera.position);
-	cameraZoomTween13 = new TWEEN.Tween(camera.position);
-	cameraZoomTween14 = new TWEEN.Tween(camera.position);
-	cameraZoomTween15 = new TWEEN.Tween(camera.position);
-	cameraZoomTween16 = new TWEEN.Tween(camera.position);
-	cameraZoomTween17 = new TWEEN.Tween(camera.position);
-	cameraZoomTween18 = new TWEEN.Tween(camera.position);
-	cameraZoomTween19 = new TWEEN.Tween(camera.position);
-	cameraZoomTween20 = new TWEEN.Tween(camera.position);
-	cameraZoomTween21 = new TWEEN.Tween(camera.position);
-	cameraZoomTween22 = new TWEEN.Tween(camera.position);
-	cameraZoomTween23 = new TWEEN.Tween(camera.position);
-	cameraZoomTween24 = new TWEEN.Tween(camera.position);
-	cameraZoomTween25 = new TWEEN.Tween(camera.position);
-	cameraZoomTween26 = new TWEEN.Tween(camera.position);
-	cameraZoomTween27 = new TWEEN.Tween(camera.position);
-	cameraZoomTween28 = new TWEEN.Tween(camera.position);
-	cameraZoomTween29 = new TWEEN.Tween(camera.position);
-	cameraZoomTween30 = new TWEEN.Tween(camera.position);
-	cameraZoomTween31 = new TWEEN.Tween(camera.position);
-	cameraZoomTween32 = new TWEEN.Tween(camera.position);
-	cameraZoomTween33 = new TWEEN.Tween(camera.position);
+	cameraZoomTweenTitle0	= new TWEEN.Tween(camera.position);
+	cameraZoomTweenTitle1	= new TWEEN.Tween(camera.position);
+	cameraZoomTweenTitle15	= new TWEEN.Tween(camera.position);
+	cameraZoomTweenTitle16	= new TWEEN.Tween(camera.position);
+	cameraZoomTween0	= new TWEEN.Tween(camera.position);
+	cameraZoomTween1	= new TWEEN.Tween(camera.position);
+	cameraZoomTween2	= new TWEEN.Tween(camera.position);
+	cameraZoomTween3  	= new TWEEN.Tween(camera.position);
+	cameraZoomTween4   	= new TWEEN.Tween(camera.position);
+	cameraZoomTween5   	= new TWEEN.Tween(camera.position);
+	cameraZoomTween6   	= new TWEEN.Tween(camera.position);
+	cameraZoomTween7   	= new TWEEN.Tween(camera.position);
+	cameraZoomTween8  	= new TWEEN.Tween(camera.position);
+	cameraZoomTween9   	= new TWEEN.Tween(camera.position);
+	cameraZoomTween10 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween11 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween12 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween13 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween14 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween15 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween16 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween17 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween18 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween19 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween20 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween21 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween22 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween23 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween24 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween25 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween26 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween27 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween28 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween29 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween30 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween31 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween32 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween33 	= new TWEEN.Tween(camera.position);
 
 	/***************************Atom*******************************/
 	tweenForwardTitle0 = cameraZoomTweenTitle0.to({x:0,y:0,z:2},10000)
