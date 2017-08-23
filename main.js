@@ -120,13 +120,11 @@ function init() {
 	// load in the gama data in the background so the website takes less time to load
 	loadScript("data/GAMA_data.js",addGamaData)
 
-
-	
+	//add in title 
+	scene.add(Title, light, ambientLight);
 
 	//Initalize all the tweens
-	
-	createText(title);
-	
+
 	initTweens();
 
 }
