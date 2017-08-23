@@ -133,6 +133,10 @@ function init() {
 	
 
 }
+$(function() {
+	setTimeout(init, 3000);
+});
+
 function textSprite(sup,scale, z=0,larger=false) {
 	/*
 	 function to create text to show size of the current model
