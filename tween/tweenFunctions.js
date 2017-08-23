@@ -76,7 +76,7 @@ function initTweens(){
 		scene.add(proton1,proton2,neutron1,neutron2);
 		scene.add(particleSystem);
 		scene.add(light, ambientLight)
-			scene.remove(createText);
+			scene.remove(Title);
 			document.getElementById("left-btn").style.visibility = "hidden"
 			document.getElementById("right-btn").style.visibility = "visible"
 	      })
