@@ -48,6 +48,24 @@ function initTweens(){
 
 	/***************************Atom*******************************/
 	
+	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
+		  .easing(TWEEN.Easing.Exponential.In)
+		  .onStart(function(){
+		  	controls.enabled = false;  // This disables the controls
+		  	$("#slider-vertical").slider('value',0);
+		  	camera.fov =50;
+		  	textSprite("-15",0.000004);
+			//box(0.005);
+		  	document.getElementById("right-btn").style.visibility = "hidden"
+		  })
+   		  .onComplete(function(){
+   		  	$("#slider").slider('value',500);
+			camera.position.z=8;
+			scene.add( root );
+			scene.add(light, ambientLight)
+		  	textSprite("-9",0.5,true);
+		  	//box(700.0)
+		});
 	tweenForwardTitle = cameraZoomTweenTitle.to({x:0,y:0,z:1000},5000)
 	      .easing(TWEEN.Easing.Quartic.Out)
 	      .onComplete(function(){
