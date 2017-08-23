@@ -1,5 +1,5 @@
 #slider{
-    margin:auto;
+    margin:10px;
     position: absolute;
     bottom: 7%;
     width: 97.5%;
@@ -13,7 +13,7 @@
     height: 70%;
 } 
 #steps{
-    margin:8px;
+    margin:10px;
     position: absolute;
     bottom: 3%;
     width: 97.5%;
