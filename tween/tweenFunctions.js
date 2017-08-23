@@ -48,55 +48,17 @@ function initTweens(){
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
 
 	/***************************Atom*******************************/
-	
 	tweenForwardTitle0 = cameraZoomTweenTitle0.to({x:0,y:0,z:2},10000)
-		  .easing(TWEEN.Easing.Exponential.In)
-		  .onStart(function(){
-		  	controls.enabled = false;  // This disables the controls
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  	textSprite("-15",0.000004);
-			//box(0.005);
-		  	document.getElementById("right-btn").style.visibility = "hidden"
-		  })
-   		  .onComplete(function(){
-   		  	$("#slider").slider('value',500);
-			camera.position.z=8;
-			scene.add( root );
-			scene.add(light, ambientLight)
-		  	textSprite("-9",0.5,true);
-		  	//box(700.0)
-		});
-	tweenForwardTitle = cameraZoomTweenTitle.to({x:0,y:0,z:1000},5000)
-	      .easing(TWEEN.Easing.Quartic.Out)
-	      .onComplete(function(){
-	      	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
-	      	controls.enabled = true;
-	      	simElectron = true;
-		scene.add(proton1,proton2,neutron1,neutron2);
-		scene.add(particleSystem);
-		scene.add(light, ambientLight)
-			scene.remove(Title);
-			document.getElementById("left-btn").style.visibility = "hidden"
-			document.getElementById("right-btn").style.visibility = "visible"
-	      })
-
-	
-	/************************* Molecule ***************************/
-	    		
-	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
 		  .easing(TWEEN.Easing.Exponential.In)
 		  .onStart(function(){
 		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
 		  	controls.enabled = false;  // This disables the controls
-		  	message.innerHTML="Zooming out, we can see this is part of a larger molecule";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
 		  	textSprite("-15",0.000004);
 			//box(0.005);
 			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
 		  	document.getElementById("right-btn").style.visibility = "hidden"
-
 
 		  })
    		  .onComplete(function(){
@@ -108,15 +70,84 @@ function initTweens(){
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0)
 		});
+	tweenForwardTitle1 = cameraZoomTweenTitle1.to({x:0,y:0,z:1000},5000)
+	      .easing(TWEEN.Easing.Quartic.Out)
+	      .onComplete(function(){
+	      	message.innerHTML="The atomic nucleus is made up of protons and neutrons";
+	      	controls.enabled = true;
+	      	simElectron = true;
+			scene.remove(Title);
+			document.getElementById("left-btn").style.visibility = "visible"
+			document.getElementById("right-btn").style.visibility = "visible"
+			scene.remove(textMesh,supMesh,boxMesh);
+	      })
+
+	tweenBackwardTitle0 =  cameraZoomTweenTitle15.to({x:0,y:0,z:2},5000)
+			.easing(TWEEN.Easing.Quartic.In)
+			.onStart(function(){
+				controls.enabled = false; 
+				scene.add(Title);
+				simElectron = false
+			  	textSprite("-10",0.0004,true);
+			  	////box(1.0);
+			  	document.getElementById("right-btn").style.visibility = "hidden"
+			  	document.getElementById("left-btn").style.visibility = "hidden"
+			})
+			.onComplete(function(){
+				$("#slider").slider('value');;
+				scene.remove(root)
+			})
+	tweenBackwardTitle1 = cameraZoomTweenTitle16.to({x:0,y:0,z:0.02},5000)
+			.easing(TWEEN.Easing.Exponential.Out)
+			.onStart(function(){
+				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
+				scene.remove(textMesh,supMesh,boxMesh);
+				textSprite("-15",0.000004,0)
+				//box(0.005)
+				document.getElementById("right-btn").style.visibility = "visible"
+
+			})
+			.onComplete(function(){
+				controls.enabled = true; 
+				scene.add(light, ambientLight);
+				scene.remove(textMesh,supMesh,boxMesh);
+			})
+
+	
+	/************************* Molecule ***************************/
+	    		
+	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
+		  .easing(TWEEN.Easing.Exponential.In)
+		  .onStart(function(){
+		  	controls.enabled = false;  // This disables the controls
+		  	message.innerHTML="Zooming out, we can see this is part of a larger molecule";
+		  	$("#slider-vertical").slider('value',0);
+		  	camera.fov =50;
+			//box(0.005);
+		  	document.getElementById("right-btn").style.visibility = "hidden"
+			document.getElementById("left-btn").style.visibility = "hidden"
+
+
+		  })
+   		  .onComplete(function(){
+   		  	$("#slider").slider('value',500);
+			simElectron = false;
+			molecule = true;
+			scene.remove(particleSystem);
+			scene.remove(proton1,proton2,neutron1,neutron2);
+			scene.remove(root);
+			camera.position.z=8;
+			camera.position.y=0.0;
+			camera.position.x=0.0;
+			scene.add(light, ambientLight)
+		  	textSprite("-9",0.5,true);
+		  	//box(700.0)
+		});
 	tweenForward1 = cameraZoomTween1.to({x:0,y:0,z:1000},5000)
 	      .easing(TWEEN.Easing.Quartic.Out)
 	      .onComplete(function(){
 	      	message.innerHTML="This is a caffeine molecule";
 	      	controls.enabled = true;
-	      	simElectron = false;
-	      	molecule = true;
-			scene.remove(particleSystem);
-			scene.remove(proton1,proton2,neutron1,neutron2);
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
@@ -143,14 +174,14 @@ function initTweens(){
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
 			.onStart(function(){
-				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				scene.remove(textMesh,supMesh,boxMesh);
 				textSprite("-15",0.000004,0)
 				//box(0.005)
-				document.getElementById("right-btn").style.visibility = "visible"
-
 			})
 			.onComplete(function(){
+				document.getElementById("right-btn").style.visibility = "visible"
+				document.getElementById("left-btn").style.visibility = "visible"
+				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				controls.enabled = true; 
 				scene.add(light, ambientLight);
 				scene.remove(textMesh,supMesh,boxMesh);
