@@ -1,7 +1,8 @@
 #slider{
+    margin:auto;
     position: absolute;
     bottom: 7%;
-    width: 100%;
+    width: 97.5%;
     
 } 
 #slider-vertical{
@@ -15,7 +16,7 @@
     margin:8px;
     position: absolute;
     bottom: 3%;
-    width: 100%;
+    width: 97.5%;
     color:#fff;
 }
 
