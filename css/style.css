@@ -1,8 +1,9 @@
 #slider{
-    margin:10px;
+    margin:auto;
     position: absolute;
     bottom: 7%;
     width: 97.5%;
+    
 } 
 #slider-vertical{
     margin:10px;
