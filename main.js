@@ -120,6 +120,7 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
+	animation.delay(5);
 	
 	scene.add(proton1,proton2,neutron1,neutron2);
 	scene.add(particleSystem);
