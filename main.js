@@ -121,7 +121,7 @@ function init() {
 
 	//Add the first model to the scene
 	
-	$fucntion() {
+	$function() {
 		setTimeout(createScene, 3000);
 	});
 	createScene();
