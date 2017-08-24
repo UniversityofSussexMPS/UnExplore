@@ -3,7 +3,6 @@
   font-family: sans-serif;
   text-decoration: none;
   color: black;
-  width: 100%;
 }
 
 .title-header .title-header:link .title-header:hover {
@@ -27,7 +26,7 @@
 .image {
   display: inline-block;
   height: auto;
-  width: 32%;
+  width: 32.9%;
 }
 
 .container {
