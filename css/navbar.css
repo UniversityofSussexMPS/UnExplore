@@ -22,7 +22,7 @@
     text-decoration: underlined;
 }
 /*make current link unresponsive on hover*/
-#active.hover {
+#active:hover {
     background-color: black;
     color: white !important;
     text-decoration: none !important;
