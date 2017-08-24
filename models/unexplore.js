@@ -1,6 +1,6 @@
 var typeface="http://cdn.rawgit.com/ECallanan/hello-world/c2eb3129/Abscissa_Bold.js";
 
-var  textMesh, textGeo, materials;
+var titleMesh, textGeo, materials;
 var firstLetter = true;
 var text = "unExplore",
 	height = 20,
@@ -57,10 +57,10 @@ function createText() {
 		}
 	}
 	var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
-	textMesh = new THREE.Mesh( textGeo, materials );
-	textMesh.position.x = centerOffset;
-	textMesh.position.y = hover;
-	textMesh.position.z = 0;
-	textMesh.rotation.x = 0;
-	textMesh.rotation.y = Math.PI * 2;
+	titleMesh = new THREE.Mesh( textGeo, materials );
+	titleMesh.position.x = centerOffset;
+	titleMesh.position.y = hover;
+	titleMesh.position.z = 0;
+	titleMesh.rotation.x = 0;
+	titleMesh.rotation.y = Math.PI * 2;
 	
