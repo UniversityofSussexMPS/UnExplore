@@ -122,6 +122,11 @@ function init() {
 
 	//add in title 
 	scene.add(titleMesh, light, ambientLight);
+	scene.remove(titleMesh);
+	scene.add(particleSystem);
+	scene.add(proton1, proton2, neutron1, neutron2)
+	simElectron = true;
+	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
 
 	//Initalize all the tweens
 
