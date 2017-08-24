@@ -22,7 +22,11 @@
     text-decoration: underlined;
 }
 /*make current link unresponsive on hover*/
-
+#active.hover {
+    background-color: black;
+    color: white !important;
+    text-decoration: none !important;
+}
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
