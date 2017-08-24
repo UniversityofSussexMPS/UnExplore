@@ -31,17 +31,16 @@
 .image1 {
   float:left;
   height: auto;
-  width: 32.9%;  
+  width: 33.33%;  
 }
 .image2 {
-  float: center;
   height: auto;
-  width: 32.9%;
+  width: 33.33%;
 }
 .image3 {
   float: right;
   height: auto;
-  width: 32.9%;
+  width: 33.33%;
 }
 
 .container {
