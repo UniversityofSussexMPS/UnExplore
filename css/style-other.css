@@ -23,12 +23,14 @@
   width: 100%;
   height: auto;
   margin: 0;
+  padding: 0;
 }
 .image {
   display: inline-block;
   width: 33.2%;
   height: auto;
   margin: 0;
+  padding: 0;
 }
 .container {
   min-height: 700px;
