@@ -122,6 +122,9 @@ function init() {
 
 	//add in title 
 	scene.add(titleMesh, light, ambientLight);
+	
+	create_atom();
+	
 }
 var funct;
 
