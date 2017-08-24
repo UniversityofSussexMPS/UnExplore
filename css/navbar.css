@@ -3,6 +3,7 @@
     background-color: black;
     overflow: hidden;
     position: fixed;
+    width: 100%;
 }
 
 /* Style the links inside the navigation bar */
