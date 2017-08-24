@@ -8,11 +8,11 @@
   width: 100%;
 }
 .slide {
+  margin-top: 60px;
   width: 100%;
   display: none;
   height: auto;
 }
-
 .container {
   min-height: 700px;
   height: auto;
