@@ -14,7 +14,26 @@
     text-decoration: none;
     font-size: 17px;
 }
-
+#title-header {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  text-decoration: none;
+  float: left;
+  margin-top: -10px;
+  margin-left: 10px;
+}
+#title-header:hover {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  text-decoration: none;
+  float: left;
+  margin-top: -10px;
+  margin-left: 10px;
+}
 /* Change the color of links and add an underline on hover */
 .topnav a:hover {
     background-color: black;
