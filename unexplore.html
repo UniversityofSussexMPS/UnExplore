@@ -28,7 +28,9 @@
             </div>
 
          	<!-- add start button and loading gif -->
-		<div id="loading"><script src= "models/unexplore.js"></script></div>
+		<div id="loading">
+			<img id="loading-image" src= "images/ajax-loader.gif" alt="Loading..." />
+		</div>
 		<div id="slider-hide" > </div>
 			<div id="textbox"><p id="text"> <span id="textback"> </span></p></div>
 		    <img id="rotate-image" src="images/rotate_arrow.png" alt="Rotate object" />
@@ -40,7 +42,7 @@
 				<button id="left-btn"  class="btn left-btn" onclick="tweenBackward();"><</button>
 			</div>
 
-<!--load all building tools-->
+			<!--load all building tools-->
 		<script src= "build/three.min.js"></script>
 		<script src= "build/OrbitControls.js"></script>
 		<script src= "build/Detector.js"></script>
@@ -54,11 +56,8 @@
 		<script src= "Jquery/jquery-ui.min.js" type="text/javascript"></script>
 		<script src= "tween/Tween.js"></script>
 		<script src= "tween/tweenFunctions.js"></script>
-				
-<!--load title sequence-->
-		
-		
-<!--load all models-->
+			<!--load all models-->
+		<script src= "models/unexplore.js"></script>
 		<script src= "models/GPUParticleSystem.js" charset="utf-8"></script>
 		<script src= "models/simElectron.js"></script>
 		<script src= "models/human.js"></script>
