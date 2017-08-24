@@ -45,13 +45,6 @@ function initTweens(){
 	cameraZoomTween32 	= new TWEEN.Tween(camera.position);
 	cameraZoomTween33 	= new TWEEN.Tween(camera.position);
 
-	/***************************Atom*******************************/
-	setTimeout(function() {scene.remove(titleMesh; }, 5000);
-	scene.add(particleSystem);
-	scene.add(proton1, proton2, neutron1, neutron2)
-	simElectron = true;
-	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
-
 	
 	/************************* Molecule ***************************/
 	    		
