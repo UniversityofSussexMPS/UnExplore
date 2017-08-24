@@ -25,7 +25,6 @@
 }
 .image {
   display: inline-block;
-  width: 33%;
   width: calc(100% /3);
   height: auto;
   margin-left: 0;
