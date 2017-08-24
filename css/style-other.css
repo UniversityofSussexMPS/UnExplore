@@ -25,8 +25,9 @@
 }
 .image {
   display: inline-block;
-  width: 34%;
+  width: 33.3%;
   height: auto;
+  margin: 0;
 }
 .container {
   min-height: 700px;
