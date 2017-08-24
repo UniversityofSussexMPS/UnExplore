@@ -23,10 +23,19 @@
   width: 100%;
   height: auto;
 }
-.image {
+.image1 .image2 .image3 {
   display: inline-block;
   height: auto;
   width: 32.9%;
+}
+.image1 {
+  float:left;
+}
+.image2 {
+  float: center;
+}
+.image3 {
+  float: right;
 }
 
 .container {
