@@ -101,7 +101,7 @@ function init() {
 	ambientLight = new THREE.AmbientLight(0xffffff);
 
 	// Create models
-	createText(title);
+	createText();
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
@@ -121,7 +121,7 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//add in title 
-	scene.add(Title, light, ambientLight);
+	scene.add(titleMesh, light, ambientLight);
 
 	//Initalize all the tweens
 
