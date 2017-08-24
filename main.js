@@ -121,18 +121,6 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//add in title 
-	scene.add(titleMesh, light, ambientLight);
-	
-	create_atom();
-	
-}
-var funct;
-
-function create_atom() {
-	funct = setTimeout(loadAtom, 3000);
-}
-function loadAtom() {
-	scene.remove(titleMesh);
 	scene.add(particleSystem);
 	scene.add(proton1, proton2, neutron1, neutron2);
 	scene.add(light, ambientLight)
@@ -141,7 +129,9 @@ function loadAtom() {
 	//Initalize all the tweens
 
 	initTweens();
+	
 }
+
 	
 function textSprite(sup,scale, z=0,larger=false) {
 	/*
