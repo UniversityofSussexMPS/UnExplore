@@ -22,10 +22,11 @@
 .imagebar {
   width: 100%;
   height: auto;
+  margin: 0;
 }
 .image {
   display: inline-block;
-  width: 33.3%;
+  width: 33%;
   height: auto;
   margin: 0;
 }
