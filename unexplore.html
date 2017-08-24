@@ -32,15 +32,15 @@
 			<img id="loading-image" src= "images/ajax-loader.gif" alt="Loading..." />
 		</div>
 		<div id="slider-hide" > </div>
-			<div id="textbox"><p id="text"> <span id="textback"> </span></p></div>
-		    <img id="rotate-image" src="images/rotate_arrow.png" alt="Rotate object" />
-			<div id="slider-vertical" class=""></div>
-			<div id="btn-div">
-				<button id="right-btn" class="btn right-btn" onclick="tweenForward();">></button>
-			</div>
-			<div id="btn-div">
-				<button id="left-btn"  class="btn left-btn" onclick="tweenBackward();"><</button>
-			</div>
+		<div id="textbox"><p id="text"><span id="textback"></span></p></div>
+		<button onclick="create-atom()"><img id="rotate-image" src="images/rotate_arrow.png" alt="Rotate object" /></button>
+		<div id="slider-vertical" class=""></div>
+		<div id="btn-div">
+			<button id="right-btn" class="btn right-btn" onclick="tweenForward();">></button>
+		</div>
+		<div id="btn-div">
+			<button id="left-btn"  class="btn left-btn" onclick="tweenBackward();"><</button>
+		</div>
 
 			<!--load all building tools-->
 		<script src= "build/three.min.js"></script>
