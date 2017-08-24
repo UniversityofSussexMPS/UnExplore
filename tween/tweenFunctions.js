@@ -1,7 +1,7 @@
 
 var a, createText, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
-var tweenForwardTitle0,tweenForwardTitle1, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
+var tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
 
 function initTweens(){
@@ -10,10 +10,6 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
-	cameraZoomTweenTitle0	= new TWEEN.Tween(camera.position);
-	cameraZoomTweenTitle1	= new TWEEN.Tween(camera.position);
-	cameraZoomTweenTitle15	= new TWEEN.Tween(camera.position);
-	cameraZoomTweenTitle16	= new TWEEN.Tween(camera.position);
 	cameraZoomTween0	= new TWEEN.Tween(camera.position);
 	cameraZoomTween1	= new TWEEN.Tween(camera.position);
 	cameraZoomTween2	= new TWEEN.Tween(camera.position);
@@ -50,70 +46,11 @@ function initTweens(){
 	cameraZoomTween33 	= new TWEEN.Tween(camera.position);
 
 	/***************************Atom*******************************/
-	tweenForwardTitle0 = cameraZoomTweenTitle0.to({x:0,y:0,z:2},10000)
-		  .easing(TWEEN.Easing.Exponential.In)
-		  .onStart(function(){
-		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
-		  	controls.enabled = false;  // This disables the controls
-		  	$("#slider-vertical").slider('value',0);
-		  	camera.fov =50;
-		  	textSprite("-15",0.000004);
-			//box(0.005);
-			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
-		  	document.getElementById("right-btn").style.visibility = "hidden"
-
-		  })
-   		  .onComplete(function(){
-   		  	$("#slider").slider('value',500);
-			camera.position.z=8;
-			scene.remove(textMesh,supMesh,boxMesh);
-			scene.add( root );
-			scene.add(light, ambientLight)
-		  	textSprite("-9",0.5,true);
-		  	//box(700.0)
-		});
-	tweenForwardTitle1 = cameraZoomTweenTitle1.to({x:0,y:0,z:1000},5000)
-	      .easing(TWEEN.Easing.Quartic.Out)
-	      .onComplete(function(){
-	      	message.innerHTML="The atomic nucleus is made up of protons and neutrons";
-	      	controls.enabled = true;
-	      	simElectron = true;
-			scene.remove(Title);
-			document.getElementById("left-btn").style.visibility = "visible"
-			document.getElementById("right-btn").style.visibility = "visible"
-			scene.remove(textMesh,supMesh,boxMesh);
-	      })
-
-	tweenBackwardTitle0 =  cameraZoomTweenTitle15.to({x:0,y:0,z:2},5000)
-			.easing(TWEEN.Easing.Quartic.In)
-			.onStart(function(){
-				controls.enabled = false; 
-				scene.add(Title);
-				simElectron = false
-			  	textSprite("-10",0.0004,true);
-			  	////box(1.0);
-			  	document.getElementById("right-btn").style.visibility = "hidden"
-			  	document.getElementById("left-btn").style.visibility = "hidden"
-			})
-			.onComplete(function(){
-				$("#slider").slider('value');;
-				scene.remove(root)
-			})
-	tweenBackwardTitle1 = cameraZoomTweenTitle16.to({x:0,y:0,z:0.02},5000)
-			.easing(TWEEN.Easing.Exponential.Out)
-			.onStart(function(){
-				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
-				scene.remove(textMesh,supMesh,boxMesh);
-				textSprite("-15",0.000004,0)
-				//box(0.005)
-				document.getElementById("right-btn").style.visibility = "visible"
-
-			})
-			.onComplete(function(){
-				controls.enabled = true; 
-				scene.add(light, ambientLight);
-				scene.remove(textMesh,supMesh,boxMesh);
-			})
+	setTimeout(function() {scene.remove(titleMesh; }, 5000);
+	scene.add(particleSystem);
+	scene.add(proton1, proton2, neutron1, neutron2)
+	simElectron = true;
+	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
 
 	
 	/************************* Molecule ***************************/
