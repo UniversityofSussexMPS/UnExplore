@@ -30,12 +30,18 @@
 }
 .image1 {
   float:left;
+  height: auto;
+  width: 32.9%;  
 }
 .image2 {
   float: center;
+  height: auto;
+  width: 32.9%;
 }
 .image3 {
   float: right;
+  height: auto;
+  width: 32.9%;
 }
 
 .container {
