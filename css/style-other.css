@@ -4,17 +4,6 @@
   text-decoration: none;
   color: black;
 }
-
-.title-header .title-header:link .title-header:hover {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  padding: 10px;
-  text-decoration: none;
-  float: left;
-  margin-top: -10px;
-  margin-left: 10px;
-}
 .main {
   width: 100%;
   height: auto;
