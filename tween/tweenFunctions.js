@@ -1,5 +1,6 @@
 
-var a, createText, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
+
+var a, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
 var tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
@@ -10,67 +11,63 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
-	cameraZoomTween0	= new TWEEN.Tween(camera.position);
-	cameraZoomTween1	= new TWEEN.Tween(camera.position);
-	cameraZoomTween2	= new TWEEN.Tween(camera.position);
-	cameraZoomTween3  	= new TWEEN.Tween(camera.position);
-	cameraZoomTween4   	= new TWEEN.Tween(camera.position);
-	cameraZoomTween5   	= new TWEEN.Tween(camera.position);
-	cameraZoomTween6   	= new TWEEN.Tween(camera.position);
-	cameraZoomTween7   	= new TWEEN.Tween(camera.position);
-	cameraZoomTween8  	= new TWEEN.Tween(camera.position);
-	cameraZoomTween9   	= new TWEEN.Tween(camera.position);
-	cameraZoomTween10 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween11 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween12 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween13 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween14 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween15 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween16 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween17 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween18 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween19 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween20 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween21 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween22 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween23 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween24 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween25 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween26 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween27 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween28 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween29 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween30 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween31 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween32 	= new TWEEN.Tween(camera.position);
-	cameraZoomTween33 	= new TWEEN.Tween(camera.position);
+	cameraZoomTween0  = new TWEEN.Tween(camera.position);
+	cameraZoomTween1  = new TWEEN.Tween(camera.position);
+	cameraZoomTween2  = new TWEEN.Tween(camera.position);
+	cameraZoomTween3  = new TWEEN.Tween(camera.position);
+	cameraZoomTween4  = new TWEEN.Tween(camera.position);
+	cameraZoomTween5  = new TWEEN.Tween(camera.position);
+	cameraZoomTween6  = new TWEEN.Tween(camera.position);
+	cameraZoomTween7  = new TWEEN.Tween(camera.position);
+	cameraZoomTween8  = new TWEEN.Tween(camera.position);
+	cameraZoomTween9  = new TWEEN.Tween(camera.position);
+	cameraZoomTween10 = new TWEEN.Tween(camera.position);
+	cameraZoomTween11 = new TWEEN.Tween(camera.position);
+	cameraZoomTween12 = new TWEEN.Tween(camera.position);
+	cameraZoomTween13 = new TWEEN.Tween(camera.position);
+	cameraZoomTween14 = new TWEEN.Tween(camera.position);
+	cameraZoomTween15 = new TWEEN.Tween(camera.position);
+	cameraZoomTween16 = new TWEEN.Tween(camera.position);
+	cameraZoomTween17 = new TWEEN.Tween(camera.position);
+	cameraZoomTween18 = new TWEEN.Tween(camera.position);
+	cameraZoomTween19 = new TWEEN.Tween(camera.position);
+	cameraZoomTween20 = new TWEEN.Tween(camera.position);
+	cameraZoomTween21 = new TWEEN.Tween(camera.position);
+	cameraZoomTween22 = new TWEEN.Tween(camera.position);
+	cameraZoomTween23 = new TWEEN.Tween(camera.position);
+	cameraZoomTween24 = new TWEEN.Tween(camera.position);
+	cameraZoomTween25 = new TWEEN.Tween(camera.position);
+	cameraZoomTween26 = new TWEEN.Tween(camera.position);
+	cameraZoomTween27 = new TWEEN.Tween(camera.position);
+	cameraZoomTween28 = new TWEEN.Tween(camera.position);
+	cameraZoomTween29 = new TWEEN.Tween(camera.position);
+	cameraZoomTween30 = new TWEEN.Tween(camera.position);
+	cameraZoomTween31 = new TWEEN.Tween(camera.position);
+	cameraZoomTween32 = new TWEEN.Tween(camera.position);
+	cameraZoomTween33 = new TWEEN.Tween(camera.position);
 
-	
 	/************************* Molecule ***************************/
 	    		
 	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
 		  .easing(TWEEN.Easing.Exponential.In)
 		  .onStart(function(){
+		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
 		  	controls.enabled = false;  // This disables the controls
 		  	message.innerHTML="Zooming out, we can see this is part of a larger molecule";
 		  	$("#slider-vertical").slider('value',0);
 		  	camera.fov =50;
+		  	textSprite("-15",0.000004);
 			//box(0.005);
+			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
 		  	document.getElementById("right-btn").style.visibility = "hidden"
-			document.getElementById("left-btn").style.visibility = "hidden"
 
 
 		  })
    		  .onComplete(function(){
    		  	$("#slider").slider('value',500);
-			simElectron = false;
-			molecule = true;
-			scene.remove(particleSystem);
-			scene.remove(proton1,proton2,neutron1,neutron2);
-			scene.remove(root);
 			camera.position.z=8;
-			camera.position.y=0.0;
-			camera.position.x=0.0;
+			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add( root );
 			scene.add(light, ambientLight)
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0)
@@ -80,6 +77,10 @@ function initTweens(){
 	      .onComplete(function(){
 	      	message.innerHTML="This is a caffeine molecule";
 	      	controls.enabled = true;
+	      	simElectron = false;
+	      	molecule = true;
+			scene.remove(particleSystem);
+			scene.remove(proton1,proton2,neutron1,neutron2);
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
@@ -90,7 +91,7 @@ function initTweens(){
 			.onStart(function(){
 				controls.enabled = false; 
 				scene.add(proton1,proton2,neutron1,neutron2);
-				scene.add(particleSystem);
+				scene.add(particleSystem)
 				simElectron = true
 				molecule = false
 			  	textSprite("-10",0.0004,true);
@@ -101,21 +102,20 @@ function initTweens(){
 			})
 			.onComplete(function(){
 				$("#slider").slider('value');;
-				scene.remove(root)
+				scene.remove(root,light)
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
 			.onStart(function(){
+				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				scene.remove(textMesh,supMesh,boxMesh);
 				textSprite("-15",0.000004,0)
 				//box(0.005)
+				document.getElementById("right-btn").style.visibility = "visible"
+
 			})
 			.onComplete(function(){
-				document.getElementById("right-btn").style.visibility = "visible"
-				document.getElementById("left-btn").style.visibility = "visible"
-				message.innerHTML="The atomic nucleus is made up of protons and neutrons";
 				controls.enabled = true; 
-				scene.add(light, ambientLight);
 				scene.remove(textMesh,supMesh,boxMesh);
 			})
 
@@ -736,5 +736,3 @@ function tweenBackward(){
 		}
 	}
 };
-
-
