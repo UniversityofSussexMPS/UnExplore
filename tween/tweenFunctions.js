@@ -1,6 +1,6 @@
 
 
-var a, titleMesh, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
+var a, group, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
 var Title, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
@@ -52,7 +52,7 @@ function initTweens(){
 	Title = cameraZoomTitle.to({x:0}, 2000)
 		.easing(TWEEN.Easing.Exponential.In)
 		.onStart(function(){
-			scene.remove(titleMesh);
+			scene.remove(group);
 			document.getElementById("left-btn").style.visibility = "hidden"
 			document.getElementById("right-btn").style.visibility = "hidden"
 	})
