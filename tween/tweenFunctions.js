@@ -1,7 +1,7 @@
 
-var a, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
+var a, titleMesh, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
-var tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
+var tweenForwardTitle0, tweenForwardTitle1, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
 
 function initTweens(){
@@ -10,6 +10,10 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
+	cameraZoomTitle0  = new TWEEN.Tween(camera.position);
+	cameraZoomTitle1  = new TWEEN.Tween(camera.position);
+	cameraZoomTitle2  = new TWEEN.Tween(camera.position);
+	cameraZoomTitle3  = new TWEEN.Tween(camera.position);
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
 	cameraZoomTween2  = new TWEEN.Tween(camera.position);
@@ -44,6 +48,77 @@ function initTweens(){
 	cameraZoomTween31 = new TWEEN.Tween(camera.position);
 	cameraZoomTween32 = new TWEEN.Tween(camera.position);
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
+	
+	/*************************** Atom *****************************/
+	    		
+	tweenForwardTitle0 = cameraZoomTitle0.to({x:0,y:0,z:2},10000)
+		  .easing(TWEEN.Easing.Exponential.In)
+		  .onStart(function(){
+		  	scene.remove(textMesh,supMesh,boxMesh); // This removes the scale and box
+		  	controls.enabled = false;  // This disables the controls
+		  	$("#slider-vertical").slider('value',0);
+		  	camera.fov =50;
+		  	textSprite("-15",0.000004);
+			//box(0.005);
+			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
+		  	document.getElementById("right-btn").style.visibility = "hidden"
+
+
+		  })
+   		  .onComplete(function(){
+   		  	$("#slider").slider('value',500);
+			camera.position.z=8;
+			scene.remove(textMesh,supMesh,boxMesh);
+			scene.add( root );
+			scene.add(light, ambientLight)
+		  	textSprite("-9",0.5,true);
+		  	//box(700.0)
+		});
+	tweenForwardTitle1 = cameraZoomTitle1.to({x:0,y:0,z:1000},5000)
+	      .easing(TWEEN.Easing.Quartic.Out)
+	      .onComplete(function(){
+	      	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
+	      	controls.enabled = true;
+	      	simElectron = true;
+		scene.add(particleSystem);
+		scene.add(proton1,proton2,neutron1,neutron2);
+		scene.remove(titleMesh);
+		document.getElementById("left-btn").style.visibility = "visible"
+		document.getElementById("right-btn").style.visibility = "visible"
+		scene.remove(textMesh,supMesh,boxMesh);
+	})
+
+	tweenBackwardTitle0 =  cameraZoomTitle2.to({x:0,y:0,z:2},5000)
+			.easing(TWEEN.Easing.Quartic.In)
+			.onStart(function(){
+				controls.enabled = false; 
+				scene.add(proton1,proton2,neutron1,neutron2);
+				scene.add(particleSystem)
+				simElectron = true
+				molecule = false
+			  	textSprite("-10",0.0004,true);
+			  	////box(1.0);
+			  	document.getElementById("right-btn").style.visibility = "hidden"
+			  	document.getElementById("left-btn").style.visibility = "hidden"
+			})
+			.onComplete(function(){
+				$("#slider").slider('value');;
+				scene.remove(root,light, ambientLight)
+			})
+	tweenBackwardTitle1 = cameraZoomTitle3.to({x:0,y:0,z:0.02},5000)
+			.easing(TWEEN.Easing.Exponential.Out)
+			.onStart(function(){
+				scene.remove(textMesh,supMesh,boxMesh);
+				textSprite("-15",0.000004,0)
+				//box(0.005)
+				document.getElementById("right-btn").style.visibility = "visible"
+
+			})
+			.onComplete(function(){
+				controls.enabled = true; 
+				scene.remove(textMesh,supMesh,boxMesh);
+			})
+
 
 	/************************* Molecule ***************************/
 	    		
@@ -58,7 +133,7 @@ function initTweens(){
 		  	textSprite("-15",0.000004);
 			//box(0.005);
 			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
-		  	document.getElementById("right-btn").style.visibility = "hidden"
+		  	document.getElementById("right-btn").style.visibility = "visible"
 
 
 		  })
@@ -652,8 +727,12 @@ function tweenForward(){
 		This is the function which is called when the back button is pressed
 		starting a zooming out tween depending on what scale we are currently at.
 	*/
+	if (titleMesh){
+		tweenForwardTitle0.chain(tweenForwardTitle1);
+		tweenForwardTitle0.start()
+	}
 
-	if(simElectron){
+	else if(simElectron){
 		tweenForward0.chain(tweenForward1);
 		tweenForward0.start()
 	}
@@ -696,8 +775,12 @@ function tweenBackward(){
 		This is the function which is called when the back button is pressed
 		starting a zooming in tween depending on what scale we are currently at.
 	*/
+	if(simElectron){
+		tweenBackwardTitle0.chain(tweenBackwardTitle1);
+		tweenBackwardTitle0.start()
+	}
 
-	if(molecule){
+	else if(molecule){
 		tweenBackward0.chain(tweenBackward1);
 		tweenBackward0.start()
 	}
