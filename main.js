@@ -121,8 +121,11 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//add in title 
-	scene.add(group);
+	scene.add(proton1, proton2, neutron1, neutron2);
+	scene.add(particleSystem);
 	scene.add( light, ambientLight)
+	simElectron = true;
+	message.innerHTML = "This is a Helium nucleus surrounded by a cloud of electrons";
 	
 	//Initalize all the tweens		  	
   		  
