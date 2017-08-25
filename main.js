@@ -96,10 +96,8 @@ function init() {
 
 
 	//Create light
-	light = new THREE.DirectionalLight( 0xffffff,4 );
+	light = new THREE.PointLight( 0xffffff );
 	light.position.set( 0, 0, 10 );
-	light.target.position.set(0,0,0);
-	light.castShadow = true;
 	ambientLight = new THREE.AmbientLight(0x404040, 2);
 
 	// Create models
