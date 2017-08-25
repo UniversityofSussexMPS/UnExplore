@@ -1,6 +1,6 @@
 
 
-var a, group, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
+var a, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
 var Title, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
@@ -11,7 +11,6 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
-	cameraZoomTitle   = new TWEEN.Tween(camera.position);
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
 	cameraZoomTween2  = new TWEEN.Tween(camera.position);
@@ -47,23 +46,7 @@ function initTweens(){
 	cameraZoomTween32 = new TWEEN.Tween(camera.position);
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
 
-	/***************************Atom*******************************/
-	
-	Title = cameraZoomTitle.to({x:0}, 2000)
-		.easing(TWEEN.Easing.Exponential.In)
-		.onStart(function(){
-			scene.remove(group);
-			document.getElementById("left-btn").style.visibility = "hidden"
-			document.getElementById("right-btn").style.visibility = "hidden"
-	})
-	.onComplete(function() {
-		scene.add(particleSystem);
-		scene.add(proton1, proton2, neutron1, neutron2)
-		simElectron = true;
-		message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
-	});
-	
-	
+
 	/************************* Molecule ***************************/
 	    		
 	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
