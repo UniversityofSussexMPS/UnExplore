@@ -120,11 +120,8 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	scene.add(proton1,proton2,neutron1,neutron2);
-	scene.add(light, ambientLight);
-	scene.add(particleSystem)
-	simElectron = true;
-	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
+	scene.add(titleMesh);
+	scene.add(light, ambientLight)
 
 	//Initalize all the tweens
 	initTweens();
