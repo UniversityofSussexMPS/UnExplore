@@ -101,7 +101,7 @@ function init() {
 	
 
 	// Create models
-	initText(font);
+	initText("Abscissa_Bold.js");
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
