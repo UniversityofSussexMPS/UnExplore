@@ -11,6 +11,7 @@ function initTweens(){
 	*/
 
 	//Setup all the tweens in position
+	cameraZoomTitle   = new TWEEN.Tween(camera.position);
 	cameraZoomTween0  = new TWEEN.Tween(camera.position);
 	cameraZoomTween1  = new TWEEN.Tween(camera.position);
 	cameraZoomTween2  = new TWEEN.Tween(camera.position);
