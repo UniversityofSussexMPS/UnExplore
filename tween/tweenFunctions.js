@@ -1,5 +1,5 @@
 
-var a, proton1, proton2, neutron1, neutron2, particleSystem, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
+var a, simElectron, molecule, human, earth, solarsystem, stars, galaxy, GAMA, CMB;
 
 var tweenForwardTitle0, tweenForwardTitle1, tweenForward0, tweenForward1, tweenForward2, tweenForward3, tweenForward4, tweenForward5, tweenForward6, tweenForward7
 var tweenForward8, tweenForward9, tweenForward10, tweenForward11, tweenForward12, tweenForward13, tweenForward14
@@ -80,11 +80,8 @@ function initTweens(){
 	      	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
 	      	controls.enabled = true;
 	      	simElectron = true;
-		particleSystem = true
-		proton1 = true
-		proton2 = true
-		neutron1 = true
-		neutron2 = true
+		scene.add(particleSystem);
+		scene.add(proton1,proton2,neutron1,neutron2)
 		scene.remove(titleMesh);
 		document.getElementById("left-btn").style.visibility = "visible"
 		document.getElementById("right-btn").style.visibility = "visible"
@@ -95,11 +92,8 @@ function initTweens(){
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
 				controls.enabled = false; 
-				particleSystem = true
-				proton1 = true
-				proton2 = true
-				neutron1 = true
-				neutron2 = true
+				scene.add(particleSystem);
+				scene.add(proton1,proton2,neutron1,neutron2)
 				simElectron = true
 				molecule = false
 			  	textSprite("-10",0.0004,true);
@@ -159,11 +153,8 @@ function initTweens(){
 	      	controls.enabled = true;
 	      	simElectron = false;
 	      	molecule = true;
-			particleSystem = false;
-			proton1 = false;
-			proton2 = false;
-			neutron1 = false;
-			neutron2 = false;
+			scene.remove(particleSystem);
+			scene.remove(proton1,proton2,neutron1,neutron2)
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
@@ -173,12 +164,8 @@ function initTweens(){
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
 				controls.enabled = false; 
-				particleSystem = true;
-				proton1 = true;
-				proton2 = true;
-				neutron1 = true;
-				neutron2 = true;
-				simElectron = true
+				scene.add(particleSystem);
+				scene.add(proton1,proton2,neutron1,neutron2)
 				molecule = false
 			  	textSprite("-10",0.0004,true);
 			  	////box(1.0);
