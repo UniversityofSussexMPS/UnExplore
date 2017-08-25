@@ -101,7 +101,7 @@ function init() {
 	ambientLight = new THREE.AmbientLight(0xffffff);
 
 	// Create models
-	createText();
+	initText();
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
