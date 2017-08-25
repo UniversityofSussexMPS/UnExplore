@@ -1,4 +1,3 @@
-
 // Write message if not webgl is found
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
@@ -12,7 +11,7 @@ var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
-var camera, controls, scene, renderer, model,light, ambientLight;
+var camera, controls, scene, renderer, model, light, ambientLight;
 
 var textMesh,supMesh,boxMesh;
 
@@ -61,6 +60,7 @@ $( "#slider-vertical" ).slider({
 
 });
 
+
 init();
 animate();
 
@@ -95,10 +95,10 @@ function init() {
 
 
 	//Create light
-	light = new THREE.PointLight( 0xffffff);
-	light.position.set( 0, 0, 10 );
-	light.castShadow = true;
-	ambientLight = new THREE.AmbientLight(0xffffff);
+	light = new THREE.PointLight( 0xffffff );
+	light.position.set( 10, 10, 10 );
+	ambientLight = new THREE.AmbientLight(0x404040, 2);
+	
 
 	// Create models
 	initText(font);
@@ -120,16 +120,15 @@ function init() {
 	// load in the gama data in the background so the website takes less time to load
 	loadScript("data/GAMA_data.js",addGamaData)
 
-	//add in title 
+	//Add the first model to the scene
 	scene.add(group);
-	scene.add( light, ambientLight)
-	
-	
-	//Initalize all the tweens		  		  
-  	initTweens();
- 					
-}	
+	scene.add(light, ambientLight)
 
+	//Initalize all the tweens
+	initTweens();
+	
+
+}
 function textSprite(sup,scale, z=0,larger=false) {
 	/*
 	 function to create text to show size of the current model
@@ -287,3 +286,4 @@ function render() {
 	renderer.render( scene, camera );
 	TWEEN.update();
 }
+
