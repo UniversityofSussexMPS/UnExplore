@@ -36,10 +36,6 @@ function initText(font) {
 		new THREE.MeshPhongMaterial({color: 0x8c1717, overdraw: 0.5} )
 	];
 	
-	renderer = new THREE.CanvasRenderer();
-	renderer.setPixelRatio(window.devicePixelRatio);
-	renderer.setSize(window.innerWidth, window.innerHeight);
-	container.appendChild(renderer.domElement);
 	
 	
 	document.addEventListener('mousedown', onDocumentMouseDown, false);
