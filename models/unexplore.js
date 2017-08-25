@@ -1,5 +1,5 @@
 
-var container, group;
+var group;
 var targetRotation = 0;
 var targetRotationOnMouseDown = 0;
 
@@ -16,19 +16,7 @@ loader.load('fonts/Abscissa_Bold.js', function(font) {
 });
 
 function initText(font) {
-	container = document.createElement('div');
-	document.body.appendChild( container );
 	
-	var info = document.createElement('div');
-	info.style.position = 'absolute';
-	info.style.top = '10px';
-	info.style.width = '70%';
-	info.style.textAlign = 'center';
-	container.appendChild(info);
-	
-	
-	scene = new THREE.Scene();
-	scene.background = new THREE.Color(0x000000);
 	//get text from hash
 	var theTitle = "unExplore";
 	var hash = document.location.hash.substr(1);
@@ -102,7 +90,7 @@ function initText(font) {
 	}
 };
 titleMesh = new THREE.Mesh(geometry, materials);
-titleMesh.position.x = centerOffset;
+titleMesh.position.x = centerOffSet;
 titleMesh.position.y = 100;
 titleMesh.position.z = 0;
 	
