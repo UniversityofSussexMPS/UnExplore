@@ -1,66 +1,122 @@
-var typeface="http://cdn.rawgit.com/ECallanan/hello-world/c2eb3129/Abscissa_Bold.js";
 
-var titleMesh, textGeo, materials;
-var firstLetter = true;
-var text = "unExplore",
-	height = 20,
-	size = 70,
-	hover = 30,
-	curveSegments = 4,
-	bevelThickness = 2,
-	bevelSize = 1.5,
-	bevelSegments = 3,
-	bevelEnabled = true,
-	font = typeface,
-	fontWeight = "bold"; 
+var container, group;
+var targetRotation = 0;
+var targetRotationOnMouseDown = 0;
+
+var mouseX = 0;
+var mouseXOnMouseDown = 0;
 
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
-materials = [
-	new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
-	new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
-];
-function createText() {
-	textGeo = new THREE.TextBufferGeometry( text, {
+var loader = new THREE.Fontloader();
+loader.load('fonts/Abscissa_Bold.js', function(font) {
+	initText(font);
+	animateTitle();
+});
+
+function initText(font) {
+	container = document.createElement('div');
+	document.body.appendChild( container );
+	
+	var info = document.createElement('div');
+	info.style.position = 'absolute';
+	info.style.top = '10px';
+	info.style.width = '70%';
+	info.style.textAlign = 'center';
+	container.appendChild(info);
+	
+	
+	scene = new THREE.Scene();
+	scene.background = new THREE.Color(0x000000);
+	//get text from hash
+	var theTitle = "unExplore";
+	var hash = document.location.hash.substr(1);
+	if (hash.length !== 0) {
+		theTitle = hash;
+	}
+	var geometry = new THREE.TextGeometry(theTitle, {
 		font: font,
-		size: size,
-		height: height,
-		curveSegments: curveSegments,
-		bevelThickness: bevelThickness,
-		bevelSize: bevelSize,
-		bevelEnabled: bevelEnabled,
-		material: 0,
-		extrudeMaterial: 1
+		size: 80,
+		height: 20,
+		curveSegments: 2
 	});
-	textGeo.computeBoundingBox();
-	textGeo.computeVertexNormals();
-	if ( ! bevelEnabled ) {
-		var triangleAreaHeuristics = 0.1 * ( height * size );
-		for ( var i = 0; i < textGeo.faces.length; i ++ ) {
-			var face = textGeo.faces[ i ];
-			if ( face.materialIndex == 1 ) {
-				for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
-					face.vertexNormals[ j ].z = 0;
-					face.vertexNormals[ j ].normalize();
-				}
-				var va = textGeo.vertices[ face.a ];
-				var vb = textGeo.vertices[ face.b ];
-				var vc = textGeo.vertices[ face.c ];
-				var s = THREE.GeometryUtils.triangleArea( va, vb, vc );
-				if ( s > triangleAreaHeuristics ) {
-					for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
-						face.vertexNormals[ j ].copy( face.normal );
-					}
-				}
-			}
+	geometry.computeBoundingBox();
+	var centerOffSet = -0.5*(geometry.boundingBox.max.x-geometry.boundingBox.min.X);
+	var materials = [
+		new THREE.MeshPhongMaterial({color: 0x8c1717, overdraw: 0.5} ), //front
+		new THREE.MeshPhongMaterial({color: 0x8c1717, overdraw: 0.5} )
+	];
+	var titleMesh = new THREE.Mesh(geometry, materials);
+	titleMesh.position.x = centerOffset;
+	titleMesh.position.y = 100;
+	titleMesh.position.z = 0;
+	
+	titleMesh.rotation.x = 0;
+	titleMesh.rotation.y = Math.PI*2;
+	
+	group = new THREE.Group();
+	group.add(titleMesh);
+	
+	renderer = new THREE.CanvasRenderer();
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	container.appendChild(renderer.domElement);
+	
+	
+	document.addEventListener('mousedown', onDocumentMouseDown, false);
+	document.addEventListener('touchstart', onDocumentTouchStart, false);
+	document.addEventListener('touchmove', onDocumentTouchMove, false);
+
+	
+	
+	function onDocumentMouseDown(event) {
+		event.preventDefault();
+		
+		document.addEventListener('mousemove', onDocumentMouseMove, false);
+		document.addEventListener('mouseup', onDocumentMouseUp, false);
+		document.addEventListener('mouseout', onDocumentMouseOut, false);
+		
+		mouseXOnMouseDown = event.clientX - windowHalfX;
+		targetRotationOnMouseDown = targetRotation;
+	}
+	function onDocumentMouseMove(event) {
+		mouseX = event.clientX - windowHalfX;
+		targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown)*0.02;
+	}
+	function onDocumentMouseUp(event) {
+		document.addEventListener('mousemove', onDocumentMouseMove, false);
+		document.addEventListener('mouseup', onDocumentMouseUp, false);
+		document.addEventListener('mouseout', onDocumentMouseOut, false);
+	}
+	function onDocumentMouseDown(event) {
+		document.addEventListener('mousemove', onDocumentMouseMove, false);
+		document.addEventListener('mouseup', onDocumentMouseUp, false);
+		document.addEventListener('mouseout', onDocumentMouseOut, false);
+	}
+	function onDocumentTouchStart(event) {
+		if (event.touches.length ==1) {
+			event.preventDefault();
+			
+			mouseXOnMouseDown = event.touches[0].pageX-windowHalfX;
+			targetRotationOnMouseDown = targetRotation;
 		}
 	}
-	var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
-	titleMesh = new THREE.Mesh( textGeo, materials );
-	titleMesh.position.x = centerOffset;
-	titleMesh.position.y = hover;
-	titleMesh.position.z = 0;
-	titleMesh.rotation.x = 0;
-	titleMesh.rotation.y = Math.PI * 2;
+	function onDocumentTouchMove(event) {
+		if (event.touches.length == 1 ) {
+			event.preventDefault();
+			
+			mouseX = event.touches[0].pageX-windowHalfX;
+			targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown)*0.05;
+		}
+	}
+	function animateTitle () {
+		requestAnimationFrame(animate);
+		renderTitle();
+		stats.update();
+	}
+	function renderTitle() {
+		group.rotation.y += (targetRotation - groupRotation.y)*0.05;
+		renderer.render(scene, camera);
+	}
 	
