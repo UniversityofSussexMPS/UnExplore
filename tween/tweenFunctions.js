@@ -45,7 +45,6 @@ function initTweens(){
 	cameraZoomTween32 = new TWEEN.Tween(camera.position);
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
 
-	
 	/************************* Molecule ***************************/
 	    		
 	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
@@ -653,6 +652,7 @@ function tweenForward(){
 		This is the function which is called when the back button is pressed
 		starting a zooming out tween depending on what scale we are currently at.
 	*/
+
 	if(simElectron){
 		tweenForward0.chain(tweenForward1);
 		tweenForward0.start()
@@ -696,6 +696,7 @@ function tweenBackward(){
 		This is the function which is called when the back button is pressed
 		starting a zooming in tween depending on what scale we are currently at.
 	*/
+
 	if(molecule){
 		tweenBackward0.chain(tweenBackward1);
 		tweenBackward0.start()
