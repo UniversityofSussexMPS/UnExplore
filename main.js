@@ -1,3 +1,4 @@
+
 // Write message if not webgl is found
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
@@ -95,10 +96,11 @@ function init() {
 
 
 	//Create light
-	light = new THREE.PointLight( 0xffffff );
-	light.position.set( 10, 10, 10 );
+	light = new THREE.DirectionalLight( 0xffffff,4 );
+	light.position.set( 0, 0, 10 );
+	light.target.position.set(0,0,0);
+	light.castShadow = true;
 	ambientLight = new THREE.AmbientLight(0x404040, 2);
-	
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
@@ -120,9 +122,11 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	scene.add(proton1, proton2, neutron1, neutron2);
-	scene.add(particleSystem);
-	scene.add(light, ambientLight)
+	scene.add(proton1,proton2,neutron1,neutron2);
+	scene.add(light, ambientLight);
+	scene.add(particleSystem)
+	simElectron = true;
+	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
 
 	//Initalize all the tweens
 	initTweens();
@@ -286,4 +290,3 @@ function render() {
 	renderer.render( scene, camera );
 	TWEEN.update();
 }
-
