@@ -12,7 +12,7 @@ var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
-var camera, controls, scene, renderer, model,light;
+var camera, controls, scene, renderer, model,light, ambientLight;
 
 var textMesh,supMesh,boxMesh;
 
@@ -101,7 +101,7 @@ function init() {
 	ambientLight = new THREE.AmbientLight(0xffffff);
 
 	// Create models
-	initText();
+	initText(font);
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
