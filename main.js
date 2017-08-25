@@ -101,7 +101,6 @@ function init() {
 	
 
 	// Create models
-	initText("Abscissa_Bold.js");
 	loadMolecule( "models/caffeine.pdb" );
 	addElectron();
 	generateGalaxy();
@@ -121,7 +120,8 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	scene.add(group);
+	scene.add(proton1, proton2, neutron1, neutron2);
+	scene.add(particleSystem);
 	scene.add(light, ambientLight)
 
 	//Initalize all the tweens
