@@ -12,7 +12,7 @@ var windowHalfY = window.innerHeight / 2;
 var loader = new THREE.Fontloader();
 loader.load('fonts/Abscissa_Bold.js', function(font) {
 	initText(font);
-	animateTitle();
+	animate();
 });
 
 function initText(font) {
@@ -47,16 +47,6 @@ function initText(font) {
 		new THREE.MeshPhongMaterial({color: 0x8c1717, overdraw: 0.5} ), //front
 		new THREE.MeshPhongMaterial({color: 0x8c1717, overdraw: 0.5} )
 	];
-	var titleMesh = new THREE.Mesh(geometry, materials);
-	titleMesh.position.x = centerOffset;
-	titleMesh.position.y = 100;
-	titleMesh.position.z = 0;
-	
-	titleMesh.rotation.x = 0;
-	titleMesh.rotation.y = Math.PI*2;
-	
-	group = new THREE.Group();
-	group.add(titleMesh);
 	
 	renderer = new THREE.CanvasRenderer();
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -110,13 +100,14 @@ function initText(font) {
 			targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown)*0.05;
 		}
 	}
-	function animateTitle () {
-		requestAnimationFrame(animate);
-		renderTitle();
-		stats.update();
-	}
-	function renderTitle() {
-		group.rotation.y += (targetRotation - groupRotation.y)*0.05;
-		renderer.render(scene, camera);
-	}
+};
+titleMesh = new THREE.Mesh(geometry, materials);
+titleMesh.position.x = centerOffset;
+titleMesh.position.y = 100;
+titleMesh.position.z = 0;
 	
+titleMesh.rotation.x = 0;
+titleMesh.rotation.y = Math.PI*2;
+	
+group = new THREE.Group();
+group.add(titleMesh);
