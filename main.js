@@ -102,6 +102,7 @@ function init() {
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
+	addTitle();
 	addElectron();
 	generateGalaxy();
 	generateHuman();
