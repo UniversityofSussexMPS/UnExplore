@@ -3,6 +3,8 @@ var titleMesh;
 
 function addTitle() {
 	
+	var fontLoader new THREE.FontLoader();
+	var font = fontLoader.load("fonts/Abscissa_Bold.js");
 	//get text from hash
 	var theTitle = "unExplore";
 	var hash = document.location.hash.substr(1);
