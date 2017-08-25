@@ -121,7 +121,7 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//add in title 
-	scene.add(titleMesh);	
+	scene.add(group);	
 	scene.add( light, ambientLight);
 	
 	//Initalize all the tweens		  	
