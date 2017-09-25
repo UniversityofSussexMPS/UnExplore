@@ -13,6 +13,10 @@
   display: none;
   height: auto;
 }
+.slide:hover {
+  opacity: 0.6;
+}
+
 .container {
   min-height: 700px;
   height: auto;
