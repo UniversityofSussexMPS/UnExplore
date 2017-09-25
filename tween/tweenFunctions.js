@@ -91,6 +91,7 @@ function initTweens(){
 			.onStart(function(){
 				controls.enabled = false; 
 				scene.add(proton1,proton2,neutron1,neutron2);
+				scene.add(light, ambientLight)
 				scene.add(particleSystem)
 				simElectron = true
 				molecule = false
