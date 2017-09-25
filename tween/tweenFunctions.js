@@ -90,8 +90,9 @@ function initTweens(){
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
 				controls.enabled = false; 
-				scene.add(particleSystem);
-				scene.add(proton1,proton2,neutron1,neutron2)
+				scene.add(proton1,proton2,neutron1,neutron2);
+				scene.add(particleSystem)
+				simElectron = true
 				molecule = false
 			  	textSprite("-10",0.0004,true);
 			  	////box(1.0);
