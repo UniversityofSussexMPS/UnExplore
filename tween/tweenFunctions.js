@@ -90,7 +90,7 @@ function initTweens(){
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
 				controls.enabled = false; 
-				scene.add(proton1,proton2,neutron1,neutron2);
+				scene.add(proton1,proton2,neutron1,neutron2)
 				scene.add(light, ambientLight)
 				scene.add(particleSystem)
 				simElectron = true
@@ -102,7 +102,7 @@ function initTweens(){
 			  	document.getElementById("left-btn").style.visibility = "hidden"
 			})
 			.onComplete(function(){
-				$("#slider").slider('value');;
+				$("#slider").slider('value');
 				scene.remove(root,light, ambientLight)
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
