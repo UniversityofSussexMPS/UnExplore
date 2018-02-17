@@ -91,7 +91,8 @@ function initTweens(){
 			.onStart(function(){
 				controls.enabled = false; 
 				molecule = false;
-				scene.add(proton1,proton2,neutron1,neutron2);
+				scene.remove(caffeine);
+				scene.add(proton1,proton2,neutron1,neutron2)
 				scene.add(particleSystem)
 				simElectron = true
 			  	textSprite("-10",0.0004,true);
