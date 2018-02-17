@@ -12,7 +12,7 @@ var stats ,material, mesh, GAMA_Z, CMBsphere;
 
 var tick = 0;
 
-var camera, controls, scene, renderer, model,light;
+var camera, controls, scene, renderer, model, light, ambientLight;
 
 var textMesh,supMesh,boxMesh;
 
@@ -60,8 +60,7 @@ $( "#slider-vertical" ).slider({
 	}
 
 });
-
-
+	
 init();
 animate();
 
@@ -96,10 +95,9 @@ function init() {
 
 
 	//Create light
-	light = new THREE.DirectionalLight( 0xffffff,4 );
+	light = new THREE.PointLight( 0xffffff );
 	light.position.set( 0, 0, 10 );
-	light.target.position.set(0,0,0);
-	light.castShadow = true;
+	ambientLight = new THREE.AmbientLight(0x404040, 2);
 
 	// Create models
 	loadMolecule( "models/caffeine.pdb" );
@@ -121,8 +119,9 @@ function init() {
 	loadScript("data/GAMA_data.js",addGamaData)
 
 	//Add the first model to the scene
-	scene.add(proton1,proton2,neutron1,neutron2);
-	scene.add(particleSystem)
+	scene.add(proton1, proton2, neutron1, neutron2);
+	scene.add(particleSystem);
+	scene.add(light, ambientLight)
 	simElectron = true;
 	message.innerHTML="This is a Helium nucleus surrounded by a cloud of electrons";
 
@@ -134,13 +133,9 @@ function init() {
 function textSprite(sup,scale, z=0,larger=false) {
 	/*
 	 function to create text to show size of the current model
-
 	 inputs:
-
 	 sup: power of 10 of that level
-
 	 scale: size of the text needed at that level
-
 	 z: offset of the text along the z axis
 	*/
 
@@ -209,9 +204,7 @@ function textSprite(sup,scale, z=0,larger=false) {
  function box(scale,z=0){
  	/*
 		function to create a box around the model to show the scale
-
 		scale: size of the box
-
 		z: offset of the box along the z axis
  	*/
  	var geometry = new THREE.BoxGeometry( scale, scale, 0 );
@@ -294,4 +287,3 @@ function render() {
 	renderer.render( scene, camera );
 	TWEEN.update();
 }
-
