@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  font-family: Abscissa_Bold.typeface.js;
+  text-decoration: none;
+  color: black;
+}
+.main {
+  width: 100%;
+  height: auto;
+}
+.imagebar {
+  width: 100%;
+  height: auto;
+  padding-top: 50px;
+}
+.image1 .image2 .image3 {
+  display: inline-block;
+  height: auto;
+  width: 32.9%;
+}
+.image1 {
+  float:left;
+  height: auto;
+  width: 33.33%;  
+}
+.image2 {
+  height: auto;
+  width: 33.33%;
+}
+.image3 {
+  float: right;
+  height: auto;
+  width: 33.33%;
+}
+
+.container {
+  min-height: 700px;
+  height: auto;
+  margin: 0 auto;
+  left: auto;
+  right: auto;
+  padding: 20px;
+  padding-bottom: 20px;
+  word-wrap: break-word;
+  text-align: center;
+}
+.title {
+  letter-spacing: 2px;
+  padding: 0;
+}
+.opaque {
+  opacity: 0.5;
+  font-style: italic;
+  position: relative;
+  top: -15px;
+}
+.justify {
+  text-align: justify;
+  padding: 5px;
+}
+footer {
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  top: 500px;
+  height: 40px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+.footer:hover {
+  color:grey;
+}
+.logo {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10px;
+  height: auto;
+  opacity: 0.6;
+  }
+    

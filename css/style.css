@@ -3,6 +3,7 @@
     position: absolute;
     bottom: 7%;
     width: 97.5%;
+    
 } 
 #slider-vertical{
     margin:10px;
@@ -12,16 +13,16 @@
     height: 70%;
 } 
 #steps{
-    margin:8px;
+    margin:10px;
     position: absolute;
     bottom: 3%;
-    width: 100%;
+    width: 97.5%;
     color:#fff;
 }
 
 body {
     color: #000;
-    font-family:Monospace;
+    font-family: sans-serif;
     font-size:13px;
     text-align:center;
     font-weight: bold;

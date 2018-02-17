@@ -59,6 +59,7 @@ function loadMolecule( url ) {
 					object.scale.set( 5, 5, start.distanceTo( end ) );
 					object.lookAt( end );
 					root.add( object );
+					
 
 				}
 

@@ -24,7 +24,7 @@ This project makes use of the 3D models in [three.js-examples][threejsex]. These
 6. Zoom out so the whole model can be seen
 7. Then repeat step 3
 
-[url]: <http://unexplore.com.s3-website-eu-west-1.amazonaws.com/>
+[url]: <http://www.unexplore.org>
 [threejs]: <http://threejs.org/>
 [tweenjs]: <http://www.createjs.com/tweenjs>
 [github-tweenjs]: <https://github.com/tweenjs/tween.js>

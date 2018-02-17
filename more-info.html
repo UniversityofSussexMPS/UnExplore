@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/style-other.css" />
+    <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+  </head>
+  
+  <body>
+    
+    <div class="topnav" id="myTopnav"> <!--ensures navigation works for all screen sizes-->
+      <a id="title-header" href="index.html">unExplore</a>
+      <a href="about-us.html">About Us</a>
+      <a id="active" href="more-info.html">More Info</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+    
+   <div class="main">
+    <div class="imagebar">
+       <img src="images/Solar-system.PNG" alt="" class="image1">
+       <img src="images/Galaxy.PNG" alt="" class="image2">
+       <img src="images/CMB.PNG" alt="" class="image3">
+     </div>
+    
+     <!--content-->
+     <section class="container" style="max-width:700px"> <!--using max width helps design's appearance on small screens-->
+       <h2 class="title">More Info</h2>
+       <div class="column-1" style="max-width: 250px; display:inline; margin:10px;">
+         <p class="opaque" style"margin:5px">the GAMA survey</p>
+         <p class="justify">This survey is one of the most compehensive projects on galaxy formation and evolution ever carried out.
+         Data is collected froom a number of different facilities around the world and used to create a large, in depth study of modern cosmology.
+         from which we can hope to learn more about a number of topics like Dark Matter, the birth of galaxies and how they change over their
+          lifetime.<br>
+         </br>The facilities that take the data for the GAMA survey spread the globe. ESO own two ground based telescopes located in Chile called the VISTA
+       and the VLT survey telescope, ESA another European company own the Herschel Space Observatory a space based telescope. Australia has two
+       telescopes, ASKAP and AAT whoch are both ground based. The USA contributes the GALEX space based telescope ran by NASA.<br>
+       </br>For more information go to <a href="http://www.gama-survey.org">Gama Survey.</p>
+       </div>
+       <div class="column-2" style="max-width: 250px; display:inline; margin:10px;">
+         <p class="opaque" style"margin:5px">cosmic microwave background radiation</p>
+         <p class="justify">CMB radiation is the residual electromagnetic radiation from The Big Bang. It was discovered accidentally when 
+         Arno Penzias and Robert Wilson in the 1960's when they were mapping out radio signals from the Milky Way and noticed a constant signal 
+         from all corners of the sky, initially thinking it was something wrong with their equipment they later realised they were the first people
+          measure what is the largest piece of evidence for the Big Bang theory of the creation of the universe we have. For this they later got
+          the Nobel Prize.<br>
+         </br> For more information search for Cosmic Microwave Background Radiation.</p>
+        </div>
+      </section>
+      
+   </div>
+      
+    <!--footer-->
+    <footer class="push">
+      <p class="ref">Developed with <a href="http://www.sussex.ac.uk" target="_blank"><img class="logo" src="images/uni sussex logo.PNG" /></a>
+      <a href="https://github.com/UniversityofSussexMPS/UnExplore" target="_blank"><img class="logo" src="images/github logo.PNG" /></a></p>
+    </footer>
+  
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <script src="Jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="Jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="navbar.js" type="text/javascript"></script>
+  </body>
+</html>

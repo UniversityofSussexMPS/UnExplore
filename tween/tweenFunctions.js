@@ -44,7 +44,8 @@ function initTweens(){
 	cameraZoomTween31 = new TWEEN.Tween(camera.position);
 	cameraZoomTween32 = new TWEEN.Tween(camera.position);
 	cameraZoomTween33 = new TWEEN.Tween(camera.position);
-
+	
+	
 	/************************* Molecule ***************************/
 	    		
 	tweenForward0 = cameraZoomTween0.to({x:0,y:0,z:2},10000)
@@ -58,7 +59,7 @@ function initTweens(){
 		  	textSprite("-15",0.000004);
 			//box(0.005);
 			setTimeout(function(){scene.remove(textMesh,supMesh,boxMesh); textSprite("-10",0.0004,true)},3000); //box(1.0)},3000)
-		  	document.getElementById("right-btn").style.visibility = "hidden"
+		  	document.getElementById("right-btn").style.visibility = "visible"
 
 
 		  })
@@ -67,7 +68,7 @@ function initTweens(){
 			camera.position.z=8;
 			scene.remove(textMesh,supMesh,boxMesh);
 			scene.add( root );
-			scene.add(light)
+			scene.add(light, ambientLight)
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0)
 		});
@@ -79,7 +80,7 @@ function initTweens(){
 	      	simElectron = false;
 	      	molecule = true;
 			scene.remove(particleSystem);
-			scene.remove(proton1,proton2,neutron1,neutron2);
+			scene.remove(proton1,proton2,neutron1,neutron2)
 			document.getElementById("left-btn").style.visibility = "visible"
 			document.getElementById("right-btn").style.visibility = "visible"
 			scene.remove(textMesh,supMesh,boxMesh);
@@ -89,10 +90,11 @@ function initTweens(){
 			.easing(TWEEN.Easing.Quartic.In)
 			.onStart(function(){
 				controls.enabled = false; 
-				scene.add(proton1,proton2,neutron1,neutron2);
+				molecule = false;
+				scene.remove(caffeine);
+				scene.add(proton1,proton2,neutron1,neutron2)
 				scene.add(particleSystem)
 				simElectron = true
-				molecule = false
 			  	textSprite("-10",0.0004,true);
 			  	////box(1.0);
 			  	message.innerHTML="Zooming in shows that each atom is made up of a atomic nucleus surrounded by a cloud of electrons";
@@ -100,8 +102,8 @@ function initTweens(){
 			  	document.getElementById("left-btn").style.visibility = "hidden"
 			})
 			.onComplete(function(){
-				$("#slider").slider('value');;
-				scene.remove(root,light)
+				$("#slider").slider('value');
+				scene.add(root,light, ambientLight)
 			})
 	tweenBackward1 = cameraZoomTween16.to({x:0,y:0,z:0.02},5000)
 			.easing(TWEEN.Easing.Exponential.Out)
@@ -164,7 +166,7 @@ function initTweens(){
 			human = false;
 			molecule = true;
 			scene.remove(model)
-			scene.add(root,light)
+			scene.add(root,light, ambientLight)
 		  	textSprite("-9",0.5,true);
 		  	//box(700.0);
 			camera.position.z=10000;
@@ -260,7 +262,7 @@ function initTweens(){
 			earth = false;
 			solarsystem = true;
 			scene.remove(planets.earth.mesh);
-			scene.remove(light);
+			scene.remove(light, ambientLight);
 			planets.earth.radius = 350;
 			planets.sun.radius = 0;
 		    for (a in planets) {
@@ -302,7 +304,7 @@ function initTweens(){
 		        	scene.remove(planets[a].mesh)
 		    }
 		    
-			scene.add(light);
+			scene.add(light, ambientLight);
 			scene.add(planets.earth.mesh);
 			scene.remove(Stars3D)
 			scene.remove(textMesh,supMesh,boxMesh);
@@ -652,7 +654,6 @@ function tweenForward(){
 		This is the function which is called when the back button is pressed
 		starting a zooming out tween depending on what scale we are currently at.
 	*/
-
 	if(simElectron){
 		tweenForward0.chain(tweenForward1);
 		tweenForward0.start()
@@ -696,7 +697,6 @@ function tweenBackward(){
 		This is the function which is called when the back button is pressed
 		starting a zooming in tween depending on what scale we are currently at.
 	*/
-
 	if(molecule){
 		tweenBackward0.chain(tweenBackward1);
 		tweenBackward0.start()

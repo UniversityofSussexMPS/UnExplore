@@ -32,11 +32,12 @@ function addElectron(){
 		timeScale: 0.1
 	}
 	nucleon = new THREE.SphereGeometry(0.0011,20,20);
-	red = new THREE.MeshBasicMaterial({
+	red = new THREE.MeshPhongMaterial({
                     color:0xFF0000
-    });
-	white = new THREE.MeshBasicMaterial({
+    	});
+	white = new THREE.MeshPhongMaterial({
                     color:0xFFFFFF
+		
     }); 
     proton1 = new THREE.Mesh(nucleon,red);
     proton1.position.set(0.001,0.001,0.0008)
@@ -45,7 +46,7 @@ function addElectron(){
     neutron1 = new THREE.Mesh(nucleon,white);
     neutron1.position.set(0.001,-0.001,0.0)
     neutron2 = new THREE.Mesh(nucleon,white);
-    neutron2.position.set(-0.001,0.001,0.0)
-	
+    neutron2.position.set(-0.001,0.001,0.0);
+
 
 }
